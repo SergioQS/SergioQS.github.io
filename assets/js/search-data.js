@@ -30,6 +30,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-computer-science",
+          title: "Computer Science",
+          description: "Computational essays and experiments in Machine Learning, generative models, quantum computing and much more.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/computer-science/";
+          },
         },{id: "nav-projects",
           title: "projects",
           description: "A growing collection of your cool projects.",
