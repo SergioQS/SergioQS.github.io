@@ -2,6 +2,9 @@
 layout: page
 title: "Other Areas"
 permalink: /other-areas/
+description: "Philosophy, Literature and more."
+nav: true
+nav_order: 7       # adjust the order relative to your other menu items
 ---
 
 "Thought is no more than a flash of lightning in the midst of a long night.  
