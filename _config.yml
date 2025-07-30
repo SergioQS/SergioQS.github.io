@@ -4,7 +4,7 @@
 
 title: GioMath # the website title (if blank, full name will be used instead)
 first_name: Sergio 
-middle_name: R.
+middle_name:
 last_name: Quiroga-Sandoval
 contact_note: >
   You can even add a little note about which of these is the best way to reach you.
@@ -143,6 +143,15 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
+  matematicas:
+    output: true
+    permalink: /matematicas/:path/
+  computacion:
+    output: true
+    permalink: /computacion/:path/
+  otras_areas:
+    output: true
+    permalink: /otras-areas/:path/
   books:
     output: true
   news:
