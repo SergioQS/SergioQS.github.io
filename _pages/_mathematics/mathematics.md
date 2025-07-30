@@ -1,7 +1,10 @@
 ---
 layout: page
-title: "Mathematics"
+title: "Matemáticas"
 permalink: /mathematics/
+description: "Explorations of classical and modern works in mathematics."
+nav: true
+nav_order: 4       # adjust the order relative to your other menu items
 ---
 
 Explorations of the works of Henri Poincaré, Évariste Galois, Bernhard Riemann, Alexander Grothendieck, Michael Artin, David Hilbert, Leonhard Euler, and other prominent mathematicians.  
