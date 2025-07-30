@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Computer Science"
+title: computation
 permalink: /computer-science/
 description: "Computational essays and experiments in Machine Learning, generative models, quantum computing and much more."
 nav: true
