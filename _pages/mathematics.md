@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Mathematics"
+title: "mathematics"
 permalink: /mathematics/
 description: "Explorations of classical and modern works in mathematics."
 nav: true
