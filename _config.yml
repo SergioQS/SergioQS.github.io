@@ -143,15 +143,15 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
-  matematicas:
+  mathematics:
     output: true
-    permalink: /matematicas/:path/
-  computacion:
+    permalink: /mathematics/:path/
+  Computater Science:
     output: true
-    permalink: /computacion/:path/
-  otras_areas:
+    permalink: /computerscience/:path/
+  other_areas:
     output: true
-    permalink: /otras-areas/:path/
+    permalink: /other-areas/:path/
   books:
     output: true
   news:
