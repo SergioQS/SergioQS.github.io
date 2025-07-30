@@ -2,6 +2,9 @@
 layout: page
 title: "Computer Science"
 permalink: /computer-science/
+description: "Computational essays and experiments in Machine Learning, generative models, quantum computing and much more."
+nav: true
+nav_order: 3       # adjust the order relative to your other menu items
 ---
 
 We explore topics in **quantum computing**, **graph theory**, **information theory**, **computational complexity**, **machine learning**, and **neural networks**.
