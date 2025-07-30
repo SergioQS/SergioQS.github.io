@@ -17,7 +17,7 @@ ninja.data = [{
             window.location.href = "/blog/";
           },
         },{id: "nav-mathematics",
-          title: "Mathematics",
+          title: "mathematics",
           description: "Explorations of classical and modern works in mathematics.",
           section: "Navigation",
           handler: () => {
