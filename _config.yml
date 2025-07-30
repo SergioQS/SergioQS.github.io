@@ -154,6 +154,7 @@ collections:
     permalink: /other-areas/:path/
   books:
     output: true
+    permalink: /books/:path/
   news:
     defaults:
       layout: post
