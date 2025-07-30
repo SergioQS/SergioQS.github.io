@@ -16,8 +16,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "nav-matemáticas",
-          title: "Matemáticas",
+        },{id: "nav-mathematics",
+          title: "Mathematics",
           description: "Explorations of classical and modern works in mathematics.",
           section: "Navigation",
           handler: () => {
@@ -51,12 +51,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "nav-teaching",
-          title: "teaching",
-          description: "Materials for courses you taught. Replace this text with your description.",
+        },{id: "nav-other-areas",
+          title: "Other Areas",
+          description: "Philosophy, Literature and more.",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/teaching/";
+            window.location.href = "/other-areas/";
           },
         },{id: "nav-people",
           title: "people",
