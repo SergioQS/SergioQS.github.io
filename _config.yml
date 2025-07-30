@@ -146,7 +146,7 @@ collections:
   mathematics:
     output: true
     permalink: /mathematics/:path/
-  Computater Science:
+  computation:
     output: true
     permalink: /computerscience/:path/
   other_areas:
