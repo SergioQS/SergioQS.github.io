@@ -23,8 +23,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/mathematics/";
           },
-        },{id: "nav-computer-science",
-          title: "Computer Science",
+        },{id: "nav-computation",
+          title: "computation",
           description: "Computational essays and experiments in Machine Learning, generative models, quantum computing and much more.",
           section: "Navigation",
           handler: () => {
