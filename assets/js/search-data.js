@@ -14,7 +14,7 @@ ninja.data = [{
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/mathematics/index.html";
+            window.location.href = "/mathematics/";
           },
         },{id: "nav-computation",
           title: "Computation",
