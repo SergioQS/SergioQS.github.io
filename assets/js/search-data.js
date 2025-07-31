@@ -17,11 +17,11 @@ ninja.data = [{
             window.location.href = "/blog/";
           },
         },{id: "nav-mathematics",
-          title: "mathematics",
-          description: "Explorations of classical and modern works in mathematics.",
+          title: "Mathematics",
+          description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/mathematics/";
+            window.location.href = "/mathematics/index.html";
           },
         },{id: "nav-computation",
           title: "Computation",
