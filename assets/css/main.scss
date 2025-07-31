@@ -23,3 +23,19 @@ $max-content-width: {{ site.max_width }};
   "tabler-icons/tabler-icons-filled.scss",
   "tabler-icons/tabler-icons-outline.scss"
 ;
+
+// ─────────────────────────────────────────────────────────
+// Widen the landing & hero containers on large screens
+@media (min-width: 992px) {
+  .landing-section .container,
+  .home .container {
+    max-width: 1000px !important;
+  }
+}
+
+// Darken the hero image overlay for better contrast
+.hero {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+// ─────────────────────────────────────────────────────────
+
