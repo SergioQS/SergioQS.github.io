@@ -1,18 +1,9 @@
 ---
 layout: default
 permalink: /other-areas/
-title: "Other Areas"
+title: Other Areas
 nav: true
 nav_order: 4
-pagination:
-  enabled: true
-  collection: posts
-  per_page: 5
-  sort_field: date
-  sort_reverse: true
-  trail:
-    before: 1
-    after: 3
 ---
 
 <div class="post">
@@ -31,42 +22,24 @@ pagination:
   <p>In this space I share essays and projects in related fields:</p>
   <ul>
     <li>Theoretical physics</li>
-    <li>Philosophy of science</li>
-    <li>Mathematical outreach and education</li>
-    <li>Academic reflections</li>
+    <li>Philosophy</li>
+    <li>Literature</li>
   </ul>
 
   <hr>
 
-  {% comment %}
-    Filter only those posts in the "other-areas" category
-  {% endcomment %}
-  {% assign all_other = site.posts | where: "categories", "other-areas" %}
-  {% if page.pagination.enabled %}
-    {% assign postlist = paginator.posts | where: "categories", "other-areas" %}
-  {% else %}
-    {% assign postlist = all_other %}
-  {% endif %}
-
   <ul class="post-list">
-    {% for post in postlist %}
+    {% assign other_posts = site.posts | where: "categories", "other-areas" %}
+    {% for post in other_posts %}
       {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
-      {% assign year = post.date | date: "%Y" %}
       <li>
-        <h3>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h3>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
         <p>{{ post.description }}</p>
         <p class="post-meta">
-          {{ read_time }} min read &nbsp; &middot; &nbsp;
-          {{ post.date | date: "%B %d, %Y" }}
+          {{ read_time }} min read &middot; {{ post.date | date: "%B %d, %Y" }}
         </p>
       </li>
     {% endfor %}
   </ul>
-
-  {% if page.pagination.enabled %}
-    {% include pagination.liquid %}
-  {% endif %}
 
 </div>
