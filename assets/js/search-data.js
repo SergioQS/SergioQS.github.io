@@ -25,10 +25,10 @@ ninja.data = [{
           },
         },{id: "nav-other-areas",
           title: "Other Areas",
-          description: "Philosophy, Literature and more.",
+          description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/other-areas/";
+            window.location.href = "/other-areas/index.html";
           },
         },{id: "nav-projects",
           title: "projects",
