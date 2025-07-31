@@ -1,46 +1,54 @@
 ---
-layout: page
-title: "mathematics"
+layout: default
 permalink: /mathematics/
-description: "Explorations of classical and modern works in mathematics."
+title: Mathematics
 nav: true
-nav_order: 2       # adjust the order relative to your other menu items
+nav_order: 2
+pagination:
+  enabled: true
+  collection: posts
+  per_page: 5
+  sort_field: date
+  sort_reverse: true
+  trail:
+    before: 1
+    after: 3
 ---
 
-Explorations of the works of Henri Poincaré, Évariste Galois, Bernhard Riemann, Alexander Grothendieck, Michael Artin, David Hilbert, Leonhard Euler, and other prominent mathematicians.  
-We aim to state and investigate some intriguing questions.
+<div class="post">
 
-## Projects
+  <div class="header-bar">
+    <h1>Mathematics</h1>
+    <h2>Explorations of classical and modern works in mathematics.</h2>
+  </div>
 
-### Poincaré and *Analysis Situs* 1  
-In *Analysis Situs*, Poincaré addresses questions about space, connectivity, dimension, and emptiness. He introduces homology and the fundamental group using homotopy; this entry examines some sections of this paper.  
+  {% comment %}
+  Filter only those posts in the "mathematics" category
+  {% endcomment %}
+  {% assign all_math = site.posts | where: "categories", "mathematics" %}
+  {% if page.pagination.enabled %}
+    {% assign postlist = paginator.posts | where: "categories", "mathematics" %}
+  {% else %}
+    {% assign postlist = all_math %}
+  {% endif %}
 
-[Read more](/mathematics/poincare-analysis-situs-1/)  
+  <ul class="post-list">
+    {% for post in postlist %}
+      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
+      {% assign year = post.date | date: "%Y" %}
+      <li>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.description }}</p>
+        <p class="post-meta">
+          {{ read_time }} min read &nbsp; &middot; &nbsp;
+          {{ post.date | date: "%B %d, %Y" }}
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
 
----
+  {% if page.pagination.enabled %}
+    {% include pagination.liquid %}
+  {% endif %}
 
-### Euler’s Triangulations and Planar Graphs  
-We study the Euler characteristic, the generalization of the formula relating faces, edges, and vertices of a solid to triangulations on surfaces, giving birth to topology. We will read the book *Euler’s Gem*.  
-
-Coming soon…  
-
----
-
-### Lebesgue Outer Measure  
-We define and construct the Lebesgue outer measure, examining its basic properties and its relationship with integration.  
-
-Coming soon…  
-
----
-
-### Hilbert’s “On the Infinite”  
-We summarize ideas and questions from David Hilbert’s article *Über das Unendliche* (1925).  
-
-Coming soon…  
-
----
-
-### What’s the Deal with \(n\)-Dimensional Knots?  
-In higher-dimensional knot theory, we present results from algebraic topology, including examples like Artin’s first 4-knots and the transition between classical knot theory and more abstract areas.  
-
-Coming soon…  
+</div>
