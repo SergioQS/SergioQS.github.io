@@ -2,8 +2,10 @@
 layout: about
 title: Home
 classes: about-wide
-permalink: /
 subtitle: 
+hero_image: /assets/img/secondary-bg.jpg
+hero_opacity: 0.5
+permalink: /
 
 profile:
   align: right
@@ -54,8 +56,8 @@ This site explores theorems, creations, and ideas in pure mathematics, computer 
 </div>
 
 <!-- new: full-width background section -->
-<section class="about-bg text-white py-5">
-  <div class="container">
+<section class="about-bg text-white ">
+  <div class="container py-5">
     <blockquote class="blockquote">
       <p class="mb-0">
         “Thought is no more than a flash of lightning in the midst of a long night.<br>
