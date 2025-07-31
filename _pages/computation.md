@@ -10,7 +10,7 @@ nav_order: 3
 
   <div class="header-bar">
     <h1>Computer Science</h1>
-    <h2>Computational essays in generative models, quantum computing, machine learning, neural networks, information theory and more.</h2>
+    <h2>Computational essays in generative models, quantum computing, machine learning, neural networks and more.</h2>
   </div>
   <blockquote>
     “Either mathematics is too big for the human mind, or the human mind is more than a machine.”  
