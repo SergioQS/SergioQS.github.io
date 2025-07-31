@@ -24,11 +24,11 @@ ninja.data = [{
             window.location.href = "/mathematics/";
           },
         },{id: "nav-computation",
-          title: "computation",
-          description: "Computational essays and experiments in Machine Learning, generative models, quantum computing and much more.",
+          title: "Computation",
+          description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/computer-science/";
+            window.location.href = "/computer-science/index.html";
           },
         },{id: "nav-other-areas",
           title: "Other Areas",
