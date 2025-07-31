@@ -10,9 +10,16 @@ nav_order: 2
 
   <div class="header-bar">
     <h1>Mathematics</h1>
-    <h2>Explorations of classical and modern works in mathematics.</h2>
+    <h2>Essays exploring classical and contemporary works in mathematics.</h2>
   </div>
 
+  <blockquote>
+    “Mathematics is the work of the human mind, which is destined rather to study than to know. To seek the truth rather than to find it.”  
+    — Evariste Galois.
+  </blockquote>
+
+  <p>The works of Henri Poincaré, Galois, Riemann, Grothendieck, Artin, Hilbert, Euler, and several other important mathematicians will be explored, with the goal of formulating intriguing questions.</p>
+  
   <ul class="post-list">
     {% assign math_posts = site.posts | where: "categories", "mathematics" %}
     {% for post in math_posts %}
