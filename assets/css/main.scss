@@ -25,17 +25,21 @@ $max-content-width: {{ site.max_width }};
 ;
 
 // ─────────────────────────────────────────────────────────
-// Widen the landing & hero containers on large screens
-@media (min-width: 992px) {
-  .landing-section .container,
-  .home .container {
-    max-width: 1000px !important;
-  }
+// Personalización de botones outline-light: texto más oscuro
+.btn-outline-light {
+  color: #333333 !important;            // texto en color gris oscuro
+  border-color: #333333 !important;     // borde también gris oscuro
 }
 
-// Darken the hero image overlay for better contrast
-.hero {
-  background-color: rgba(0, 0, 0, 0.4);
+.btn-outline-light:hover,
+.btn-outline-light:focus {
+  color: #000000 !important;            // aún más oscuro al pasar el ratón
+  border-color: #000000 !important;
 }
-// ─────────────────────────────────────────────────────────
 
+// Make only the About page wider
+body.about-wide .content-container {
+  max-width: 1000px !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
