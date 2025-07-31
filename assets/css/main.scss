@@ -25,28 +25,7 @@ $max-content-width: {{ site.max_width }};
 ;
 
 // ─────────────────────────────────────────────────────────
-// Personalización de botones outline-light: texto más oscuro
-.btn-outline-light {
-  color: #333333 !important;            // texto en color gris oscuro
-  border-color: #333333 !important;     // borde también gris oscuro
-}
-
-.btn-outline-light:hover,
-.btn-outline-light:focus {
-  color: #000000 !important;            // aún más oscuro al pasar el ratón
-  border-color: #000000 !important;
-}
-
-// Make only the About page wider
-body.about-wide .content-container {
-  max-width: 1000px !important;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-// ─────────────────────────────────────────────────────────
-// Landing page más amplia y con fondo
-// full-width background below the buttons, only on About page
+// About page: full-width background under buttons
 body.about-wide .about-bg {
   background-image: url('/assets/img/secondary-bg.jpg');
   background-size: cover;
@@ -54,16 +33,40 @@ body.about-wide .about-bg {
   position: relative;
 }
 
-// optional: dark overlay for better text contrast
+// Optional: semi-transparent overlay for contrast
 body.about-wide .about-bg::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.4);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
+// Keep the quote and content above the overlay
 body.about-wide .about-bg .container {
   position: relative;
-  z-index: 1;  // so text sits above the overlay
+  z-index: 1;
+}
+
+// Lower the quote so it doesn’t overlap side images
+body.about-wide .quote-lower {
+  margin-top: 4rem;
+}
+
+// Wider container only on About page
+body.about-wide .home .container {
+  max-width: 1000px !important;
+}
+
+// Brighter buttons in dark mode
+@media (prefers-color-scheme: dark) {
+  .btn-outline-light {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+  }
+  .btn-outline-light:hover,
+  .btn-outline-light:focus {
+    color: #f0f0f0 !important;
+    border-color: #f0f0f0 !important;
+  }
 }
