@@ -1,7 +1,7 @@
 ---
 layout: home
 title: "GioMath"
-permalink: /about/
+permalink: /
 subtitle: >
   This site explores theorems, creations, and ideas in pure mathematics,
   computer science, philosophy, and other fields.
