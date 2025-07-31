@@ -4,23 +4,18 @@ permalink: /computer-science/
 title: Computation
 nav: true
 nav_order: 3
-pagination:
-  enabled: true
-  collection: posts
-  per_page: 5
-  sort_field: date
-  sort_reverse: true
-  trail:
-    before: 1
-    after: 3
 ---
 
 <div class="post">
 
   <div class="header-bar">
     <h1>Computer Science</h1>
-    <h2>Computational essays and experiments in Machine Learning, generative models, quantum computing and much more.</h2>
+    <h2>Computational essays in generative models, quantum computing, machine learning, neural networks, information theory and more.</h2>
   </div>
+  <blockquote>
+    “Either mathematics is too big for the human mind, or the human mind is more than a machine.”  
+    — Kurt Godel.
+  </blockquote>
 
   {% comment %}
   Filter only those posts in the "computer-science" category
