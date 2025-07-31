@@ -21,7 +21,7 @@ ninja.data = [{
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/computer-science/index.html";
+            window.location.href = "/computer-science/";
           },
         },{id: "nav-other-areas",
           title: "Other Areas",
