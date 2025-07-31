@@ -53,8 +53,8 @@ This site explores theorems, creations, and ideas in pure mathematics, computer 
   {% endfor %}
 </div>
 
-<section class="landing-section text-center text-white py-5"
-         style="background-image: url('/assets/images/secondary-bg.jpg');">
+<!-- new: full-width background section -->
+<section class="about-bg text-white py-5">
   <div class="container">
     <blockquote class="blockquote">
       <p class="mb-0">
@@ -67,5 +67,6 @@ This site explores theorems, creations, and ideas in pure mathematics, computer 
     </blockquote>
   </div>
 </section>
+
 
 
