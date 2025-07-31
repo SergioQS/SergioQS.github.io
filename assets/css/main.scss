@@ -25,16 +25,17 @@ $max-content-width: {{ site.max_width }};
 ;
 
 // ─────────────────────────────────────────────────────────
-// About page: full-width background under buttons
-body.about-wide .about-bg {
+// Landing About page: fondo, quote y botones legibles
+// 1) Fondo de sección bajo los botones
+section.about-bg {
   background-image: url('/assets/img/secondary-bg.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
-// Optional: semi-transparent overlay for contrast
-body.about-wide .about-bg::before {
+// 2) Superposición oscura para mejorar contraste del texto
+section.about-bg::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -42,31 +43,43 @@ body.about-wide .about-bg::before {
   z-index: 0;
 }
 
-// Keep the quote and content above the overlay
-body.about-wide .about-bg .container {
+// 3) Eleva el contenido (cita) por encima de la superposición
+section.about-bg .container {
   position: relative;
   z-index: 1;
 }
 
-// Lower the quote so it doesn’t overlap side images
-body.about-wide .quote-lower {
+// 4) Baja la cita para que no interfiera con imágenes laterales
+blockquote.quote-lower {
   margin-top: 4rem;
 }
 
-// Wider container only on About page
-body.about-wide .home .container {
+// 5) Sólo para About: agranda el área de contenido
+body.about-wide .container {
   max-width: 1000px !important;
 }
 
-// Brighter buttons in dark mode
+// 6) Botones .btn-outline-light legibles en claro y oscuro
+.btn-outline-light {
+  /* Modo claro: texto y borde oscuros */
+  color: #000 !important;
+  border-color: #000 !important;
+}
+.btn-outline-light:hover,
+.btn-outline-light:focus {
+  color: #333 !important;
+  border-color: #333 !important;
+}
+
 @media (prefers-color-scheme: dark) {
   .btn-outline-light {
-    color: #ffffff !important;
-    border-color: #ffffff !important;
+    /* Modo oscuro: texto y borde blancos */
+    color: #fff !important;
+    border-color: #fff !important;
   }
   .btn-outline-light:hover,
   .btn-outline-light:focus {
-    color: #f0f0f0 !important;
-    border-color: #f0f0f0 !important;
+    color: #eee !important;
+    border-color: #eee !important;
   }
 }
