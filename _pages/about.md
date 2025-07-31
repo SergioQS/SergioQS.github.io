@@ -1,15 +1,14 @@
 ---
 layout: about
 title: Home
+classes: about-wide
 permalink: /
-subtitle: <a href='#'> Universidad Nacional de Colombia</a>. giomath13@gmail.com.
+subtitle: 
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Bogotá, Colombia </p>
+  image_circular: false # crops the image to make it circular.
 sections:
   - title: "Mathematics"
     description: >
@@ -31,14 +30,7 @@ sections:
     link:
       text: "View section"
       url: "/other-areas/"
-  - title: "About"
-    description: >
-      Get to know me: Sergio Quiroga‑Sandoval. My interests, publications,
-      and contact information.
-    link:
-      text: "Learn more"
-      url: "/about/"
-
+    
 latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
