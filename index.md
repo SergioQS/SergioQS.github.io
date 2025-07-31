@@ -7,6 +7,8 @@ subtitle: >
   computer science, philosophy, and other fields.
 hero_image: /assets/images/hero-bg.jpg     # <-- your main banner image
 hero_opacity: 0.5                         # <-- darken it for better text contrast
+nav: true
+nav_order: 1
 
 # Call-to-action buttons
 sections:
