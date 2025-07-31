@@ -43,3 +43,27 @@ body.about-wide .content-container {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+// ─────────────────────────────────────────────────────────
+// Landing page más amplia y con fondo
+// full-width background below the buttons, only on About page
+body.about-wide .about-bg {
+  background-image: url('/assets/images/secondary-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+// optional: dark overlay for better text contrast
+body.about-wide .about-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 0;
+}
+
+body.about-wide .about-bg .container {
+  position: relative;
+  z-index: 1;  // so text sits above the overlay
+}
