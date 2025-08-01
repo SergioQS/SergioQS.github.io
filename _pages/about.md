@@ -1,74 +1,71 @@
 ---
 layout: about
-title: Home
-classes: about-wide
-subtitle: 
-hero_image: /assets/img/secondary-bg.jpg
-hero_opacity: 0.5
+title: "GioMath"
 permalink: /
-
-profile:
-  align: right
-  image: prof_pic.jpeg
-  image_circular: false # crops the image to make it circular.
+nav: true
+nav_order: 1
+classes: about-wide
+img: /assets/img/secondary-bg.jpg      # al-folio will set this as hero/background
+subtitle: >
+  This site explores theorems, creations, and ideas in pure mathematics,
+  computer science, philosophy, and other fields — fully LaTeX-friendly.
 sections:
   - title: "Mathematics"
-    description: >
-      Articles and projects in topology, algebra, analysis, and more,
-      with implementations in Python and Wolfram Language.
     link:
       text: "View section"
       url: "/mathematics/"
   - title: "Computation"
-    description: >
-      Machine learning, Quantum ML, Generative models.
-      Practical examples and interactive notebooks.
     link:
       text: "View section"
-      url: "/computation/"
+      url: "/computer-science/"
   - title: "Other Areas"
-    description: >
-      Essays on physics, philosophy and literature.
     link:
       text: "View section"
       url: "/other-areas/"
-    
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 5 # leave blank to include all the blog posts
-  
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+  scrollable: true
+  limit: 5
+selected_papers: true
+social: true
 ---
 
-This site explores theorems, creations, and ideas in pure mathematics, computer science, philosophy, and other fields.
-
-
-<div class="row text-center my-5">
-  {% for section in page.sections %}
-    <div class="col-md-4 mb-3">
-      <a class="btn btn-lg btn-outline-light w-100" href="{{ section.link.url }}">
-        {{ section.title }}
-      </a>
+<!-- ──────────────────────────────────────────────────────── -->
+<!-- SECTION BUTTONS OVER THE BACKGROUND IMAGE -->
+<section class="about-bg text-center py-5">
+  <div class="container">
+    <div class="row">
+      {% for section in page.sections %}
+        <div class="col-md-4 mb-3">
+          <a class="btn btn-lg btn-outline-light w-100" href="{{ section.link.url }}">
+            {{ section.title }}
+          </a>
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
-</div>
-
-<!-- new: full-width background section -->
-<section class="about-bg text-white ">
-  <div class="container py-5">
-    <blockquote class="blockquote">
-      <p class="mb-0">
-        “Thought is no more than a flash of lightning in the midst of a long night.<br>
-        But that flash is everything.”
-      </p>
-      <footer class="blockquote-footer text-light mt-3">
-        Henri Poincaré
-      </footer>
-    </blockquote>
   </div>
 </section>
+
+<!-- ──────────────────────────────────────────────────────── -->
+<!-- QUOTE + PROFILE IMAGE BELOW ON PLAIN BACKGROUND -->
+<div class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-8">
+      <blockquote class="blockquote quote-lower">
+        <p class="mb-0">
+          “Thought is no more than a flash of lightning in the midst of a long night.<br>
+          But that flash is everything.”
+        </p>
+        <footer class="blockquote-footer text-muted mt-3">
+          Henri Poincaré
+        </footer>
+      </blockquote>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="/assets/img/prof_pic.jpeg" class="img-fluid rounded" alt="Profile">
+    </div>
+  </div>
+</div>
 
 
 
