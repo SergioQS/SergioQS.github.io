@@ -25,20 +25,20 @@ $max-content-width: {{ site.max_width }};
 ;
 
 // ─────────────────────────────────────────────────────────
-// ABOUT PAGE (body.about-wide) STYLES
-// 1) Make the .about-bg section truly full-width
+// 1) FULL-WIDTH HERO SECTION UNDER BUTTONS (for about pages)
+body.layout-about section.about-bg,
 body.about-wide section.about-bg {
+  /* Make it edge-to-edge */
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
-  background-image: url('/assets/img/secondary-bg.jpg');
-  background-size: cover;
-  background-position: center;
   position: relative;
-  padding: 4rem 0; // vertical space for buttons
+  padding-top: 4rem;   // vertical space above buttons
+  padding-bottom: 4rem;// vertical space below buttons
 }
 
-// 2) Dark overlay for contrast
+// 2) DARK OVERLAY FOR CONTRAST
+body.layout-about section.about-bg::before,
 body.about-wide section.about-bg::before {
   content: "";
   position: absolute;
@@ -47,25 +47,27 @@ body.about-wide section.about-bg::before {
   z-index: 0;
 }
 
-// 3) Lift the container (and buttons) above the overlay
+// 3) LIFT BUTTONS ABOVE OVERLAY
+body.layout-about section.about-bg .container,
 body.about-wide section.about-bg .container {
   position: relative;
   z-index: 1;
 }
 
-// 4) Button colors
-// 4a) On the dark background: white
+// 4) BUTTON COLORS ON DARK VS. LIGHT
+//   On the dark section: white
+body.layout-about section.about-bg .btn-outline-light,
 body.about-wide section.about-bg .btn-outline-light {
   color: #fff !important;
   border-color: #fff !important;
 }
-body.about-wide section.about-bg .btn-outline-light:hover,
-body.about-wide section.about-bg .btn-outline-light:focus {
+body.layout-about section.about-bg .btn-outline-light:hover,
+body.about-wide section.about-bg .btn-outline-light:hover {
   color: #eee !important;
   border-color: #eee !important;
 }
 
-// 4b) Everywhere else: dark
+//   Everywhere else: dark
 .btn-outline-light {
   color: #000 !important;
   border-color: #000 !important;
@@ -76,12 +78,13 @@ body.about-wide section.about-bg .btn-outline-light:focus {
   border-color: #333 !important;
 }
 
-// 5) Push the quote down so it never overlaps
+// 5) PUSH THE QUOTE DOWN
 blockquote.quote-lower {
   margin-top: 4rem;
 }
 
-// 6) Widen only the About page content area
+// 6) WIDEN ABOUT/landing PAGE CONTENT
+body.layout-about .container,
 body.about-wide .container {
   max-width: 1000px !important;
 }
