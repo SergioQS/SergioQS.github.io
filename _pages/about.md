@@ -7,7 +7,7 @@ classes: about-wide
 img: /assets/img/secondary-bg.jpg      # al-folio will set this as hero/background
 subtitle: >
   This site explores theorems, creations, and ideas in pure mathematics,
-  computer science, philosophy, and other fields — fully LaTeX-friendly.
+  computer science, philosophy, and other fields.
 sections:
   - title: "Mathematics"
     link:
