@@ -1,9 +1,8 @@
 ---
 layout: about
-title: "GioMath"
+title: Home
 permalink: /
-nav: true
-nav_order: 1
+nav: false
 classes: about-wide
 img: /assets/img/secondary-bg.jpg      # al-folio will set this as hero/background
 subtitle: >
