@@ -25,17 +25,16 @@ $max-content-width: {{ site.max_width }};
 ;
 
 // ─────────────────────────────────────────────────────────
-// Landing About page: fondo, quote y botones legibles
-// 1) Fondo de sección bajo los botones
-section.about-bg {
+// 1) BACKGROUND IMAGE UNDER BUTTONS
+body.about-wide .about-bg {
   background-image: url('/assets/img/secondary-bg.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
-// 2) Superposición oscura para mejorar contraste del texto
-section.about-bg::before {
+// 2) DARK OVERLAY FOR CONTRAST
+body.about-wide .about-bg::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -43,25 +42,26 @@ section.about-bg::before {
   z-index: 0;
 }
 
-// 3) Eleva el contenido (cita) por encima de la superposición
-section.about-bg .container {
+// 3) LIFT BUTTONS ABOVE OVERLAY
+body.about-wide .about-bg .container {
   position: relative;
   z-index: 1;
 }
 
-// 4) Baja la cita para que no interfiera con imágenes laterales
-blockquote.quote-lower {
-  margin-top: 4rem;
+// 4) BUTTON COLORS:
+//   – On the dark background (inside .about-bg) use white
+body.about-wide .about-bg .btn-outline-light {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+body.about-wide .about-bg .btn-outline-light:hover,
+body.about-wide .about-bg .btn-outline-light:focus {
+  color: #eee !important;
+  border-color: #eee !important;
 }
 
-// 5) Sólo para About: agranda el área de contenido
-body.about-wide .container {
-  max-width: 1000px !important;
-}
-
-// 6) Botones .btn-outline-light legibles en claro y oscuro
+//   – Everywhere else (light background) use dark
 .btn-outline-light {
-  /* Modo claro: texto y borde oscuros */
   color: #000 !important;
   border-color: #000 !important;
 }
@@ -71,15 +71,12 @@ body.about-wide .container {
   border-color: #333 !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  .btn-outline-light {
-    /* Modo oscuro: texto y borde blancos */
-    color: #fff !important;
-    border-color: #fff !important;
-  }
-  .btn-outline-light:hover,
-  .btn-outline-light:focus {
-    color: #eee !important;
-    border-color: #eee !important;
-  }
+// 5) LOWER THE QUOTE
+blockquote.quote-lower {
+  margin-top: 4rem;
+}
+
+// 6) WIDEN ABOUT PAGE ONLY
+body.about-wide .container {
+  max-width: 1000px !important;
 }
