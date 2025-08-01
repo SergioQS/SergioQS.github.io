@@ -10,7 +10,7 @@ nav_order: 4
 
   <div class="header-bar">
     <h1>Other Areas</h1>
-    <h2>Philosophy, Literature and more.</h2>
+    <h2>Philosophy, literature, physics and more.</h2>
   </div>
 
   <blockquote>
@@ -19,12 +19,6 @@ nav_order: 4
     — Henri Poincaré
   </blockquote>
 
-  <p>In this space I share essays and projects in related fields:</p>
-  <ul>
-    <li>Theoretical physics</li>
-    <li>Philosophy</li>
-    <li>Literature</li>
-  </ul>
 
   <hr>
 
