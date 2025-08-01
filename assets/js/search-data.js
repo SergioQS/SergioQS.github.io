@@ -3,13 +3,20 @@ const ninja = document.querySelector('ninja-keys');
 
 // add the home and posts menu items
 ninja.data = [{
-    id: "nav-home",
-    title: "Home",
+    id: "nav-giomath",
+    title: "GioMath",
     section: "Navigation",
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-mathematics",
+  },{id: "nav-giomath",
+          title: "GioMath",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/";
+          },
+        },{id: "nav-mathematics",
           title: "Mathematics",
           description: "",
           section: "Navigation",
