@@ -31,7 +31,11 @@ social: true
 
 <!-- ──────────────────────────────────────────────────────── -->
 <!-- SECTION BUTTONS OVER THE BACKGROUND IMAGE -->
-<section class="about-bg text-center py-5">
+ <section class="about-bg text-center py-5"
+        style="background-image: url('/assets/img/secondary-bg.jpg');
+                background-size: cover;
+                background-position: center;">
+
   <div class="container">
     <div class="row">
       {% for section in page.sections %}
