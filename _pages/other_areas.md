@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /other-areas/
-title: Other Areas
+title: Other
 nav: true
 nav_order: 4
 ---
@@ -9,7 +9,7 @@ nav_order: 4
 <div class="post">
 
   <div class="header-bar">
-    <h1>Other Areas</h1>
+    <h1>Other</h1>
     <h2>Philosophy, literature, physics and more.</h2>
   </div>
 
@@ -34,6 +34,29 @@ nav_order: 4
         </p>
       </li>
     {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h2 style="color: #0076df;">Books</h2>
+  <blockquote>
+    What an astonishing thing a book is. It's a flat object made from a tree with flexible parts on which are imprinted lots of funny dark squiggles. But one glance at it and you're inside the mind of another person, maybe somebody dead for thousands of years. Across the millennia, an author is speaking clearly and silently inside your head, directly to you. Writing is perhaps the greatest of human inventions, binding together people who never knew each other, citizens of distant epochs. Books break the shackles of time. A book is proof that humans are capable of working magic.
+    <footer class="blockquote-footer">Carl Sagan, Cosmos, Part 11: The Persistence of Memory (1980)</footer>
+  </blockquote>
+
+  <h3>Currently Reading</h3>
+  <ul>
+    <li><em>Add your current books here</em></li>
+  </ul>
+
+  <h3>Recently Read</h3>
+  <ul>
+    <li><em>Add your recently read books here</em></li>
+  </ul>
+
+  <h3>To Read</h3>
+  <ul>
+    <li><em>Add books you plan to read here</em></li>
   </ul>
 
 </div>

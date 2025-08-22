@@ -9,7 +9,7 @@ nav_order: 3
 <div class="post">
 
   <div class="header-bar">
-    <h1>Computer Science</h1>
+    <h1>Computation</h1>
     <h2>Computational essays in generative models, quantum computing, machine learning, and more.</h2>
   </div>
   <blockquote>

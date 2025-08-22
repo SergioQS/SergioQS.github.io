@@ -35,6 +35,7 @@ body.about-wide section.about-bg {
   position: relative;
   padding-top: 4rem;   // vertical space above buttons
   padding-bottom: 4rem;// vertical space below buttons
+  min-height: 500px;   // increased height by 50%
 }
 
 // 2) DARK OVERLAY FOR CONTRAST
@@ -76,6 +77,37 @@ body.about-wide section.about-bg .btn-outline-light:hover {
 .btn-outline-light:focus {
   color: #333 !important;
   border-color: #333 !important;
+}
+
+// Enhanced button styling for section buttons
+.section-btn {
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(8px);
+  background-color: rgba(60,60,60,0.75) !important;
+}
+
+// Title styling for different themes
+html[data-theme="light"] .post-title {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="dark"] .post-title {
+  color: #B3681E !important;
+  text-shadow: none !important;
+}
+
+html[data-theme-setting="blue"] .post-title {
+  color: #B3681E !important;
+  text-shadow: none !important;
+}
+
+.section-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5) !important;
+  background-color: rgba(0,0,0,0.9) !important;
+  color: #B3681E !important;
+  border-color: #B3681E !important;
 }
 
 // 5) PUSH THE QUOTE DOWN
