@@ -5,7 +5,7 @@
 "image": "",
 "email": "sergioquirogasandoval@gmail.com",
 "phone": "",
-"url": "https://sergioqs.github.io/,https://community.wolfram.com/web/squirogas",
+"url": "https://sergioqs.github.io/",
 "summary": "I bring analytical and creative problem-solving skills, with a dedicated focus on scientific research in mathematics and computation. Passionate about creating new knowledge and technologies, my career aspirations lie in pure and applied mathematics, particularly in topology, abstract algebra, quantum computing and machine learning. I boast a strong track record of learning new technologies, leading teams, and solving complex problems.",
 "location": {
 "address": "",
@@ -22,7 +22,7 @@
 }
 ]
 },
-"experience": [
+"work": [
 {
 "name": "Quantum Computing UNAL",
 "position": "Research Group Member / Instructor",
@@ -30,21 +30,16 @@
 "startDate": "2022-07-01",
 "endDate": "",
 "summary": "Prepared Python notebooks and provided lessons in an artificial intelligence course on classical machine learning models. Presented a talk on quantum computing and neural networks at the Colombian National Astronomical Observatory.",
-"highlights": [
-"Prepared teaching materials and notebooks for AI coursework.",
-"Gave a public talk on quantum computing and neural networks."
-]
+"highlights": ["Prepared teaching materials and notebooks for AI coursework.","Gave a public talk on quantum computing and neural networks."]
 },
 {
 "name": "Outlier.AI",
 "position": "Mathematical expert for AI training",
 "url": "",
 "startDate": "2024-10-01",
-"endDate": "",
+"endDate": "2025-06-01",
 "summary": "Develop and rate mathematical problems for AI training.",
-"highlights": [
-"Developed and rated mathematical problem data for AI training."
-]
+"highlights": ["Developed and rated mathematical problem data for AI training."]
 }
 ],
 "volunteer": [
@@ -62,7 +57,7 @@
 "organization": "Wolfram Institute / Wolfram Summer School",
 "location": "Online",
 "position": "Wolfram Affiliated Researcher",
-"url": "",
+"url": "https://wolframinstitute.org/people",
 "startDate": "2024-07-01",
 "endDate": "",
 "summary": "Developed a project on 'Compositional Paths on Hypergraphs' under the mentoring of Wolfram researchers.",
@@ -123,49 +118,35 @@
       "name": "Fundamentals of Quantum Algorithms",
       "date": "2025",
       "issuer": "IBM",
-      "url": "",
+      "url": "https://www.credly.com/badges/a4dfecf2-f77e-493b-9a24-02f4ccde5bc1/public_url",
       "icon": ""
     },
     {
       "name": "Quantum Business Foundations",
       "date": "2025",
       "issuer": "IBM",
-      "url": "",
+      "url": "https://www.credly.com/badges/8001466d-6ef6-450e-8221-b07d296957cc/public_url",
       "icon": ""
     },
     {
       "name": "EF SET English Certificate 82/100 (C2 Proficient)",
       "date": "2023",
       "issuer": "EF SET",
-      "url": "",
+      "url": "https://www.efset.org/cert/LTx7JW",
       "icon": ""
     },
     {
-      "name": "Quantum Winter School",
+      "name": "Qubit x Qubit Quantum Winter School",
       "date": "2023",
       "issuer": "Qubit X Qubit,The Coding School sponsored by Microsoft Azure Quantum",
-      "url": "",
-      "icon": ""
-    },
-    {
-      "name": "Qubit x Qubit Quantum Winter School 2023",
-      "date": "2023",
-      "issuer": "Microsoft",
-      "url": "",
-      "icon": ""
-    },
-    {
-      "name": "Crea tu curriculum profesional con LaTeX",
-      "date": "2022",
-      "issuer": "Coursera",
-      "url": "",
+      "url": "https://verified.sertifier.com/en/verify/78346008921862",
       "icon": ""
     },
     {
       "name": "Blockchain Business Models",
       "date": "2022",
       "issuer": "Coursera",
-      "url": "",
+      "url": "https://www.coursera.org/account/accomplishments/certificate/4GZC2E4MLYMU",
       "icon": ""
     },
     {
@@ -179,28 +160,28 @@
       "name": "Pensamiento sistémico",
       "date": "2020",
       "issuer": "Coursera",
-      "url": "",
+      "url": "https://www.coursera.org/account/accomplishments/certificate/VC66DKLA52QG",
       "icon": ""
     },
     {
       "name": "Fundamentos de Ingeniería de Software",
       "date": "2020",
       "issuer": "Platzi",
-      "url": "",
+      "url": "https://platzi.com/p/sergioquirogasandoval/curso/1195-fundamentos-appsco/diploma/detalle/",
       "icon": ""
     },
     {
       "name": "IA para todos",
       "date": "2020",
       "issuer": "Coursera",
-      "url": "",
+      "url": "https://www.coursera.org/account/accomplishments/certificate/5YEMN5KZYDPT",
       "icon": ""
     },
     {
       "name": "Pre-Calculus (with Honors)",
       "date": "2020",
       "issuer": "Coursera",
-      "url": "",
+      "url": "https://www.coursera.org/account/accomplishments/certificate/FQGBAMRCKMQC",
       "icon": ""
     }
   ],
@@ -250,10 +231,18 @@
 "icon": "",
 "keywords": [
 "Topology",
+"Abstract Algebra",
+"Hypergraphs"
+]
+},
+{
+  "name": "Computer Science",
+"icon": "",
+"keywords": [
 "Quantum Computing",
 "Machine Learning",
-"Compositional path algebras",
-"Hypergraphs"
+"Quantum Machine Learning",
+"Quantum Generative Models"
 ]
 }
 ],
