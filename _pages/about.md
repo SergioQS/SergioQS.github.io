@@ -34,7 +34,7 @@ social: true
         style="background-image: url('/assets/img/LionResting.jpg');
                 background-size: cover;
                 background-position: center;
-                min-height: 550px;
+                min-height: 500px;
                 display: flex;
                 align-items: center;">
 
