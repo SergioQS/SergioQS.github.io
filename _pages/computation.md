@@ -18,14 +18,15 @@ nav_order: 3
   </blockquote>
 
   {% comment %}
-  Filter only those posts in the "computer-science" category
+  Filter only those posts in the "computation" category
   {% endcomment %}
-  {% assign all_cs = site.posts | where: "categories", "computer-science" %}
-  {% if page.pagination.enabled %}
-    {% assign postlist = paginator.posts | where: "categories", "computer-science" %}
-  {% else %}
-    {% assign postlist = all_cs %}
-  {% endif %}
+  {% assign all_cs = site.posts %}
+  {% assign postlist = "" | split: "" %}
+  {% for post in all_cs %}
+    {% if post.categories contains 'computation' %}
+      {% assign postlist = postlist | push: post %}
+    {% endif %}
+  {% endfor %}
 
   <ul class="post-list">
     {% for post in postlist %}
