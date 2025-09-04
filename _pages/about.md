@@ -59,6 +59,11 @@ social: true
     <div class="col-md-8">
       <blockquote class="blockquote quote-lower">
         <p class="mb-0">
+          “Vive para la exaltación de un alma grande capaz de entender el universo y contenerlo en sus sentimientos.”
+        </p>
+      </blockquote>
+      <blockquote class="blockquote quote-lower">
+        <p class="mb-0">
           “Thought is no more than a flash of lightning in the midst of a long night.<br>
           But that flash is everything.”
         </p>

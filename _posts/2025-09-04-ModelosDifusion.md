@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Generative models, DDPM.
+title: Modelos de difusión DDPM
 date: 2025-08-22 11:12:00-0400
-description: 
-tags: computation, generativemodels
+description: Un Modelo de difusión para eliminación de ruido en dos Gaussianas 2-dimensionales de juguete en Julia.
+tags: generativemodels, ML, julia, classification
 categories: computation
 related_posts: false
 citation: true
@@ -13,7 +13,9 @@ citation: true
 {% assign jupyter_path = 'assets/jupyter/Modelos_difusion.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/Modelos_difusion.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
-  {% jupyter_notebook jupyter_path %}
+  <div class="embedded-notebook">
+    {% jupyter_notebook jupyter_path %}
+  </div>
 {% else %}
   <p>Sorry, the notebook you are looking for does not exist.</p>
 {% endif %}
