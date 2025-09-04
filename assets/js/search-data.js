@@ -51,37 +51,26 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-algoritmo-qr-trasladado",
+        },{id: "post-modelos-de-difusión-ddpm",
+        
+          title: "Modelos de difusión DDPM",
+        
+        description: "Un Modelo de difusión para eliminación de ruido en dos Gaussianas 2-dimensionales de juguete en Julia.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/ModelosDifusion/";
+          
+        },
+      },{id: "post-algoritmo-qr-trasladado",
         
           title: "Algoritmo QR Trasladado",
         
-        description: "An implementation and analysis of the Shifted QR factorization method.",
+        description: "Implementación y análisis del algoritmo de factorización QR Trasladado en Julia.",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/2025/QRtrasladado/";
-          
-        },
-      },{id: "post-a-post-with-plotly-js",
-        
-          title: "a post with plotly.js",
-        
-        description: "this is what included plotly.js code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/plotly/";
-          
-        },
-      },{id: "post-a-post-with-image-galleries",
-        
-          title: "a post with image galleries",
-        
-        description: "this is what included image galleries could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/photo-gallery/";
           
         },
       },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
@@ -95,125 +84,37 @@ ninja.data = [{
             window.open("https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/", "_blank");
           
         },
-      },{id: "post-a-post-with-tabs",
+      },{id: "post-el-quehacer-matemático-russel-vs-shaw",
         
-          title: "a post with tabs",
+          title: "El quehacer matemático Russel vs Shaw",
         
-        description: "this is what included tabs in a post could look like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/tabs/";
+            window.location.href = "/blog/2024/ElQuehacerMatem%C3%A1tico/";
           
         },
-      },{id: "post-a-post-with-typograms",
+      },{id: "post-teoría-de-conjuntos-y-la-explosión-analítica-del-uno-múltiple",
         
-          title: "a post with typograms",
+          title: "Teoría de conjuntos y la explosión analítica del uno-múltiple",
         
-        description: "this is what included typograms code could look like",
+        description: "Se explora conceptos como los conjuntos derivados, conjuntos perfectos, multiplicidades inconsistentes, ordinales en el contexto de la teoría de conjuntos y la filosofía matemática",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/typograms/";
+            window.location.href = "/blog/2024/Uno-Multiple/";
           
         },
-      },{id: "post-a-post-that-can-be-cited",
+      },{id: "post-el-analysis-situs-y-la-caracterización-de-esferas",
         
-          title: "a post that can be cited",
+          title: "El Analysis Situs y la caracterización de esferas",
         
-        description: "this is what a post that can be cited looks like",
+        description: "Se explora desde la filosofía de las matemáticas el papel de la caracterización de esferas como una fuente de preguntas fundamentales sobre el espacio y se hace un primer acercamiento a la homología y la homotopía en topología algebraica.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/post-citation/";
-          
-        },
-      },{id: "post-a-post-with-pseudo-code",
-        
-          title: "a post with pseudo code",
-        
-        description: "this is what included pseudo code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/pseudocode/";
-          
-        },
-      },{id: "post-a-post-with-code-diff",
-        
-          title: "a post with code diff",
-        
-        description: "this is how you can display code diffs",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/code-diff/";
-          
-        },
-      },{id: "post-a-post-with-advanced-image-components",
-        
-          title: "a post with advanced image components",
-        
-        description: "this is what advanced image components could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/advanced-images/";
-          
-        },
-      },{id: "post-a-post-with-vega-lite",
-        
-          title: "a post with vega lite",
-        
-        description: "this is what included vega lite code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/vega-lite/";
-          
-        },
-      },{id: "post-a-post-with-geojson",
-        
-          title: "a post with geojson",
-        
-        description: "this is what included geojson code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/geojson-map/";
-          
-        },
-      },{id: "post-a-post-with-echarts",
-        
-          title: "a post with echarts",
-        
-        description: "this is what included echarts code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/echarts/";
-          
-        },
-      },{id: "post-a-post-with-chart-js",
-        
-          title: "a post with chart.js",
-        
-        description: "this is what included chart.js code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2024/chartjs/";
-          
-        },
-      },{id: "post-a-post-with-tikzjax",
-        
-          title: "a post with TikZJax",
-        
-        description: "this is what included TikZ code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2023/tikzjax/";
+            window.location.href = "/blog/2023/AnalisisSitus/";
           
         },
       },{id: "post-a-post-with-bibliography",
@@ -368,17 +269,6 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2020/twitter/";
-          
-        },
-      },{id: "post-a-post-with-disqus-comments",
-        
-          title: "a post with disqus comments",
-        
-        description: "an example of a blog post with disqus comments",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2015/disqus-comments/";
           
         },
       },{id: "post-a-post-with-math",
