@@ -77,7 +77,7 @@ ninja.data = [{
         
           title: "Fundamentals of Knot Theory",
         
-        description: "",
+        description: "An introduction to mathematical knot theory, exploring embeddings, knot complements, and fundamental concepts in topology.",
         section: "Posts",
         handler: () => {
           
