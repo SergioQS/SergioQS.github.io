@@ -96,12 +96,6 @@ html[data-theme="dark"] .post-title {
   color: #B3681E !important;
   text-shadow: none !important;
 }
-
-html[data-theme-setting="blue"] .post-title {
-  color: #B3681E !important;
-  text-shadow: none !important;
-}
-
 .section-btn:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 25px rgba(0,0,0,0.5) !important;
@@ -129,4 +123,79 @@ nav .navbar-nav > li:first-child {
 
 .post .header-bar h1 {
   font-size: 3.5rem; /* smaller size as desired */
+}
+
+/* ---------- Embedded notebook: keep white background & neutral colors ---------- */
+
+/* Target your embedding wrapper */
+.embedded-notebook,
+.embedded-notebook * {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Protect commonly generated notebook container classes too */
+.embedded-notebook .nbconvert,
+.embedded-notebook .notebook,
+.embedded-notebook .rendered_html,
+.embedded-notebook .output,
+.embedded-notebook .output_area,
+.embedded-notebook .cell,
+.embedded-notebook .widget-area {
+  background: #ffffff !important;
+  color: #000000 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* Force svg inside to remain white */
+.embedded-notebook svg,
+.embedded-notebook svg * {
+  background: #ffffff !important;
+  fill: #000000 !important;
+  color: #000000 !important;
+}
+
+/* If the theme uses data-theme attribute on <html> or <body>, ensure override */
+[data-theme="dark"] .embedded-notebook,
+[data-theme="dark"] .embedded-notebook * {
+  background: #ffffff !important;
+  color: #000000 !important;
+  filter: none !important;
+}
+
+/* If your theme toggler adds a 'water' or other class on body, override it too */
+body.water-theme .embedded-notebook,
+body.theme-water .embedded-notebook {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* keep tikz images inside the notebook white as well */
+.embedded-notebook .tikzjax-box,
+.embedded-notebook .tikzjax-box svg,
+.embedded-notebook .tikz-center svg {
+  background: #ffffff !important;
+}
+/* Always white background inside notebooks */
+.embedded-notebook,
+.embedded-notebook * {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* Also protect when theme toggler adds dark/water to body */
+body.dark .embedded-notebook,
+body.water .embedded-notebook {
+  background: #fff !important;
+  color: #000 !important;
+}
+html[data-theme="dark"] .embedded-notebook,
+html[data-theme="dark"] .embedded-notebook * {
+  background: #fff !important;
+  color: #000 !important;
 }

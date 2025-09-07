@@ -292,3 +292,13 @@
   <script src="{{ '/assets/js/search-data.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/shortcut-key.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
+
+{% if page.tikzjax %}
+  <!-- Use local vendor tikzjax (preferred). If you don't have the vendor file,
+       change this to your CDN of choice but keep only one source. -->
+  <script
+    defer
+    src="{{ '/assets/vendor/tikzjax/tikzjax.js' | relative_url }}"
+    crossorigin="anonymous"
+  ></script>
+{% endif %}

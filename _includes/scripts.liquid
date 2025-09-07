@@ -140,6 +140,7 @@
     integrity="sha256-+1qyucCXRZJrCg3lm3KxRt/7WXaYhBid4/1XJRHGB1E="
     crossorigin="anonymous"
   ></script>
+  <script defer src="{{ '/assets/js/tikzjax-setup.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 {% endif %}
 
 {% if page.typograms %}
@@ -334,3 +335,13 @@
 {% if site.newsletter.enabled %}
   <script defer src="{{ '/assets/js/newsletter.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
+
+{%- if page.tikzjax -%}
+  <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
+  <script defer
+          src="https://tikzjax.com/v1/tikzjax.js"
+          integrity="sha256-SJFxiOs0heeiKVTZeeo2QUosjU/YGnxpzZCnjCEmshw="
+          crossorigin="anonymous"></script>
+
+  <script defer src="{{ '/assets/js/tikzjax-setup.js' | relative_url }}"></script>
+{%- endif -%}

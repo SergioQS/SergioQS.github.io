@@ -184,6 +184,8 @@
   {% endif %}
 {% endif %}
 
-{% if page.tikzjax %}
-  <link defer rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
-{% endif %}
+{%- if page.tikzjax -%}
+  <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
+  <script defer src="{{ '/assets/vendor/tikzjax/tikzjax.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/tikzjax-setup.js' | relative_url }}"></script>
+{%- endif -%}

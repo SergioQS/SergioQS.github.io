@@ -1,6 +1,6 @@
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
-// Toggle through light, dark, blue, and system theme settings.
+// Toggle through light, dark, and system theme settings.
 let toggleThemeSetting = () => {
   let themeSetting = determineThemeSetting();
   if (themeSetting == "system") {
@@ -8,11 +8,9 @@ let toggleThemeSetting = () => {
   } else if (themeSetting == "light") {
     setThemeSetting("dark");
   } else if (themeSetting == "dark") {
-    setThemeSetting("blue");
-  } else if (themeSetting == "blue") {
-    setThemeSetting("system");
+    setThemeSetting("light");
   } else {
-    setThemeSetting("system");
+    setThemeSetting("dark");
   }
 };
 
@@ -72,7 +70,7 @@ let applyTheme = () => {
   }
 
   // Set jupyter notebooks themes.
-  let jupyterNotebooks = document.getElementsByClassName("jupyter-notebook-iframe-container");
+  /*let jupyterNotebooks = document.getElementsByClassName("jupyter-notebook-iframe-container");
   for (let i = 0; i < jupyterNotebooks.length; i++) {
     let bodyElement = jupyterNotebooks[i].getElementsByTagName("iframe")[0].contentWindow.document.body;
     if (theme == "dark") {
@@ -82,7 +80,7 @@ let applyTheme = () => {
       bodyElement.setAttribute("data-jp-theme-light", "true");
       bodyElement.setAttribute("data-jp-theme-name", "JupyterLab Light");
     }
-  }
+  }*/
 
   // Updates the background of medium-zoom overlay.
   if (typeof medium_zoom !== "undefined") {

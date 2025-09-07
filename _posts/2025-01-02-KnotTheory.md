@@ -1,12 +1,14 @@
 ---
-layout: post
+layout: distill
 title: Fundamentals of Knot Theory
 date: 2025-01-20 11:12:00-0400
-description: 
+description: An introduction to mathematical knot theory, exploring embeddings, knot complements, and fundamental concepts in topology.
+thumbnail: assets/img/3.jpg
 tags: mathematics, topology, knots
 categories: mathematics
 related_posts: false
 citation: true
+tikzjax: true
 ---
 
 # Knots
@@ -95,37 +97,38 @@ First we need to choose a homeomorphism $\phi:\mathbb{S}^{0} \rightarrow \mathbb
 
 {% raw %}
 <script type="text/tikz">
-\begin{tikzpicture}
-  % Draw \mathbb{S}^0
-  \filldraw (0,0.8cm) circle (2pt);
-  \filldraw (0,-0.8cm) circle (2pt);
-  \node at (0, -1.5) {$\mathbb{S}^0$};
+  \centering
+  \begin{tikzpicture}
+    % Draw \mathbb{S}^0
+    \filldraw (0,0.8cm) circle (2pt);
+    \filldraw (0,-0.8cm) circle (2pt);
+    \node at (0, -1.5) {$\mathbb{S}^0$};
 
-  % Draw arrow to \mathbb{S}^1 with \mathbb{S}^0 inserted
-  \draw[->] (1.2,0) -- (1.6,0);
+    % Draw arrow to \mathbb{S}^1 with \mathbb{S}^0 inserted
+    \draw[->] (1.2,0) -- (1.6,0);
 
-  % Draw \mathbb{S}^1 with \mathbb{S}^0 inserted (shaded sphere)
-  \shade[ball color=blue!20] (3,0) circle (1cm);
-  \node at (3, -1.5) {$\phi(\mathbb{S}^0)\subset \mathbb{S}^2$};
-  \filldraw (3,1cm) circle (2pt);
-  \filldraw (3,-1cm) circle (2pt);
-  
-  % Draw arrow to S^{0}
-  \draw[->] (4.2,0) -- (4.6,0);
+    % Draw \mathbb{S}^1 with \mathbb{S}^0 inserted (shaded sphere)
+    \shade[ball color=blue!20] (3,0) circle (1cm);
+    \node at (3, -1.5) {$\phi(\mathbb{S}^0)\subset \mathbb{S}^2$};
+    \filldraw (3,1cm) circle (2pt);
+    \filldraw (3,-1cm) circle (2pt);
+    
+    % Draw arrow to S^{0}
+    \draw[->] (4.2,0) -- (4.6,0);
 
-  % Draw \mathbb{S}^1 with \mathbb{S}^0 removed (shaded)
-  \shade[ball color=blue!20] (6,0) circle (1cm);
-  \node at (6, -1.5) {$\mathbb{S}^2 \smallsetminus \phi(\mathbb{S}^0)$};
-  \filldraw[fill=white] (6,0.95cm) circle (2pt);
-  \filldraw[fill=white] (6,-0.95cm) circle (2pt);
-  
-  % Draw arrow to $\mathbb{S}^0$
-  \draw[->] (7.6,0) -- (8,0);
-  
-  % Draw \mathbb{S}^0
-  \draw (9.2,0) ellipse (1cm and 0.4cm);
-  \node at (9.2, -1.5) {$\mathbb{S}^0$};
-\end{tikzpicture}
+    % Draw \mathbb{S}^1 with \mathbb{S}^0 removed (shaded)
+    \shade[ball color=blue!20] (6,0) circle (1cm);
+    \node at (6, -1.5) {$\mathbb{S}^2 \smallsetminus \phi(\mathbb{S}^0)$};
+    \filldraw[fill=white] (6,0.95cm) circle (2pt);
+    \filldraw[fill=white] (6,-0.95cm) circle (2pt);
+    
+    % Draw arrow to $\mathbb{S}^0$
+    \draw[->] (7.6,0) -- (8,0);
+    
+    % Draw \mathbb{S}^0
+    \draw (9.2,0) ellipse (1cm and 0.4cm);
+    \node at (9.2, -1.5) {$\mathbb{S}^0$};
+  \end{tikzpicture}
 </script>
 {% endraw %}
 
@@ -205,10 +208,10 @@ $K$ and $J$ are said to be **equivalent knots** if there exists an orientation p
 Now we will explore the concept of knot composition: Can intricate knots be decomposed into simpler ones?
 
 **Definition.**  
-$k\#J$ denotes the composition of knots $k$ and $J$. This operation is defined by cutting a portion of a knot image $k$ and a portion of a knot image $J$ and then joining the resulting endpoints together, ensuring that no crossings are created or destroyed in the process.
+$k\textit{#}J$ denotes the composition of knots $k$ and $J$. This operation is defined by cutting a portion of a knot image $k$ and a portion of a knot image $J$ and then joining the resulting endpoints together, ensuring that no crossings are created or destroyed in the process.
 
 **Definition.**  
-$K$ is a Composite knot if there exist two non-trivial knots $I,J$, named factor knots, such that $I\#J = K$.
+$K$ is a Composite knot if there exist two non-trivial knots $I,J$, named factor knots, such that $I\textit{#}J = K$.
 
 **Example.**  
 The granny knot is composite.
@@ -240,39 +243,3 @@ There exists a variety of knot invariants; in this chapter we will study some of
 ### Fundamental group of a knot
 ### Jones Polynomial
 ### Alexander polynomial
-
----
-
-## Math and TikZ notes for this theme
-
-This theme supports rendering beautiful math in inline and display modes using [MathJax 3](https://www.mathjax.org/) engine. You just need to surround your math expression with `$$`, like `$$ E = mc^2 $$`. If you leave it inside a paragraph, it will produce an inline expression, just like $$ E = mc^2 $$.
-
-To use display mode, again surround your expression with `$$` and place it as a separate paragraph. Here is an example:
-
-$$
-\sum_{k=1}^\infty |\langle x, e_k \rangle|^2 \leq \|x\|^2
-$$
-
-You can also use `\begin{equation}...\end{equation}` instead of `$$` for display mode math. MathJax will automatically number equations:
-
-\begin{equation}
-\label{eq:cauchy-schwarz}
-\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
-\end{equation}
-
-and by adding `\label{...}` inside the equation environment, we can now refer to the equation using `\eqref`.
-
----
-
-## TikZ example (small demo)
-
-{% raw %}
-<script type="text/tikz">
-\begin{tikzpicture}
-    \draw[red,fill=black!60!red] (0,0) circle [radius=1.5];
-    \draw[green,fill=black!60!green] (0,0) circle [x radius=1.5cm, y radius=10mm];
-    \draw[blue,fill=black!60!blue] (0,0) circle [x radius=1cm, y radius=5mm, rotate=30];
-\end{tikzpicture}
-</script>
-{% endraw %}
-
