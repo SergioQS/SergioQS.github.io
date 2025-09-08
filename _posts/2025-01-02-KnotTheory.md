@@ -13,20 +13,21 @@ tikzjax: true
 
 # Knots
 
-In our daily life we use the words knot and tie, we memorize some knots as tools for handling objects, just as tying our shoes or a rope to climb a hill. However, it is important to think deeply on the concept of knot and define mathematical objects that resemble them; Not only because they exist in the physical world but also because they underlay important properties of how objects are arranged in spaces, later you will see that we refer to spheres arranged into spheres, and as mathematicians we would like to understand deeply these properties of space.
+In our daily life we use the words knot and tie, we memorize some knots as tools for handling objects, just as tying our shoes or a rope to climb a hill. However, it is important to think deeply on the concept of knot and define mathematical objects that resemble them; Not only because they exist in t he physical world but also because they underlay important properties of how objects are arranged in spaces, later you will see that we refer to spheres arranged into spheres, and as mathematicians we would like to understand deeply these properties of space.
 
 **Definition.**  
 A homeomorphism $\phi:X \rightarrow \phi(X) \subset Y $ is called an **embedding** from $X$ to $Y$.
 
 ## Knots and n-knots
 
-To analyze a knot, we do not need to concentrate on the endpoints of the rope, and we would not want to maneuver the endpoints through the crossings; taking this into account every time a knot is created, we could put the endpoints in a distant position, sending them to infinity, or we could connect the endpoints of the rope.  
+To analyze a knot, we do not need to concentrate on the endpoints of the rope, and we would not want to maneuver the endpoints 
+ the crossings; taking this into account every time a knot is created, we could put the endpoints in a distant position, sending them to infinity, or we could connect the endpoints of the rope.  
 We will in fact connect the endpoints and we will think of knots having no thickness so that their cross-section is a single point. For these reasons every knot will be a way to entangle $\mathbb{S}^{1}$ in euclidean space $\mathbb{R}^{3}$ or the $3$-sphere $\mathbb{S}^{3}$.
 
 **Claim.**  
 An embedding $\phi: \mathbb{S}^{1} \rightarrow \mathbb{S}^{3}$ captures the intuitive notion of a **knot**.
 
-However we will define knots in a higher dimensional setting, not only as an immersion of $\mathbb{S}^{1}$  into $\mathbb{S}^{3}$ but as immersions of arbitrary spheres into arbitrary spheres.
+However we will define knots in a higher dimensional setting, not only as an immersion of $\mathbb{S}^{1}$  into $\mathbb{S}^{3}$ but a immersions of arbitrary spheres into arbitrary spheres.
 
 **Definition.**  
 An embedding $\phi: \mathbb{S}^{n} \rightarrow \mathbb{S}^{m}$ is called a **(n,m) knot**.
