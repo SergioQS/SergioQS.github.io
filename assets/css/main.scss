@@ -96,6 +96,52 @@ html[data-theme="dark"] .post-title {
   color: #B3681E !important;
   text-shadow: none !important;
 }
+
+// Post and Distill layout heading colors
+html[data-theme="light"] .post h1,
+html[data-theme="light"] .post h2,
+html[data-theme="light"] .post h3,
+html[data-theme="light"] .post h4,
+html[data-theme="light"] .post h5,
+html[data-theme="light"] .post h6,
+html[data-theme="light"] .distill h1,
+html[data-theme="light"] .distill h2,
+html[data-theme="light"] .distill h3,
+html[data-theme="light"] .distill h4,
+html[data-theme="light"] .distill h5,
+html[data-theme="light"] .distill h6 {
+  color: #000000 !important;
+}
+
+html[data-theme="dark"] .post h1,
+html[data-theme="dark"] .post h2,
+html[data-theme="dark"] .post h3,
+html[data-theme="dark"] .post h4,
+html[data-theme="dark"] .post h5,
+html[data-theme="dark"] .post h6,
+html[data-theme="dark"] .distill h1,
+html[data-theme="dark"] .distill h2,
+html[data-theme="dark"] .distill h3,
+html[data-theme="dark"] .distill h4,
+html[data-theme="dark"] .distill h5,
+html[data-theme="dark"] .distill h6 {
+  color: #B3681E !important;
+}
+
+// Alternative color scheme for some headings (blue as third option)
+html[data-theme="light"] .post h3,
+html[data-theme="light"] .post h5,
+html[data-theme="light"] .distill h3,
+html[data-theme="light"] .distill h5 {
+  color: #0076df !important;
+}
+
+html[data-theme="dark"] .post h3,
+html[data-theme="dark"] .post h5,
+html[data-theme="dark"] .distill h3,
+html[data-theme="dark"] .distill h5 {
+  color: #0076df !important;
+}
 .section-btn:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 25px rgba(0,0,0,0.5) !important;
