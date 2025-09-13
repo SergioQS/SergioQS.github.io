@@ -86,6 +86,7 @@ svg.tikzjax tspan {
         if (typeof window.tikzjax.refresh === 'function') window.tikzjax.refresh();
         else if (typeof window.tikzjax.render === 'function') window.tikzjax.render();
         else if (typeof window.tikzjax.parse === 'function') window.tikzjax.parse();
+        else if (typeof window.tikzjax.init === 'function') window.tikzjax.init();
         else console.info('tikzjax present but no known render method, keys:', Object.keys(window.tikzjax));
       } catch (e) {
         console.warn('tikzjax render call threw:', e);
@@ -98,6 +99,18 @@ svg.tikzjax tspan {
         return;
       } else {
         console.warn('tikzjax not found after retries — ensure tikzjax.js is loaded before or via this script includes.');
+        // Try to load from local vendor as last resort
+        if (retry === MAX_RENDER_RETRIES) {
+          console.info('Attempting to load tikzjax from local vendor...');
+          const script = document.createElement('script');
+          script.src = '/assets/vendor/tikzjax/tikzjax.js';
+          script.onload = () => {
+            console.info('Local tikzjax loaded, retrying render...');
+            setTimeout(() => tryRenderAll(0), 100);
+          };
+          script.onerror = () => console.warn('Local tikzjax also failed to load');
+          document.head.appendChild(script);
+        }
       }
     }
 

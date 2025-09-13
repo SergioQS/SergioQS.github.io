@@ -7,7 +7,6 @@ thumbnail: assets/img/3.jpg
 tags: mathematics, topology, knots
 categories: mathematics
 related_posts: false
-citation: true
 tikzjax: true
 ---
 
