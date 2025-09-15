@@ -136,9 +136,8 @@
   <!-- Tikzjax -->
   <script
     defer
-    src="https://tikzjax.com/v1/tikzjax.js"
+    src="{{ '/assets/vendor/tikzjax/tikzjax.js' | relative_url }}"
     crossorigin="anonymous"
-    onerror="console.warn('TikZ CDN failed, trying local fallback'); this.src='{{ '/assets/vendor/tikzjax/tikzjax.js' | relative_url }}';"
   ></script>
   <script defer src="{{ '/assets/js/tikzjax-setup.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 {% endif %}
