@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Modelos de difusión DDPM
+title: Boltzmann Machines and quantum computing, QRBM implementation.
 date: 2025-08-22 11:12:00-0400
-description: Un Modelo de difusión para eliminación de ruido en dos Gaussianas 2-dimensionales de juguete en Julia.
-tags: generativemodels, ML, julia, classification
+description: An implementation of a quantum boltzmann machine with basic theory explanations for the MNIST dataset.
+tags: generativemodels
 categories: computation
 related_posts: false
 citation: true
@@ -11,7 +11,7 @@ citation: true
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/Modelos_difusion.ipynb' | relative_url %}
-{% capture notebook_exists %}{% file_exists assets/jupyter/Modelos_difusión_Julia.ipynb %}{% endcapture %}
+{% capture notebook_exists %}{% file_exists assets/jupyter/QRBM_Implementation_and_Theory.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
   <div class="embedded-notebook">
     {% jupyter_notebook jupyter_path %}
