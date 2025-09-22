@@ -51,7 +51,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-modelos-de-difusión-ddpm",
+        },{id: "post-boltzmann-machines-and-quantum-computing-qrbm-implementation",
+        
+          title: "Boltzmann Machines and quantum computing, QRBM implementation.",
+        
+        description: "An implementation of a quantum boltzmann machine with basic theory explanations for the MNIST dataset.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/QRBM-implementation/";
+          
+        },
+      },{id: "post-modelos-de-difusión-ddpm",
         
           title: "Modelos de difusión DDPM",
         
