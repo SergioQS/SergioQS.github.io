@@ -10,7 +10,7 @@ citation: true
 ---
 
 {::nomarkdown}
-{% assign jupyter_path = 'assets/jupyter/Modelos_difusion.ipynb' | relative_url %}
+{% assign jupyter_path = 'assets/jupyter/QRBM_Implementation_and_Theory.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/QRBM_Implementation_and_Theory.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
   <div class="embedded-notebook">
