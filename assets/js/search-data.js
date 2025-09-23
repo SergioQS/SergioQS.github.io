@@ -51,11 +51,11 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-boltzmann-machines-and-quantum-computing-qrbm-implementation",
+        },{id: "post-quantum-restricted-boltzmann-machines",
         
-          title: "Boltzmann Machines and quantum computing, QRBM implementation.",
+          title: "Quantum Restricted Boltzmann Machines",
         
-        description: "An implementation of a quantum boltzmann machine with basic theory explanations for the MNIST dataset.",
+        description: "An implementation of a quantum boltzmann machine with basic theory explained, applied to the MNIST dataset and with a quantum-enhanced sampler.",
         section: "Posts",
         handler: () => {
           
@@ -66,7 +66,7 @@ ninja.data = [{
         
           title: "Modelos de difusión DDPM",
         
-        description: "Un Modelo de difusión para eliminación de ruido en dos Gaussianas 2-dimensionales de juguete en Julia.",
+        description: "Modelo de difusión para eliminación de ruido en dos distribuciones Gaussianas 2-dimensionales implementado en Julia.",
         section: "Posts",
         handler: () => {
           
