@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Boltzmann Machines and quantum computing, QRBM implementation.
+title: Quantum Restricted Boltzmann Machines
 date: 2025-08-22 11:12:00-0400
-description: An implementation of a quantum boltzmann machine with basic theory explanations for the MNIST dataset.
+description: An implementation of a quantum boltzmann machine with basic theory explained, applied to the MNIST dataset and with a quantum-enhanced sampler.
 tags: generativemodels
 categories: computation
 related_posts: false

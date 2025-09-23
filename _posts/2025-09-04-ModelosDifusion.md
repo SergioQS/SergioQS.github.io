@@ -2,7 +2,7 @@
 layout: post
 title: Modelos de difusión DDPM
 date: 2025-08-22 11:12:00-0400
-description: Un Modelo de difusión para eliminación de ruido en dos Gaussianas 2-dimensionales de juguete en Julia.
+description: Modelo de difusión para eliminación de ruido en dos distribuciones Gaussianas 2-dimensionales implementado en Julia.
 tags: generativemodels, ML, julia, classification
 categories: computation
 related_posts: false
