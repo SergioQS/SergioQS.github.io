@@ -381,3 +381,31 @@ body[data-jp-theme-light="false"] {
 
   @import "jupyter-monokai";
 }
+
+/* Force light theme for notebooks regardless of site theme */
+.jupyter-notebook-iframe-container iframe {
+  /* Override any dark theme styles that might be applied */
+  filter: none !important;
+}
+
+/* Ensure notebook content maintains light appearance */
+.jupyter-notebook-iframe-container iframe body {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Override any dark theme variables that might affect notebooks */
+.jupyter-notebook-iframe-container iframe :root {
+  --jp-ui-font-color0: rgba(0, 0, 0, 1) !important;
+  --jp-ui-font-color1: rgba(0, 0, 0, 0.87) !important;
+  --jp-ui-font-color2: rgba(0, 0, 0, 0.54) !important;
+  --jp-ui-font-color3: rgba(0, 0, 0, 0.38) !important;
+  --jp-content-font-color0: rgba(0, 0, 0, 1) !important;
+  --jp-content-font-color1: rgba(0, 0, 0, 0.87) !important;
+  --jp-content-font-color2: rgba(0, 0, 0, 0.54) !important;
+  --jp-content-font-color3: rgba(0, 0, 0, 0.38) !important;
+  --jp-layout-color0: white !important;
+  --jp-layout-color1: white !important;
+  --jp-layout-color2: var(--md-grey-200) !important;
+  --jp-layout-color3: var(--md-grey-400) !important;
+}

@@ -9,7 +9,6 @@ nav_order: 4
 <div class="post">
 
   <div class="header-bar">
-    <h1>Other</h1>
     <h2>Philosophy, literature, physics and more.</h2>
   </div>
 

@@ -243,3 +243,5 @@ There exists a variety of knot invariants; in this chapter we will study some of
 ### Fundamental group of a knot
 ### Jones Polynomial
 ### Alexander polynomial
+
+Thumbnail image: Tait tabulated scores of knots and wrote about their properties. This page is from an 1885 paper.

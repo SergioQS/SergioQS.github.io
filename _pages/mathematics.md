@@ -9,7 +9,6 @@ nav_order: 2
 <div class="post">
 
   <div class="header-bar">
-    <h1>Mathematics</h1>
     <h2>Essays exploring classical and contemporary works in mathematics.</h2>
   </div>
 

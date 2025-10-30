@@ -1,51 +1,52 @@
 <header>
-  <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
+  <!-- Header with Title and Navigation -->
+  <div class="navbar navbar-light" style="padding: 0.5rem 0; position: relative;">
     <div class="container">
-      {% if page.permalink != '/' %}
-        <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          Home
-        </a>
-      {% elsif site.enable_navbar_social %}
-        <!-- Social Icons -->
-        <div class="navbar-brand social">{% include social.liquid %}</div>
-      {% endif %}
-      <!-- Navbar Toggle -->
-      <button
-        class="navbar-toggler collapsed ml-auto"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar top-bar"></span>
-        <span class="icon-bar middle-bar"></span>
-        <span class="icon-bar bottom-bar"></span>
-      </button>
+      <!-- Row 1: Site Title (centered) -->
+      <div class="row w-100">
+         <div class="col-12 text-center" style="margin-bottom: 0.75rem;">
+           <h2 style="font-size: 1.5rem; font-weight: 600; margin: 0; color: #B3681E !important;">
+            {% if site.title == 'blank' %}
+              <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
+            {% else %}
+              {{ site.title }}
+            {% endif %}
+          </h2>
+        </div>
+      </div>
+      
+      <!-- Row 2: Navigation -->
+      <div class="row w-100">
+        <div class="col-12">
+          <!-- Navbar Toggle -->
+          <button
+            class="navbar-toggler collapsed d-sm-none"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style="float: right;"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
 
-      <div class="collapse navbar-collapse text-right" id="navbarNav">
-        <ul class="navbar-nav ml-auto flex-nowrap">
-          {% for page in site.pages %}
-            {% if page.permalink == '/' %} {% assign about_title = page.title %} {% endif %}
-          {% endfor %}
-
-          <!-- About -->
-          <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
-            <a class="nav-link" href="{{ '/' | relative_url }}">
-              {{- about_title }}
-              {% if page.permalink == '/' %}
-                <span class="sr-only">(current)</span>
-              {% endif %}
-            </a>
+          <div class="collapse navbar-collapse show" id="navbarNav">
+            <ul class="navbar-nav mx-auto flex-row flex-nowrap" style="justify-content: center;">
+          
+          <!-- HOME BUTTON - ALWAYS VISIBLE -->
+          <li class="nav-item">
+            <a class="nav-link" href="/" style="font-weight: {% if page.url == '/' %}bold{% else %}normal{% endif %};">Home</a>
           </li>
 
-          <!-- Other pages -->
+          <!-- ALL OTHER NAVIGATION PAGES -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
-            {% if p.nav and p.autogen == null %}
+            {% if p.nav and p.autogen == null and p.permalink != '/' %}
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
@@ -122,10 +123,12 @@
             </button>
             </li>
           {% endif %}
-        </ul>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
   {% if site.enable_progressbar %}
     <!-- Scrolling Progress Bar -->
     <progress id="progress" value="0">

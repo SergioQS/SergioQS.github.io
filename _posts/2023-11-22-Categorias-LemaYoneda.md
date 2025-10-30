@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Russel y Shaw
+title: Categorías y el lema de Yoneda
 date: 2024-01-03 11:12:00-0400
 description: 
 tags: mathematics, philosophy, Cantor, ordinal, aleph
@@ -11,8 +11,8 @@ citation: true
 
 
 {::nomarkdown}
-{% assign pdf_path = 'assets/pdf/Bit5.pdf' | relative_url %}
-{% capture pdf_exists %}{% file_exists assets/pdf/Bit5.pdf %}{% endcapture %}
+{% assign pdf_path = 'assets/pdf/Bit7.pdf' | relative_url %}
+{% capture pdf_exists %}{% file_exists assets/pdf/Bit7.pdf %}{% endcapture %}
 {% if pdf_exists == 'true' %}
   <div class="embedded-pdf">
     <object data="{{ pdf_path }}" type="application/pdf" width="100%" height="1200">
@@ -33,3 +33,4 @@ citation: true
   <p>Sorry, the PDF you are looking for does not exist.</p>
 {% endif %}
 {:/nomarkdown}
+Imagen de portada tomada de https://www.math3ma.com/blog/the-yoneda-lemma
