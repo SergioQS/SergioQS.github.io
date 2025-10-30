@@ -383,6 +383,50 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+// Prevent horizontal overflow on navbar
+.navbar {
+  overflow-x: hidden;
+}
+
+.navbar .container {
+  overflow-x: hidden;
+}
+
+// Desktop navigation - always visible on large screens
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+}
+
+// Tablet and mobile navigation - toggle menu
+@media (max-width: 991px) {
+  .navbar-collapse {
+    &:not(.show) {
+      display: none !important;
+    }
+    
+    &.show {
+      display: block !important;
+      
+      .navbar-nav {
+        flex-direction: column !important;
+        align-items: center;
+      }
+      
+      .nav-item {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        
+        .nav-link {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
 #light-toggle,
 #search-toggle {
   padding: 0;
@@ -1422,4 +1466,92 @@ figure.cover {
   a.cover-link:hover {
     color: #23212d !important;
   }
+}
+
+// Page-specific background images
+.page-with-bg {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+    opacity: 0.35;
+  }
+  
+  // Add slight background to content for better readability
+  .header-bar,
+  blockquote,
+  p,
+  h2,
+  h3 {
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  // Post list items with more transparency
+  .post-list {
+    background-color: rgba(255, 255, 255, 0.65);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    
+    li {
+      background-color: rgba(255, 255, 255, 0.55);
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  ul:not(.post-list) {
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+}
+
+html[data-theme="dark"] .page-with-bg {
+  .header-bar,
+  blockquote,
+  p,
+  h2,
+  h3 {
+    background-color: rgba(33, 37, 41, 0.75);
+  }
+  
+  .post-list {
+    background-color: rgba(33, 37, 41, 0.65);
+    
+    li {
+      background-color: rgba(33, 37, 41, 0.55);
+    }
+  }
+  
+  ul:not(.post-list) {
+    background-color: rgba(33, 37, 41, 0.75);
+  }
+}
+
+.page-mathematics::before {
+  background-image: url('/assets/img/TormentaMarGalilea.jpg');
+}
+
+.page-computation::before {
+  background-image: url('/assets/img/LionResting.jpg');
+}
+
+.page-other::before {
+  background-image: url('/assets/img/Other.jpeg');
 }

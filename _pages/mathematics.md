@@ -6,7 +6,7 @@ nav: true
 nav_order: 2
 ---
 
-<div class="post">
+<div class="post page-with-bg page-mathematics">
 
   <div class="header-bar">
     <h2>Essays exploring classical and contemporary works in mathematics.</h2>

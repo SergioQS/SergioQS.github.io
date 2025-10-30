@@ -6,7 +6,7 @@ nav: true
 nav_order: 4
 ---
 
-<div class="post">
+<div class="post page-with-bg page-other">
 
   <div class="header-bar">
     <h2>Philosophy, literature, physics and more.</h2>

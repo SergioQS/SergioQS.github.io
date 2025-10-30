@@ -1,13 +1,15 @@
 ---
 layout: post
 title: El Analysis Situs y la caracterización de esferas
-date: 2023-11-20 11:12:00-0400
+date: 2024-01-06 11:12:00-0400
 description: Se explora desde la filosofía de las matemáticas el papel de la caracterización de esferas como una fuente de preguntas fundamentales sobre el espacio y se hace un primer acercamiento a la homología y la homotopía en topología algebraica.
 tags: mathematics, philosophy, poincaré, topology
 categories: mathematics
 related_posts: false
 citation: true
 ---
+Proyecto final para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
+
 En 1895, Henri poincaré publica publica su "Analysis Situs", un trabajo pionero que sentó las bases de la topología algebraica.
 
 En este artículo, Poincaré introdujo herramientas conceptuales y técnicas innovadoras como el grupo fundamental y los primeros indicios de la teoría de la homología.

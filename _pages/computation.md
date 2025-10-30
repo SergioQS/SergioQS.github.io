@@ -6,7 +6,7 @@ nav: true
 nav_order: 3
 ---
 
-<div class="post">
+<div class="post page-with-bg page-computation">
 
   <div class="header-bar">
     <h2>Computational essays in generative models, quantum computing, and more.</h2>

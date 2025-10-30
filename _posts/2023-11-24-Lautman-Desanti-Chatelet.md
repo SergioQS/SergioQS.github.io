@@ -9,7 +9,7 @@ related_posts: false
 citation: true
 ---
 
-
+Quinta bitácora para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
 {::nomarkdown}
 {% assign pdf_path = 'assets/pdf/Bit9.pdf' | relative_url %}
 {% capture pdf_exists %}{% file_exists assets/pdf/Bit9.pdf %}{% endcapture %}

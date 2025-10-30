@@ -20,7 +20,7 @@
         <div class="col-12">
           <!-- Navbar Toggle -->
           <button
-            class="navbar-toggler collapsed d-sm-none"
+            class="navbar-toggler collapsed d-lg-none"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNav"
@@ -35,18 +35,20 @@
             <span class="icon-bar bottom-bar"></span>
           </button>
 
-          <div class="collapse navbar-collapse show" id="navbarNav">
-            <ul class="navbar-nav mx-auto flex-row flex-nowrap" style="justify-content: center;">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto" style="justify-content: center;">
           
           <!-- HOME BUTTON - ALWAYS VISIBLE -->
-          <li class="nav-item">
+          <li class="nav-item nav-item-visible">
             <a class="nav-link" href="/" style="font-weight: {% if page.url == '/' %}bold{% else %}normal{% endif %};">Home</a>
           </li>
 
           <!-- ALL OTHER NAVIGATION PAGES -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
+          {% assign visible_count = 1 %}
           {% for p in sorted_pages %}
             {% if p.nav and p.autogen == null and p.permalink != '/' %}
+              {% assign visible_count = visible_count | plus: 1 %}
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
@@ -54,7 +56,7 @@
                     {% assign has_active_child = true %}
                   {% endif %}
                 {% endfor %}
-                <li class="nav-item dropdown {% if page.title == p.title or has_active_child %}active{% endif %}">
+                <li class="nav-item dropdown {% if page.title == p.title or has_active_child %}active{% endif %} {% if visible_count <= 3 %}nav-item-visible{% else %}nav-item-collapsible{% endif %}">
                   <a
                     class="nav-link dropdown-toggle"
                     href="#"
@@ -86,7 +88,7 @@
                 </li>
               {% else %}
                 {% assign parent_link = p.permalink | remove: 'index.html' %}
-                <li class="nav-item {% if page.url contains parent_link %}active{% endif %}">
+                <li class="nav-item {% if page.url contains parent_link %}active{% endif %} {% if visible_count <= 3 %}nav-item-visible{% else %}nav-item-collapsible{% endif %}">
                   {%- if p.permalink contains '://' -%}
                     {%- assign url = p.permalink -%}
                   {%- elsif p.permalink contains '/blog/' -%}
@@ -104,17 +106,9 @@
               {% endif %}
             {% endif %}
           {% endfor %}
-          {% if site.search_enabled %}
-            <!-- Search -->
-            <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link"><i class="ti ti-search"></i></span>
-              </button>
-            </li>
-          {% endif %}
           {% if site.enable_darkmode %}
             <!-- Toogle theme mode -->
-            <li class="toggle-container">
+            <li class="toggle-container nav-item-visible">
                           <button id="light-toggle" title="Change theme">
               <i class="ti ti-sun-moon" id="light-toggle-system"></i>
               <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
