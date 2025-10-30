@@ -37,13 +37,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/other-areas/";
           },
-        },{id: "nav-projects",
-          title: "Projects",
-          description: "A growing collection of projects.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
-          },
         },{id: "nav-cv",
           title: "CV",
           description: "Academic information, experience and skills.",
@@ -100,6 +93,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2025/KnotTheory/";
+          
+        },
+      },{id: "post-el-analysis-situs-y-la-caracterización-de-esferas",
+        
+          title: "El Analysis Situs y la caracterización de esferas",
+        
+        description: "Se explora desde la filosofía de las matemáticas el papel de la caracterización de esferas como una fuente de preguntas fundamentales sobre el espacio y se hace un primer acercamiento a la homología y la homotopía en topología algebraica.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/AnalisisSitus/";
           
         },
       },{id: "post-lautman-desanti-y-chatelet",
@@ -166,17 +170,6 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2024/Uno-Multiple/";
-          
-        },
-      },{id: "post-el-analysis-situs-y-la-caracterización-de-esferas",
-        
-          title: "El Analysis Situs y la caracterización de esferas",
-        
-        description: "Se explora desde la filosofía de las matemáticas el papel de la caracterización de esferas como una fuente de preguntas fundamentales sobre el espacio y se hace un primer acercamiento a la homología y la homotopía en topología algebraica.",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2023/AnalisisSitus/";
           
         },
       },{id: "books-the-godfather",
