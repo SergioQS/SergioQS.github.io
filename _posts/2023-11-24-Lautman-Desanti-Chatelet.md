@@ -7,10 +7,11 @@ tags: mathematics, philosophy, Cantor, ordinal, aleph
 categories: other-areas
 related_posts: false
 citation: true
+img_id: 7
 ---
 
 Quinta bitácora para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
-{::nomarkdown}
+
 {% assign pdf_path = 'assets/pdf/Bit9.pdf' | relative_url %}
 {% capture pdf_exists %}{% file_exists assets/pdf/Bit9.pdf %}{% endcapture %}
 {% if pdf_exists == 'true' %}
@@ -32,4 +33,4 @@ Quinta bitácora para la materia "Epistemología e historia de las matemáticas"
 {% else %}
   <p>Sorry, the PDF you are looking for does not exist.</p>
 {% endif %}
-{:/nomarkdown}
+

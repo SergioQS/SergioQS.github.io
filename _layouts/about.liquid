@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="post">
+<div class="post {% if page.img %}page-with-bg page-home{% endif %}" {% if page.img and page.permalink != '/' %}style="--bg-img: url('{{ page.img | relative_url }}');"{% endif %}>
   <header class="post-header text-center" style="margin-top: 0; padding-top: 0.1rem;">
     <p class="desc" style="font-size: 1.2rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">{{ page.subtitle }}</p>
   </header>

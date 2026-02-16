@@ -1,0 +1,77 @@
+<!-- POSTS GALLERY -->
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12">
+      <!-- Grid of Post Cards -->
+      <div class="row">
+        {% for post in site.posts %}
+          {% unless post.path contains '_Old_posts' %}
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+              <div class="post-card" 
+                   onclick="window.location.href='{{ post.url | relative_url }}'">
+              
+                <!-- Robust Image Logic -->
+                {% assign thumb_path = post.img | default: '/assets/img/1.jpg' %}
+                
+                <!-- Fallback to modulo logic ONLY if no post.img is defined (legacy support) -->
+                {% if post.img == nil %}
+                   {% if post.img_id %}
+                     {% assign idx = post.img_id %}
+                   {% else %}
+                     {% assign idx = forloop.index | modulo: 12 | plus: 1 %}
+                   {% endif %}
+                   {% capture jpg_path %}/assets/img/{{ idx }}.jpg{% endcapture %}
+                   {% capture png_path %}/assets/img/{{ idx }}.png{% endcapture %}
+                   {% capture gif_path %}/assets/img/{{ idx }}.gif{% endcapture %}
+                   {% capture gif_exists %}{% file_exists assets/img/{{ idx }}.gif %}{% endcapture %}
+                   {% capture png_exists %}{% file_exists assets/img/{{ idx }}.png %}{% endcapture %}
+                   {% capture jpg_exists %}{% file_exists assets/img/{{ idx }}.jpg %}{% endcapture %}
+                   
+                   {% if gif_exists == 'true' %}
+                     {% assign thumb_path = gif_path %}
+                   {% elsif png_exists == 'true' %}
+                     {% assign thumb_path = png_path %}
+                   {% elsif jpg_exists == 'true' %}
+                     {% assign thumb_path = jpg_path %}
+                   {% else %}
+                     {% assign thumb_path = '/assets/img/1.jpg' %}
+                   {% endif %}
+                {% endif %}
+
+                <div style="position: relative; width: 100%; height: 100%; background-image: url('{{ thumb_path | relative_url }}'); background-size: cover; background-position: center;">
+                  
+                  <!-- Dark Overlay -->
+                  <div class="card-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.95));"></div>
+                  
+                  <!-- Post Title & Content -->
+                  <div class="card-content" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; color: white;">
+                    <h4 style="margin: 0; font-size: 1.2rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); line-height: 1.3;">
+                      {{ post.title }}
+                    </h4>
+                    {% if post.description %}
+                      <p style="margin: 8px 0 0 0; font-size: 0.9rem; opacity: 0.9; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">
+                        {{ post.description | truncate: 80 }}
+                      </p>
+                    {% endif %}
+                    <small style="display: block; margin-top: 8px; opacity: 0.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">
+                      {{ post.date | date: "%B %d, %Y" }}
+                    </small>
+                  </div>
+                  
+                  <!-- Category Badge -->
+                  {% if post.categories %}
+                    <div class="card-category" style="position: absolute; top: 15px; right: 15px;">
+                      <span style="background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 500; text-transform: capitalize;">
+                        {{ post.categories | first }}
+                      </span>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

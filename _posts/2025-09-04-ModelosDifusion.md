@@ -7,6 +7,7 @@ tags: generativemodels, ML, julia, classification
 categories: computation
 related_posts: false
 citation: true
+img_id: 3
 ---
 
 {::nomarkdown}

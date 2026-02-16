@@ -7,6 +7,7 @@ tags: mathematics, philosophy, poincaré, topology
 categories: mathematics
 related_posts: false
 citation: true
+img_id: 6
 ---
 Proyecto final para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
 
@@ -17,7 +18,7 @@ Poincaré complementó su obra original con cinco suplementos, publicados entre 
 
 El siguiente ensayo es una primera lectura y aproximación a ideas subyacentes a creaciones de Henri Poincaré, conectando y usando ideas de algunos filósofos de las matemáticas como Lautman, Desanti, Chatelet etc.
 
-{::nomarkdown}
+
 {% assign pdf_path = 'assets/pdf/Poincaré_y_la_caracterización_de_esferas.pdf' | relative_url %}
 {% capture pdf_exists %}{% file_exists assets/pdf/Poincaré_y_la_caracterización_de_esferas.pdf %}{% endcapture %}
 {% if pdf_exists == 'true' %}
@@ -39,5 +40,5 @@ El siguiente ensayo es una primera lectura y aproximación a ideas subyacentes a
 {% else %}
   <p>Sorry, the PDF you are looking for does not exist.</p>
 {% endif %}
-{:/nomarkdown}
+
 

@@ -2,6 +2,34 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
+@font-face {
+  font-family: 'Lora';
+  src: url('#{$ti-font-path}/Lora/static/Lora-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('#{$ti-font-path}/Lora/static/Lora-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('#{$ti-font-path}/Lora/static/Lora-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('#{$ti-font-path}/Lora/static/Lora-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
 // Typography
 
 p,
@@ -17,6 +45,7 @@ li,
 span,
 strong {
   color: var(--global-text-color);
+  font-family: $font-family-sans-serif;
 }
 
 hr {
@@ -1485,6 +1514,7 @@ figure.cover {
     background-attachment: fixed;
     z-index: -1;
     opacity: 0.35;
+    background-image: var(--bg-img);
   }
   
   // Add slight background to content for better readability
@@ -1493,31 +1523,27 @@ figure.cover {
   p,
   h2,
   h3 {
-    background-color: rgba(255, 255, 255, 0.75);
-    padding: 0.75rem;
-    border-radius: 4px;
+    background-color: transparent;
+    padding: 0;
     margin-bottom: 1rem;
   }
   
   // Post list items with more transparency
   .post-list {
-    background-color: rgba(255, 255, 255, 0.65);
-    padding: 0.75rem;
-    border-radius: 4px;
+    background-color: transparent;
+    padding: 0;
     margin-bottom: 1rem;
     
     li {
-      background-color: rgba(255, 255, 255, 0.55);
-      padding: 1rem;
-      border-radius: 4px;
+      background-color: transparent;
+      padding: 0;
       margin-bottom: 0.5rem;
     }
   }
   
   ul:not(.post-list) {
-    background-color: rgba(255, 255, 255, 0.75);
-    padding: 0.75rem;
-    border-radius: 4px;
+    background-color: transparent;
+    padding: 0;
     margin-bottom: 1rem;
   }
 }
@@ -1528,30 +1554,36 @@ html[data-theme="dark"] .page-with-bg {
   p,
   h2,
   h3 {
-    background-color: rgba(33, 37, 41, 0.75);
+    background-color: transparent;
   }
   
   .post-list {
-    background-color: rgba(33, 37, 41, 0.65);
+    background-color: transparent;
     
     li {
-      background-color: rgba(33, 37, 41, 0.55);
+      background-color: transparent;
     }
   }
   
   ul:not(.post-list) {
-    background-color: rgba(33, 37, 41, 0.75);
+    background-color: transparent;
   }
 }
 
 .page-mathematics::before {
   background-image: url('/assets/img/TormentaMarGalilea.jpg');
+  width: 80%;
+  left: 10%;
 }
 
 .page-computation::before {
   background-image: url('/assets/img/LionResting.jpg');
+  width: 80%;
+  left: 10%;
 }
 
 .page-other::before {
   background-image: url('/assets/img/Other.jpeg');
+  width: 80%;
+  left: 10%;
 }
