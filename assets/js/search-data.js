@@ -51,7 +51,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-quantum-restricted-boltzmann-machines",
+        },{id: "post-fractal-geometry-of-digit-sum-parity-sequences",
+        
+          title: "Fractal geometry of digit-sum parity sequences",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/Fractales/";
+          
+        },
+      },{id: "post-quantum-restricted-boltzmann-machines",
         
           title: "Quantum Restricted Boltzmann Machines",
         
@@ -82,17 +93,6 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2025/QRtrasladado/";
-          
-        },
-      },{id: "post-fundamentals-of-knot-theory",
-        
-          title: "Fundamentals of Knot Theory",
-        
-        description: "An introduction to mathematical knot theory, exploring embeddings, knot complements, and fundamental concepts in topology.",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/KnotTheory/";
           
         },
       },{id: "post-el-analysis-situs-y-la-caracterización-de-esferas",
@@ -161,11 +161,11 @@ ninja.data = [{
             window.location.href = "/blog/2024/ElQuehacerMatem%C3%A1tico/";
           
         },
-      },{id: "post-teoría-de-conjuntos-y-la-explosión-analítica-del-uno-múltiple",
+      },{id: "post-teoría-de-conjuntos-y-el-uno-múltiple",
         
-          title: "Teoría de conjuntos y la explosión analítica del uno-múltiple",
+          title: "Teoría de conjuntos y el uno-múltiple",
         
-        description: "Se explora conceptos como los conjuntos derivados, conjuntos perfectos, multiplicidades inconsistentes, ordinales en el contexto de la teoría de conjuntos y la filosofía matemática",
+        description: "Se explora conceptos como los conjuntos derivados, conjuntos perfectos, multiplicidades inconsistentes y ordinales.",
         section: "Posts",
         handler: () => {
           
