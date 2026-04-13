@@ -51,18 +51,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-fractal-geometry-of-digit-sum-parity-sequences",
-        
-          title: "Fractal geometry of digit-sum parity sequences",
-        
-        description: "Explores fractal limit behavior of plane curves produced by a turtle program driven by digit-sum parity sequences of natural numbers.",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2026/Fractales/";
-          
-        },
-      },{id: "post-poster-compositional-paths-on-hypergraphs",
+        },{id: "post-poster-compositional-paths-on-hypergraphs",
         
           title: "Poster: Compositional Paths on Hypergraphs",
         
@@ -249,7 +238,7 @@ ninja.data = [{
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%79%6F%75@%65%78%61%6D%70%6C%65.%63%6F%6D", "_blank");
+          window.open("mailto:%73%65%72%67%69%6F%71%75%69%72%6F%67%61%73%61%6E%64%6F%76%61%6C@%77%6F%6C%66%72%61%6D%69%6E%73%74%69%74%75%74%65.%63%6F%6D", "_blank");
         },
       },{
         id: 'social-inspire',
@@ -259,10 +248,17 @@ ninja.data = [{
           window.open("https://inspirehep.net/authors/1010907", "_blank");
         },
       },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/sergio-quiroga-sandoval", "_blank");
+        },
+      },{
         id: 'social-scholar',
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=qc6CJjYAAAAJ", "_blank");
+          window.open("https://scholar.google.com/citations?user=Rd5YvZ4AAAAJ", "_blank");
         },
       },];
