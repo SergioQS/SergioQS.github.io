@@ -400,3 +400,37 @@ a.news-title {
     max-width: 80px;
   }
 }
+
+// Embedded Jupyter notebooks: responsive styling
+.embedded-notebook {
+  overflow-x: auto;
+
+  pre, code {
+    font-size: 0.75rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  table {
+    font-size: 0.7rem;
+    display: block;
+    overflow-x: auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .embedded-notebook {
+    pre, code {
+      font-size: 0.65rem;
+    }
+
+    table {
+      font-size: 0.6rem;
+    }
+  }
+}

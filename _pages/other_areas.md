@@ -58,13 +58,16 @@ img: /assets/img/Other.jpeg
 
   <h3>Currently Reading</h3>
   <ul>
-    <li><em>Confieso que he vivido, memorias -Pablo Neruda</em></li>
+    <li><em>Actos humanos</em> — Han Kang</li>
   </ul>
 
   <h3>Recently Read</h3>
   <ul>
-    <li><em>Tao Te Ching -Lao Tse</em></li>
-    <li><em>Ficciones -Jorge Luis Borges</em></li>
+    <li><em>Sobre dios</em> — Byung-Chul Han</li>
+    <li><em>A Brief History of Time</em> — Stephen Hawking</li>
+    <li><em>Confieso que he vivido: memorias</em> — Pablo Neruda</li>
+    <li><em>Tao Te Ching</em> — Lao Tse</li>
+    <li><em>Ficciones</em> — Jorge Luis Borges</li>
   </ul>
 
   <h3>To Read</h3>
