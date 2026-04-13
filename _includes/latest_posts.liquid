@@ -1,39 +1,73 @@
 <div class="post-feed">
   {% if page.latest_posts != blank %}
-    {% assign latest_posts = site.posts %}
     {% if page.latest_posts.limit %}
       {% assign latest_posts_limit = page.latest_posts.limit %}
     {% else %}
-      {% assign latest_posts_limit = latest_posts | size %}
+      {% assign latest_posts_limit = site.posts | size %}
     {% endif %}
-    {% for item in latest_posts limit: latest_posts_limit %}
-      {% assign post_url = item.url | relative_url %}
-      {% if item.redirect != blank %}
-        {% if item.redirect contains '://' %}
-          {% assign post_url = item.redirect %}
-        {% else %}
-          {% assign post_url = item.redirect | relative_url %}
-        {% endif %}
-      {% endif %}
-      <a href="{{ post_url }}" class="post-feed-item {% if item.image %}has-thumb{% endif %}" {% if item.redirect contains '://' %}target="_blank" rel="noopener"{% endif %}>
-        <div class="post-feed-body">
-          <div class="post-feed-meta">
-            {% if item.categories %}
-              <span class="post-feed-category">{{ item.categories | first }}</span>
+
+    {% comment %} Build a unified list: blog posts + wolfram entries {% endcomment %}
+    {% assign all_items = "" | split: "" %}
+
+    {% for item in site.posts limit: latest_posts_limit %}
+      {% assign entry = "" | split: "" %}
+      {% assign entry = entry | push: item %}
+      {% assign all_items = all_items | concat: entry %}
+    {% endfor %}
+
+    {% if site.data.wolfram.size > 0 %}
+      {% for item in site.data.wolfram %}
+        {% assign entry = "" | split: "" %}
+        {% assign entry = entry | push: item %}
+        {% assign all_items = all_items | concat: entry %}
+      {% endfor %}
+    {% endif %}
+
+    {% assign all_items = all_items | sort: "date" | reverse %}
+
+    {% for item in all_items %}
+      {% if item.source == "wolfram" %}
+        <a href="{{ item.url }}" class="post-feed-item" target="_blank" rel="noopener">
+          <div class="post-feed-body">
+            <div class="post-feed-meta">
+              <span class="post-feed-category" style="color: #d9381e;">Wolfram</span>
+              <span class="post-feed-date">{{ item.date | date: '%b %d, %Y' }}</span>
+            </div>
+            <h4 class="post-feed-title">{{ item.title }}</h4>
+            {% if item.summary %}
+              <p class="post-feed-desc">{{ item.summary | truncate: 120 }}</p>
             {% endif %}
-            <span class="post-feed-date">{{ item.date | date: '%b %d, %Y' }}</span>
           </div>
-          <h4 class="post-feed-title">{{ item.title }}</h4>
-          {% if item.description %}
-            <p class="post-feed-desc">{{ item.description | truncate: 120 }}</p>
+        </a>
+      {% else %}
+        {% assign post_url = item.url | relative_url %}
+        {% if item.redirect != blank %}
+          {% if item.redirect contains '://' %}
+            {% assign post_url = item.redirect %}
+          {% else %}
+            {% assign post_url = item.redirect | relative_url %}
           {% endif %}
-        </div>
-        {% if item.image %}
-          <div class="post-feed-thumb">
-            <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy" />
-          </div>
         {% endif %}
-      </a>
+        <a href="{{ post_url }}" class="post-feed-item {% if item.image %}has-thumb{% endif %}" {% if item.redirect contains '://' %}target="_blank" rel="noopener"{% endif %}>
+          <div class="post-feed-body">
+            <div class="post-feed-meta">
+              {% if item.categories %}
+                <span class="post-feed-category">{{ item.categories | first }}</span>
+              {% endif %}
+              <span class="post-feed-date">{{ item.date | date: '%b %d, %Y' }}</span>
+            </div>
+            <h4 class="post-feed-title">{{ item.title }}</h4>
+            {% if item.description %}
+              <p class="post-feed-desc">{{ item.description | truncate: 120 }}</p>
+            {% endif %}
+          </div>
+          {% if item.image %}
+            <div class="post-feed-thumb">
+              <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy" />
+            </div>
+          {% endif %}
+        </a>
+      {% endif %}
     {% endfor %}
   {% else %}
     <p>No posts so far...</p>
