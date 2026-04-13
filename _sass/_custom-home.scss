@@ -434,3 +434,46 @@ a.news-title {
     }
   }
 }
+
+// Embedded PDFs: aspect-ratio sizing
+.embedded-pdf {
+  .pdf-single-page {
+    aspect-ratio: 3 / 4;
+    min-height: 500px;
+    max-height: 900px;
+  }
+
+  .pdf-multi-page {
+    aspect-ratio: 2 / 3;
+    min-height: 600px;
+    max-height: 1100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .embedded-pdf {
+    .pdf-single-page {
+      min-height: 400px;
+      max-height: 700px;
+    }
+
+    .pdf-multi-page {
+      min-height: 450px;
+      max-height: 800px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .embedded-pdf {
+    .pdf-single-page {
+      min-height: 300px;
+      max-height: 500px;
+    }
+
+    .pdf-multi-page {
+      min-height: 350px;
+      max-height: 600px;
+    }
+  }
+}

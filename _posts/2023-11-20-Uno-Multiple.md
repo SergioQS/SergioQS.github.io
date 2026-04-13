@@ -16,7 +16,7 @@ Primera bitácora para la materia "Epistemología e historia de las matemáticas
 {% capture pdf_exists %}{% file_exists assets/pdf/Bit4.pdf %}{% endcapture %}
 {% if pdf_exists == 'true' %}
   <div class="embedded-pdf">
-    <object data="{{ pdf_path }}" type="application/pdf" width="100%" height="1200">
+    <object class="pdf-multi-page" data="{{ pdf_path }}" type="application/pdf" width="100%">
       <p>
         Tu navegador no muestra PDFs embebidos.
         Puedes <a href="{{ pdf_path }}" target="_blank" rel="noopener">abrirlo en una nueva pestaña</a>

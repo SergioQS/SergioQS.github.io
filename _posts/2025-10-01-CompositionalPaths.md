@@ -18,7 +18,7 @@ The formalization of compositions of n-ary relations provides a coherent framewo
 {% capture pdf_exists %}{% file_exists assets/pdf/Poster_CompositionalPaths_SergioQuiroga-1.pdf %}{% endcapture %}
 {% if pdf_exists == 'true' %}
   <div class="embedded-pdf">
-    <object data="{{ pdf_path }}" type="application/pdf" width="100%" height="1400">
+    <object class="pdf-single-page" data="{{ pdf_path }}" type="application/pdf" width="100%">
       <p>
         Your browser does not support embedded PDFs.
         You can <a href="{{ pdf_path }}" target="_blank" rel="noopener">open it in a new tab</a>
