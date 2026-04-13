@@ -8,6 +8,7 @@ categories: computation
 related_posts: false
 citation: true
 img_id: 2
+image: assets/img/2.png
 ---
 
 {::nomarkdown}

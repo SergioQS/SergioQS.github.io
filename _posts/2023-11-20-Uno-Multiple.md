@@ -8,6 +8,7 @@ categories: other-areas
 related_posts: false
 citation: true
 img_id: 12
+image: assets/img/12.webp
 ---
 Primera bitácora para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
 

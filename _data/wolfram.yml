@@ -1,0 +1,20 @@
+- title: "From integers to art: fractal geometry of digit-sum parities"
+  url: "https://community.wolfram.com/groups/-/m/t/3639196"
+  date: 2026-02-15
+  summary: "Exploring fractal patterns arising from digit-sum parity sequences through Wolfram Language visualizations."
+  tags:
+    - mathematics
+    - fractals
+    - wolfram
+  source: wolfram
+
+- title: "Compositional paths on hypergraphs"
+  url: "https://community.wolfram.com/groups/-/m/t/3210556"
+  date: 2024-08-01
+  summary: "Exploring compositional structures and path algebras on hypergraphs using the Wolfram Language."
+  tags:
+    - mathematics
+    - algebra
+    - graphs
+    - wolfram
+  source: wolfram

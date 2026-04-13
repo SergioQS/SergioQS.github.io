@@ -8,6 +8,7 @@ categories: computation
 related_posts: false
 citation: true
 img_id: 3
+image: assets/img/3.gif
 ---
 
 {::nomarkdown}

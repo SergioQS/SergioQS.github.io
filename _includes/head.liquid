@@ -31,14 +31,7 @@
   href="{{ site.third_party_libraries.google_fonts.url.fonts }}"
 >
 
-<!-- Code Syntax Highlighting -->
-<link
-  defer
-  rel="stylesheet"
-  href="{{ '/assets/css/jekyll-pygments-themes-github.css' | relative_url | bust_file_cache }}"
-  media=""
-  id="highlight_theme_light"
->
+<!-- Code Syntax Highlighting (light theme disabled for dark-only) -->
 
 {% if page.toc and page.toc.sidebar %}
   <!-- Sidebar Table of Contents -->
@@ -69,20 +62,19 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
-{% if site.enable_darkmode %}
-  <!-- Dark Mode -->
-  <script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ '/assets/css/jekyll-pygments-themes-native.css' | relative_url | bust_file_cache }}"
-    media="none"
-    id="highlight_theme_dark"
-  >
-  <script>
-    initTheme();
-  </script>
-{% endif %}
+<!-- Dark theme init (always dark) -->
+<script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
+<link
+  rel="stylesheet"
+  href="{{ '/assets/css/jekyll-pygments-themes-native.css' | relative_url | bust_file_cache }}"
+  id="highlight_theme_dark"
+>
+<link
+  rel="stylesheet"
+  href="{{ '/assets/css/jekyll-pygments-themes-github.css' | relative_url | bust_file_cache }}"
+  media="none"
+  id="highlight_theme_light"
+>
 
 {% if page.map %}
   <!-- GeoJSON support via Leaflet -->

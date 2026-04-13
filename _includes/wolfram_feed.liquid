@@ -1,0 +1,18 @@
+{% comment %}
+  Renders Wolfram Community entries from site.data.wolfram.
+  Merges into the same post-feed styling for visual consistency.
+{% endcomment %}
+{% if site.data.wolfram.size > 0 %}
+  {% for item in site.data.wolfram %}
+    <a href="{{ item.url }}" class="post-feed-item" target="_blank" rel="noopener">
+      <div class="post-feed-meta">
+        <span class="post-feed-category" style="color: #d9381e;">&#9632; Wolfram</span>
+        <span class="post-feed-date">{{ item.date | date: '%b %d, %Y' }}</span>
+      </div>
+      <h4 class="post-feed-title">{{ item.title }}</h4>
+      {% if item.summary %}
+        <p class="post-feed-desc">{{ item.summary | truncate: 120 }}</p>
+      {% endif %}
+    </a>
+  {% endfor %}
+{% endif %}

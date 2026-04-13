@@ -8,6 +8,7 @@ categories: mathematics
 related_posts: false
 citation: true
 img_id: 4
+image: assets/img/4.png
 ---
 
 {::nomarkdown}

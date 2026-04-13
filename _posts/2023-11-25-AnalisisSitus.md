@@ -8,6 +8,7 @@ categories: mathematics
 related_posts: false
 citation: true
 img_id: 6
+image: assets/img/6.png
 ---
 Proyecto final para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
 

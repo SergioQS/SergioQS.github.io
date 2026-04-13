@@ -4,43 +4,49 @@ permalink: /computer-science/
 title: Computation
 nav: true
 nav_order: 3
+img: /assets/img/LionResting.jpg
 ---
 
-<div class="post page-with-bg page-computation">
+<div class="post">
+
+  {% if page.img %}
+    <div class="section-hero">
+      <img src="{{ page.img | relative_url }}" alt="{{ page.title }}" loading="eager" />
+    </div>
+  {% endif %}
 
   <div class="header-bar">
     <h2>Computational essays in generative models, quantum computing, and more.</h2>
   </div>
+
   <blockquote>
-    “Either mathematics is too big for the human mind, or the human mind is more than a machine.”  
+    "Either mathematics is too big for the human mind, or the human mind is more than a machine."  
     — Kurt Godel.
   </blockquote>
 
-  {% comment %}
-  Filter only those posts in the "computation" category
-  {% endcomment %}
-  {% assign all_cs = site.posts %}
-  {% assign postlist = "" | split: "" %}
-  {% for post in all_cs %}
-    {% if post.categories contains 'computation' %}
-      {% assign postlist = postlist | push: post %}
-    {% endif %}
-  {% endfor %}
+  {% assign postlist = site.posts | where: "categories", "computation" %}
 
-  <ul class="post-list">
+  <div class="post-feed">
     {% for post in postlist %}
       {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
-      {% assign year = post.date | date: "%Y" %}
-      <li>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.description }}</p>
-        <p class="post-meta">
-          {{ read_time }} min read &nbsp; &middot; &nbsp;
-          {{ post.date | date: "%B %d, %Y" }}
-        </p>
-      </li>
+      <a href="{{ post.url | relative_url }}" class="post-feed-item {% if post.image %}has-thumb{% endif %}">
+        <div class="post-feed-body">
+          <div class="post-feed-meta">
+            <span class="post-feed-date">{{ post.date | date: '%b %d, %Y' }} &middot; {{ read_time }} min read</span>
+          </div>
+          <h4 class="post-feed-title">{{ post.title }}</h4>
+          {% if post.description %}
+            <p class="post-feed-desc">{{ post.description | truncate: 120 }}</p>
+          {% endif %}
+        </div>
+        {% if post.image %}
+          <div class="post-feed-thumb">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" />
+          </div>
+        {% endif %}
+      </a>
     {% endfor %}
-  </ul>
+  </div>
 
   {% if page.pagination.enabled %}
     {% include pagination.liquid %}

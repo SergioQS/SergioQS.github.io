@@ -21,183 +21,44 @@ $max-content-width: {{ site.max_width }};
   "tabler-icons/tabler-icons.scss",
   "tabler-icons/tabler-icons-filled.scss",
   "tabler-icons/tabler-icons-outline.scss",
-  "custom-home"
+  "custom-home",
+  "interactive"
 ;
 
-// ─────────────────────────────────────────────────────────
-// 1) FULL-WIDTH HERO SECTION UNDER BUTTONS (for about pages)
-body.layout-about section.about-bg,
-body.about-wide section.about-bg {
-  /* Make it edge-to-edge */
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  position: relative;
-  padding-top: 4rem;   // vertical space above buttons
-  padding-bottom: 4rem;// vertical space below buttons
-  min-height: 500px;   // increased height by 50%
+// Post title styling
+.post-title {
+  color: var(--global-theme-color);
 }
 
-// 2) DARK OVERLAY FOR CONTRAST
-body.layout-about section.about-bg::before,
-body.about-wide section.about-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 0;
+// Post heading hierarchy
+.post h1,
+.post h2,
+.distill h1,
+.distill h2 {
+  color: var(--global-theme-color);
 }
 
-// 3) LIFT BUTTONS ABOVE OVERLAY
-body.layout-about section.about-bg .container,
-body.about-wide section.about-bg .container {
-  position: relative;
-  z-index: 1;
+.post h3,
+.post h4,
+.post h5,
+.post h6,
+.distill h3,
+.distill h4,
+.distill h5,
+.distill h6 {
+  color: var(--global-text-color);
 }
 
-// 4) BUTTON COLORS ON DARK VS. LIGHT
-//   On the dark section: white
-body.layout-about section.about-bg .btn-outline-light,
-body.about-wide section.about-bg .btn-outline-light {
-  color: #fff !important;
-  border-color: #fff !important;
-}
-body.layout-about section.about-bg .btn-outline-light:hover,
-body.about-wide section.about-bg .btn-outline-light:hover {
-  color: #eee !important;
-  border-color: #eee !important;
+.post .header-bar h1 {
+  font-size: 1.8rem;
 }
 
-//   Everywhere else: dark
-.btn-outline-light {
-  color: #000 !important;
-  border-color: #000 !important;
-}
-.btn-outline-light:hover,
-.btn-outline-light:focus {
-  color: #333 !important;
-  border-color: #333 !important;
-}
-
-// Enhanced button styling for section buttons
-.section-btn {
-  transition: all 0.3s ease !important;
-  backdrop-filter: blur(8px);
-  background-color: rgba(60,60,60,0.75) !important;
-}
-
-// Title styling for different themes
-html[data-theme="light"] .post-title {
-  color: #000000 !important;
-  text-shadow: none !important;
-}
-
-html[data-theme="dark"] .post-title {
-  color: #B3681E !important;
-  text-shadow: none !important;
-}
-
-// Post and Distill layout heading colors
-html[data-theme="light"] .post h1,
-html[data-theme="light"] .post h2,
-html[data-theme="light"] .post h3,
-html[data-theme="light"] .post h4,
-html[data-theme="light"] .post h5,
-html[data-theme="light"] .post h6,
-html[data-theme="light"] .distill h1,
-html[data-theme="light"] .distill h2,
-html[data-theme="light"] .distill h3,
-html[data-theme="light"] .distill h4,
-html[data-theme="light"] .distill h5,
-html[data-theme="light"] .distill h6 {
-  color: #000000 !important;
-}
-
-html[data-theme="dark"] .post h1,
-html[data-theme="dark"] .post h2,
-html[data-theme="dark"] .post h3,
-html[data-theme="dark"] .post h4,
-html[data-theme="dark"] .post h5,
-html[data-theme="dark"] .post h6,
-html[data-theme="dark"] .distill h1,
-html[data-theme="dark"] .distill h2,
-html[data-theme="dark"] .distill h3,
-html[data-theme="dark"] .distill h4,
-html[data-theme="dark"] .distill h5,
-html[data-theme="dark"] .distill h6 {
-  color: #B3681E !important;
-}
-
-// Alternative color scheme for some headings (blue as third option)
-html[data-theme="light"] .post h3,
-html[data-theme="light"] .post h5,
-html[data-theme="light"] .distill h3,
-html[data-theme="light"] .distill h5 {
-  color: #0076df !important;
-}
-
-html[data-theme="dark"] .post h3,
-html[data-theme="dark"] .post h5,
-html[data-theme="dark"] .distill h3,
-html[data-theme="dark"] .distill h5 {
-  color: #0076df !important;
-}
-.section-btn:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5) !important;
-  background-color: rgba(0,0,0,0.9) !important;
-  color: #B3681E !important;
-  border-color: #B3681E !important;
-}
-
-// 5) PUSH THE QUOTE DOWN
+// Push quotes down
 blockquote.quote-lower {
   margin-top: 4rem;
 }
 
-// 6) WIDEN ABOUT/landing PAGE CONTENT
-body.layout-about .container,
-body.about-wide .container {
-  max-width: 1000px !important;
-}
-
-// ─────────────────────────────────────────────────────────
-// NAVBAR: hide duplicate "GioMath" link injected by the about page
-nav .navbar-nav > li:first-child {
-  display: none;
-}
-
-.post .header-bar h1 {
-  font-size: 3.5rem; /* smaller size as desired */
-}
-
-
-
-// ─────────────────────────────────────────────────────────
-// HEADER TITLE COLOR IN DARK THEME
-html[data-theme="dark"] header h2,
-html[data-theme="dark"] .navbar h2 {
-  color: #B3681E !important;
-}
-
-
-
-// ─────────────────────────────────────────────────────────
-// NAVIGATION: Force horizontal layout
-.navbar-nav {
-  flex-direction: row !important;
-  justify-content: center !important;
-}
-
-.navbar-nav .nav-item {
-  margin: 0 0.5rem !important;
-}
-
-.navbar-nav .nav-link {
-  padding: 0.5rem 1rem !important;
-}
-
-// Increase overall page width
+// Content width: narrow for comfortable reading
 .container {
-  max-width: 1200px !important;
+  max-width: 800px;
 }

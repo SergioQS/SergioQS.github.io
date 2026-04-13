@@ -1,11 +1,36 @@
 ---
 layout: default
 ---
-<div class="post {% if page.img %}page-with-bg page-home{% endif %}" {% if page.img and page.permalink != '/' %}style="--bg-img: url('{{ page.img | relative_url }}');"{% endif %}>
-  <header class="post-header text-center" style="margin-top: 0; padding-top: 0.1rem;">
-    <p class="desc" style="font-size: 1.2rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">{{ page.subtitle }}</p>
-  </header>
+{% if page.img and page.permalink == '/' %}
+  <div class="hero-fullscreen" style="background-image: url('{{ page.img | relative_url }}');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">{{ site.title }}</h1>
+      {% if page.subtitle %}
+        <p class="hero-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
 
+      {% if page.latest_posts and page.latest_posts.enabled %}
+        <div class="hero-activity">
+          <h2>Recent Activity</h2>
+          <div class="activity-filters">
+            <button class="activity-filter active" data-filter="all">All</button>
+            <button class="activity-filter" data-filter="mathematics">Mathematics</button>
+            <button class="activity-filter" data-filter="computation">Computation</button>
+            <button class="activity-filter" data-filter="other">Other</button>
+            <button class="activity-filter" data-filter="wolfram">Wolfram</button>
+          </div>
+          <div id="activity-feed">
+            {% include latest_posts.liquid %}
+            {% include wolfram_feed.liquid %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+<div class="post">
   <article>
     {% if page.profile %}
       <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
@@ -14,11 +39,9 @@ layout: default
           {% if page.profile.image_circular %}
             {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
           {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
           {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
+          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
           {%
             include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
             cache_bust=true
@@ -35,23 +58,15 @@ layout: default
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
 
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
-
-    <!-- Selected papers -->
+    <!-- Selected Publications -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
@@ -60,7 +75,6 @@ layout: default
     {% if page.social %}
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
-
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
@@ -70,3 +84,32 @@ layout: default
     {% endif %}
   </article>
 </div>
+
+{% if page.latest_posts and page.latest_posts.enabled %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var btns = document.querySelectorAll('.activity-filter');
+      var items = document.querySelectorAll('#activity-feed .post-feed-item');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          btns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var f = btn.getAttribute('data-filter');
+          items.forEach(function(item) {
+            var cat = item.querySelector('.post-feed-category');
+            var catText = cat ? cat.textContent.trim().toLowerCase() : '';
+            if (f === 'all') {
+              item.style.display = '';
+            } else if (f === 'wolfram') {
+              item.style.display = catText.indexOf('wolfram') !== -1 ? '' : 'none';
+            } else if (f === 'other') {
+              item.style.display = (catText !== 'mathematics' && catText !== 'computation' && catText !== 'computations' && catText.indexOf('wolfram') === -1) ? '' : 'none';
+            } else {
+              item.style.display = (catText === f || catText === f + 's') ? '' : 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+{% endif %}
