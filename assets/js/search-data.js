@@ -55,11 +55,22 @@ ninja.data = [{
         
           title: "Fractal geometry of digit-sum parity sequences",
         
-        description: "",
+        description: "Explores fractal limit behavior of plane curves produced by a turtle program driven by digit-sum parity sequences of natural numbers.",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/2026/Fractales/";
+          
+        },
+      },{id: "post-poster-compositional-paths-on-hypergraphs",
+        
+          title: "Poster: Compositional Paths on Hypergraphs",
+        
+        description: "Formalizing compositions of n-ary relations to generate algebras from hypergraphs, recovering classical path algebras and producing new associative and non-associative structures.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/CompositionalPaths/";
           
         },
       },{id: "post-quantum-restricted-boltzmann-machines",
@@ -110,7 +121,7 @@ ninja.data = [{
         
           title: "Lautman Desanti y Chatelet",
         
-        description: "",
+        description: "Quinta bitácora de epistemología e historia de las matemáticas sobre Lautman, Desanti y Châtelet, con el PDF de la entrega embebido.",
         section: "Posts",
         handler: () => {
           
@@ -121,7 +132,7 @@ ninja.data = [{
         
           title: "Poincaré y Grothendieck",
         
-        description: "",
+        description: "Cuarta bitácora de epistemología e historia de las matemáticas sobre Poincaré y Grothendieck, con el PDF de la entrega embebido.",
         section: "Posts",
         handler: () => {
           
@@ -132,7 +143,7 @@ ninja.data = [{
         
           title: "Categorías y el lema de Yoneda",
         
-        description: "",
+        description: "Tercera bitácora de epistemología e historia de las matemáticas sobre categorías y el lema de Yoneda, con el PDF de la entrega embebido.",
         section: "Posts",
         handler: () => {
           
@@ -143,7 +154,7 @@ ninja.data = [{
         
           title: "Russell Wittgenstein y Quine",
         
-        description: "",
+        description: "Tercera bitácora de epistemología e historia de las matemáticas sobre Russell, Wittgenstein y Quine, con el PDF de la entrega embebido.",
         section: "Posts",
         handler: () => {
           
@@ -154,7 +165,7 @@ ninja.data = [{
         
           title: "Russel y Shaw",
         
-        description: "",
+        description: "Tercera bitácora de epistemología e historia de las matemáticas sobre Russell y Shaw, con el PDF de la entrega embebido.",
         section: "Posts",
         handler: () => {
           
@@ -254,30 +265,4 @@ ninja.data = [{
         handler: () => {
           window.open("https://scholar.google.com/citations?user=qc6CJjYAAAAJ", "_blank");
         },
-      },{
-      id: 'light-theme',
-      title: 'Change theme to light',
-      description: 'Change the theme of the site to Light',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("light");
-      },
-    },
-    {
-      id: 'dark-theme',
-      title: 'Change theme to dark',
-      description: 'Change the theme of the site to Dark',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("dark");
-      },
-    },
-    {
-      id: 'system-theme',
-      title: 'Use system default theme',
-      description: 'Change the theme of the site to System Default',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("system");
-      },
-    },];
+      },];
