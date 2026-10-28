@@ -1,7 +1,7 @@
 // Custom Homepage Styles
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 // Homepage hero: fixed background covering the full viewport width
@@ -9,6 +9,7 @@
   position: relative;
   width: 100vw;
   margin-left: calc(-1 * (100vw - 100%) / 2);
+  background-image: var(--hero-img-dark);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,7 +21,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.55) 30%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.92) 100%);
+  background: var(--hero-overlay);
   pointer-events: none;
 }
 
@@ -30,7 +31,7 @@
   text-align: center;
   padding: 0 1.5rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -40,18 +41,18 @@
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0 auto 0.6rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 8px var(--hero-shadow-color);
   letter-spacing: 0.01em;
 }
 
 .hero-subtitle {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--hero-subtitle-color);
   font-family: $font-family-sans-serif;
   font-size: 1.05rem;
   line-height: 1.7;
-  max-width: 650px;
+  max-width: 810px;
   margin: 0 auto 2.5rem;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 6px var(--hero-shadow-color);
 }
 
 .hero-activity {
@@ -59,7 +60,7 @@
   width: 100%;
 
   h2 {
-    color: #fff;
+    color: var(--hero-text-color);
     font-family: $font-family-serif;
     font-size: 1.3rem;
     font-weight: 600;
@@ -71,23 +72,28 @@
   }
 
   .post-feed-item {
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: var(--hero-border-color);
 
     &:first-child {
-      border-top-color: rgba(255, 255, 255, 0.12);
+      border-top-color: var(--hero-border-color);
     }
   }
 
   .post-feed-title {
-    color: #fff;
+    color: var(--hero-text-color);
   }
 
   .post-feed-desc {
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--hero-desc-color);
   }
 
   .post-feed-date {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--hero-date-color);
+  }
+
+  .activity-filter {
+    border-color: var(--hero-border-color);
+    color: var(--hero-text-color);
   }
 
   .post-feed-item:hover .post-feed-title {
@@ -285,7 +291,12 @@ a.news-title {
   &.active {
     background: var(--global-theme-color);
     border-color: var(--global-theme-color);
-    color: #000;
+    color: var(--global-on-theme-color);
+  }
+
+  // The label is a translated <span>; let it follow the button's color (base styles color every span)
+  span {
+    color: inherit;
   }
 }
 

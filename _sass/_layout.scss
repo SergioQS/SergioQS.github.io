@@ -2,11 +2,31 @@
  * Content
  ******************************************************************************/
 
+// Root size: everything sized in rem scales with it (like browser zoom).
+// Phones keep 16px; tablets get 18px (112.5%) and laptops/desktops 20px (125%).
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 20px;
+  }
+}
+
 body {
   padding-bottom: 70px;
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
   font-size: $base-font-size;
+  // MDB sets body text to weight 300, which looks thin, especially on the light theme.
+  font-weight: 400;
 
   h1,
   h2,
@@ -14,13 +34,13 @@ body {
   h4,
   h5,
   h6 {
-    scroll-margin-top: 66px;
+    scroll-margin-top: 4.25rem;
   }
 }
 
 body.fixed-top-nav {
   // Add some padding for the nav-bar and name above it.
-  padding-top: 56px;
+  padding-top: 3.5rem;
 }
 
 body.sticky-bottom-footer {

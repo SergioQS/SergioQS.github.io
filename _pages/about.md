@@ -7,6 +7,7 @@ nav: true
 nav_order: 1
 classes: about-wide
 img: /assets/img/KochStar.jpg
+img_light: /assets/img/WhiteKochStar.jpg # cover used in light mode
 subtitle: >
   Mathematical and computational essays exploring structure across abstract algebra, topology, and thought.
 subtitle_es: >

@@ -56,7 +56,7 @@ $back-to-top-width: $back-to-top-diameter;
 $font-family-serif: "Lora", "Georgia", serif !default;
 $font-family-sans-serif: "Inter", "Source Sans 3", "Helvetica Neue", Arial, sans-serif !default;
 $font-family-monospace: "JetBrains Mono", "Consolas", "Courier New", monospace !default;
-$base-font-size: 14px !default;
+$base-font-size: 0.875rem !default; // 14px on phones, 17.5px on laptops (see _layout.scss)
 $h1-font-size: 1.8rem !default;
 $h2-font-size: 1.4rem !default;
 $h3-font-size: 1.15rem !default;

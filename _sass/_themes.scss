@@ -43,6 +43,18 @@
   --global-danger-block-bg: #2e1010;
   --global-danger-block-text: #d9a0a0;
   --global-danger-block-title: #c00;
+
+  // Text on top of the accent color (active filter button)
+  --global-on-theme-color: #ffffff;
+
+  // Homepage cover: darkened fractal, light text
+  --hero-overlay: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.55) 30%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.92) 100%);
+  --hero-text-color: #ffffff;
+  --hero-subtitle-color: rgba(255, 255, 255, 0.85);
+  --hero-desc-color: rgba(255, 255, 255, 0.65);
+  --hero-date-color: rgba(255, 255, 255, 0.5);
+  --hero-border-color: rgba(255, 255, 255, 0.12);
+  --hero-shadow-color: rgba(0, 0, 0, 0.6);
 }
 
 // Warm paper tones that go with the ochre accent and the Lora serif.
@@ -85,6 +97,24 @@
   --global-danger-block-bg: #ffe0e0;
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
+
+  --global-on-theme-color: #ffffff;
+
+  // Homepage cover: the light fractal (WhiteKochStar) under a paper-colored veil
+  // that fades into the page background, so navbar, cover and page read as one surface.
+  --hero-overlay: linear-gradient(
+    to bottom,
+    rgba(251, 250, 247, 0.45) 0%,
+    rgba(251, 250, 247, 0.7) 30%,
+    rgba(251, 250, 247, 0.9) 60%,
+    rgba(251, 250, 247, 1) 100%
+  );
+  --hero-text-color: #1f1d1a;
+  --hero-subtitle-color: #3b3833;
+  --hero-desc-color: #5e5a54;
+  --hero-date-color: #6b665f;
+  --hero-border-color: rgba(31, 29, 26, 0.14);
+  --hero-shadow-color: rgba(251, 250, 247, 0.9);
 }
 
 :root {
@@ -120,9 +150,8 @@ html[data-theme="light"] {
     display: none;
   }
 
-  // The homepage hero sits on a darkened photo, so it keeps the dark palette in both modes.
+  // The cover images are set per page on .hero-fullscreen (see _layouts/about.liquid)
   .hero-fullscreen {
-    @include theme-dark;
-    color: var(--global-text-color);
+    background-image: var(--hero-img-light, var(--hero-img-dark));
   }
 }

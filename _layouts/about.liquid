@@ -2,7 +2,10 @@
 layout: default
 ---
 {% if page.img and page.permalink == '/' %}
-  <div class="hero-fullscreen" style="background-image: url('{{ page.img | relative_url }}');">
+  <div
+    class="hero-fullscreen"
+    style="--hero-img-dark: url('{{ page.img | relative_url }}');{% if page.img_light %} --hero-img-light: url('{{ page.img_light | relative_url }}');{% endif %}"
+  >
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title">{{ site.title }}</h1>
