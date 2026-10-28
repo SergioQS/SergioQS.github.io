@@ -29,12 +29,12 @@ Converts all `.ipynb` files in `_notebooks/` into Jekyll-ready posts under `_pos
 
 ## Project Structure (key paths)
 
-| Path | Purpose |
-|---|---|
-| `_posts/` | Blog posts (Markdown) |
-| `_notebooks/` | Source Jupyter notebooks (auto-converted) |
-| `_data/wolfram.yml` | Wolfram Community entries metadata |
-| `assets/jupyter/` | Legacy notebook embeds |
-| `assets/interactive/` | Prebuilt interactive HTML widgets |
-| `_sass/` | SCSS partials |
-| `assets/css/main.scss` | CSS entry point |
+| Path                   | Purpose                                   |
+| ---------------------- | ----------------------------------------- |
+| `_posts/`              | Blog posts (Markdown)                     |
+| `_notebooks/`          | Source Jupyter notebooks (auto-converted) |
+| `_data/wolfram.yml`    | Wolfram Community entries metadata        |
+| `assets/jupyter/`      | Legacy notebook embeds                    |
+| `assets/interactive/`  | Prebuilt interactive HTML widgets         |
+| `_sass/`               | SCSS partials                             |
+| `assets/css/main.scss` | CSS entry point                           |
