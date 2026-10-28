@@ -62,17 +62,6 @@ ninja.data = [{
             window.location.href = "/blog/2025/CompositionalPaths/";
           
         },
-      },{id: "post-quantum-restricted-boltzmann-machines",
-        
-          title: "Quantum Restricted Boltzmann Machines",
-        
-        description: "An implementation of a quantum boltzmann machine with basic theory explained, applied to the MNIST dataset and with a quantum-enhanced sampler.",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/QRBM-implementation/";
-          
-        },
       },{id: "post-modelos-de-difusión-ddpm",
         
           title: "Modelos de difusión DDPM",
