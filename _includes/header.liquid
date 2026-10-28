@@ -3,11 +3,28 @@
     <div class="container">
       <a class="navbar-brand" href="{{ '/' | relative_url }}">{% include t.liquid k="nav_home" %}</a>
 
-      <!-- Spanish / English switch -->
-      <div class="lang-switch" role="group" aria-label="Idioma / Language">
-        <button type="button" class="lang-switch-btn" data-set-lang="es" lang="es" title="Español" aria-pressed="true">ES</button>
-        <span class="lang-switch-sep" aria-hidden="true">|</span>
-        <button type="button" class="lang-switch-btn" data-set-lang="en" lang="en" title="English" aria-pressed="false">EN</button>
+      <div class="site-prefs">
+        <!-- Spanish / English switch -->
+        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-switch-btn" data-set-lang="es" lang="es" title="Español" aria-pressed="true">ES</button>
+          <span class="lang-switch-sep" aria-hidden="true">|</span>
+          <button type="button" class="lang-switch-btn" data-set-lang="en" lang="en" title="English" aria-pressed="false">EN</button>
+        </div>
+
+        {% if site.enable_darkmode %}
+          <!-- Light / dark switch: shows the sun in dark mode and the moon in light mode -->
+          <button
+            type="button"
+            id="light-toggle"
+            class="theme-toggle"
+            title="Cambiar a modo claro"
+            aria-label="Cambiar a modo claro"
+            aria-pressed="false"
+          >
+            <i class="ti ti-sun theme-toggle-icon-sun" aria-hidden="true"></i>
+            <i class="ti ti-moon theme-toggle-icon-moon" aria-hidden="true"></i>
+          </button>
+        {% endif %}
       </div>
 
       <button

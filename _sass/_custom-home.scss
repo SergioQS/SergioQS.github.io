@@ -127,7 +127,7 @@
     left: 0;
     right: 0;
     height: 60%;
-    background: linear-gradient(to bottom, transparent, #000000);
+    background: linear-gradient(to bottom, transparent, var(--global-bg-color));
   }
 }
 
@@ -154,7 +154,7 @@
     left: 0;
     right: 0;
     height: 40%;
-    background: linear-gradient(to bottom, transparent, #000000);
+    background: linear-gradient(to bottom, transparent, var(--global-bg-color));
   }
 }
 

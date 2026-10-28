@@ -31,7 +31,6 @@
   href="{{ site.third_party_libraries.google_fonts.url.fonts }}"
 >
 
-<!-- Code Syntax Highlighting (light theme disabled for dark-only) -->
 
 {% if page.toc and page.toc.sidebar %}
   <!-- Sidebar Table of Contents -->
@@ -62,8 +61,7 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
-<!-- Dark theme init (always dark) -->
-<script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
+<!-- Code highlighting for each theme (theme.js enables the right one) -->
 <link
   rel="stylesheet"
   href="{{ '/assets/css/jekyll-pygments-themes-native.css' | relative_url | bust_file_cache }}"
@@ -75,6 +73,9 @@
   media="none"
   id="highlight_theme_light"
 >
+
+<!-- Light / dark theme (dark by default). Must stay in <head> to avoid a flash of the wrong colors. -->
+<script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
 
 {% if page.map %}
   <!-- GeoJSON support via Leaflet -->
@@ -95,7 +96,8 @@
     href="{{ site.third_party_libraries.highlightjs.url.css.light }}"
     integrity="{{ site.third_party_libraries.highlightjs.integrity.css.light }}"
     crossorigin="anonymous"
-    media="screen and (prefers-color-scheme: light)"
+    media="none"
+    id="highlightjs_theme_light"
   >
   <link
     defer
@@ -103,7 +105,7 @@
     href="{{ site.third_party_libraries.highlightjs.url.css.dark }}"
     integrity="{{ site.third_party_libraries.highlightjs.integrity.css.dark }}"
     crossorigin="anonymous"
-    media="screen and (prefers-color-scheme: dark)"
+    id="highlightjs_theme_dark"
   >
   <link
     defer

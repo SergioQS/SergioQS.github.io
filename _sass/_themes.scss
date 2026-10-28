@@ -1,10 +1,11 @@
 /*******************************************************************************
- * Dark-only theme
+ * Themes: dark (default) and light.
+ * theme.js sets <html data-theme="dark|light">; the visitor switches with the ☀/☾ button.
  ******************************************************************************/
 
 @use "sass:color";
 
-:root {
+@mixin theme-dark {
   color-scheme: dark;
   --global-bg-color: #000000;
   --global-code-bg-color: #111111;
@@ -42,6 +43,52 @@
   --global-danger-block-bg: #2e1010;
   --global-danger-block-text: #d9a0a0;
   --global-danger-block-title: #c00;
+}
+
+// Warm paper tones that go with the ochre accent and the Lora serif.
+// The accent is a deeper ochre than in dark mode so text keeps a 5:1+ contrast.
+@mixin theme-light {
+  color-scheme: light;
+  --global-bg-color: #FBFAF7;
+  --global-code-bg-color: #F2EFE9;
+  --global-text-color: #1F1D1A;
+  --global-text-color-light: #5E5A54;
+  --global-theme-color: #9A5617;
+  --global-hover-color: #{$ochre-color};
+  --global-hover-text-color: #{$white-color};
+  --global-footer-bg-color: #FBFAF7;
+  --global-footer-text-color: #5E5A54;
+  --global-footer-link-color: #1F1D1A;
+  --global-distill-app-color: #5E5A54;
+  --global-divider-color: #E5E0D7;
+  --global-card-bg-color: #FFFFFF;
+  --global-highlight-color: #{$red-color-dark};
+  --global-back-to-top-bg-color: rgba(
+    #{color.channel($black-color, "red", $space: rgb)},
+    #{color.channel($black-color, "green", $space: rgb)},
+    #{color.channel($black-color, "blue", $space: rgb)},
+    0.4
+  );
+  --global-back-to-top-text-color: #{$white-color};
+  --global-newsletter-bg-color: #{$white-color};
+  --global-newsletter-text-color: #{$black-color};
+
+  --global-tip-block: #42b983;
+  --global-tip-block-bg: #e2f5ec;
+  --global-tip-block-text: #215d42;
+  --global-tip-block-title: #359469;
+  --global-warning-block: #e7c000;
+  --global-warning-block-bg: #fff8d8;
+  --global-warning-block-text: #6b5900;
+  --global-warning-block-title: #b29400;
+  --global-danger-block: #c00;
+  --global-danger-block-bg: #ffe0e0;
+  --global-danger-block-text: #600;
+  --global-danger-block-title: #c00;
+}
+
+:root {
+  @include theme-dark;
 
   .only-light {
     display: none;
@@ -59,5 +106,23 @@
     height: $back-to-top-height;
     width: $back-to-top-width;
     z-index: $back-to-top-z-index;
+  }
+}
+
+html[data-theme="light"] {
+  @include theme-light;
+
+  .only-light {
+    display: block;
+  }
+
+  .only-dark {
+    display: none;
+  }
+
+  // The homepage hero sits on a darkened photo, so it keeps the dark palette in both modes.
+  .hero-fullscreen {
+    @include theme-dark;
+    color: var(--global-text-color);
   }
 }

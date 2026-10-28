@@ -1,10 +1,16 @@
-// Spanish / English switch in the navbar
+// Navbar preferences: Spanish / English switch and light / dark switch
+
+.site-prefs {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+  margin-right: 0.75rem;
+}
 
 .lang-switch {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-right: 0.75rem;
   font-size: 0.8rem;
   letter-spacing: 0.04em;
 
@@ -37,9 +43,50 @@
   }
 }
 
-// On wide screens the switch sits at the far right, after the menu links
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--global-text-color-light);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--global-hover-color);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--global-theme-color);
+    outline-offset: 2px;
+  }
+
+  // Dark mode shows the sun (switch to light); light mode shows the moon.
+  .theme-toggle-icon-moon {
+    display: none;
+  }
+}
+
+html[data-theme="light"] .theme-toggle {
+  .theme-toggle-icon-sun {
+    display: none;
+  }
+
+  .theme-toggle-icon-moon {
+    display: inline;
+  }
+}
+
+// On wide screens the switches sit at the far right, after the menu links
 @media (min-width: 992px) {
-  .lang-switch {
+  .site-prefs {
     order: 3;
     margin-left: 0.75rem;
     margin-right: 0;
