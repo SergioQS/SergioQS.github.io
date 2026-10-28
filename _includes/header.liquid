@@ -1,10 +1,17 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="{{ '/' | relative_url }}">Home</a>
+      <a class="navbar-brand" href="{{ '/' | relative_url }}">{% include t.liquid k="nav_home" %}</a>
+
+      <!-- Spanish / English switch -->
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-switch-btn" data-set-lang="es" lang="es" title="Español" aria-pressed="true">ES</button>
+        <span class="lang-switch-sep" aria-hidden="true">|</span>
+        <button type="button" class="lang-switch-btn" data-set-lang="en" lang="en" title="English" aria-pressed="false">EN</button>
+      </div>
 
       <button
-        class="navbar-toggler collapsed ml-auto"
+        class="navbar-toggler collapsed"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -40,7 +47,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    {{- p.title -}}
+                    {%- include t.liquid es=p.title_es en=p.title -%}
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown-{{ forloop.index }}">
                     {% for child in p.children %}
@@ -51,7 +58,7 @@
                           class="dropdown-item {% if page.title == child.title %}active{% endif %}"
                           href="{% if child.permalink contains '://' %}{{ child.permalink }}{% else %}{{ child.permalink | relative_url }}{% endif %}"
                         >
-                          {{- child.title -}}
+                          {%- include t.liquid es=child.title_es en=child.title -%}
                         </a>
                       {% endif %}
                     {% endfor %}
@@ -68,7 +75,7 @@
                     {%- assign url = p.url -%}
                   {%- endif %}
                   <a class="nav-link" href="{{ url | relative_url }}">
-                    {{- p.title -}}
+                    {%- include t.liquid es=p.title_es en=p.title -%}
                   </a>
                 </li>
               {% endif %}

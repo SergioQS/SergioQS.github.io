@@ -8,14 +8,20 @@ middle_name:
 last_name: Quiroga-Sandoval
 contact_note: >
   You can even add a little note about which of these is the best way to reach you.
+contact_note_es: >
+  Incluso puedes añadir una pequeña nota sobre cuál de estos es el mejor medio para contactarte.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Personal website of Sergio Quiroga-Sandoval. A collection of projects and blog posts on mathematics, computer science, philosophy and other areas.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
   Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+footer_text_es: >
+  Hecho con <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> y el tema <a href="https://github.com/alshedivat/al-folio">al-folio</a>.
+  Alojado en <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+  Fotos de <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 keywords: mathematics, computer-science, philosophy, jekyll, al-folio # add your own keywords or leave empty
-lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
+lang: es # the default language of your site (English is available with the ES | EN switch in the navbar) (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://sergioqs.github.io # the base hostname & protocol for your site
@@ -319,6 +325,7 @@ filtered_bibtex_keywords:
     google_scholar_id,
     html,
     inspirehep_id,
+    note_es,
     pdf,
     poster,
     preview,
@@ -635,6 +642,8 @@ third_party_libraries:
 jekyll_get_json:
   - data: resume
     json: assets/json/resume.json # it can also be an url
+  - data: resume_es # Spanish version of the CV
+    json: assets/json/resume_es.json
 
 jsonresume:
   - basics

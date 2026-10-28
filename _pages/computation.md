@@ -2,6 +2,7 @@
 layout: default
 permalink: /computer-science/
 title: Computation
+title_es: Computación
 nav: true
 nav_order: 3
 img: /assets/img/LionResting.jpg
@@ -16,11 +17,15 @@ img: /assets/img/LionResting.jpg
   {% endif %}
 
   <div class="header-bar">
-    <h2>Computational essays in generative models, quantum computing, and more.</h2>
+    <h2>{% include t.liquid es="Ensayos computacionales sobre modelos generativos, computación cuántica y más." en="Computational essays in generative models, quantum computing, and more." %}</h2>
   </div>
 
-  <blockquote>
-    "Either mathematics is too big for the human mind, or the human mind is more than a machine."  
+  <blockquote class="l-es" lang="es">
+    "O bien las matemáticas son demasiado grandes para la mente humana, o bien la mente humana es más que una máquina."
+    — Kurt Gödel.
+  </blockquote>
+  <blockquote class="l-en" lang="en">
+    "Either mathematics is too big for the human mind, or the human mind is more than a machine."
     — Kurt Godel.
   </blockquote>
 
@@ -32,7 +37,7 @@ img: /assets/img/LionResting.jpg
       <a href="{{ post.url | relative_url }}" class="post-feed-item {% if post.image %}has-thumb{% endif %}">
         <div class="post-feed-body">
           <div class="post-feed-meta">
-            <span class="post-feed-date">{{ post.date | date: '%b %d, %Y' }} &middot; {{ read_time }} min read</span>
+            <span class="post-feed-date">{% include i18n_date.liquid date=post.date %} &middot; {{ read_time }} {% include t.liquid k="min_read" %}</span>
           </div>
           <h4 class="post-feed-title">{{ post.title }}</h4>
           {% if post.description %}

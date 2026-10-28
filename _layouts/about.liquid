@@ -7,18 +7,20 @@ layout: default
     <div class="hero-content">
       <h1 class="hero-title">{{ site.title }}</h1>
       {% if page.subtitle %}
-        <p class="hero-subtitle">{{ page.subtitle }}</p>
+        <p class="hero-subtitle">
+          <span class="l-es" lang="es">{{ page.subtitle_es | default: page.subtitle }}</span><span class="l-en" lang="en">{{ page.subtitle }}</span>
+        </p>
       {% endif %}
 
       {% if page.latest_posts and page.latest_posts.enabled %}
         <div class="hero-activity">
-          <h2>Recent Activity</h2>
+          <h2>{% include t.liquid k="recent_activity" %}</h2>
           <div class="activity-filters">
-            <button class="activity-filter active" data-filter="all">All</button>
-            <button class="activity-filter" data-filter="mathematics">Mathematics</button>
-            <button class="activity-filter" data-filter="computation">Computation</button>
-            <button class="activity-filter" data-filter="other">Other</button>
-            <button class="activity-filter" data-filter="wolfram">Wolfram</button>
+            <button class="activity-filter active" data-filter="all">{% include t.liquid k="filter_all" %}</button>
+            <button class="activity-filter" data-filter="mathematics">{% include t.liquid t=site.data.i18n.categories.mathematics %}</button>
+            <button class="activity-filter" data-filter="computation">{% include t.liquid t=site.data.i18n.categories.computation %}</button>
+            <button class="activity-filter" data-filter="other">{% include t.liquid t=site.data.i18n.categories.other %}</button>
+            <button class="activity-filter" data-filter="wolfram">{% include t.liquid t=site.data.i18n.categories.wolfram %}</button>
           </div>
           <div id="activity-feed">
             {% include latest_posts.liquid %}
@@ -57,7 +59,7 @@ layout: default
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">{% include t.liquid k="news" %}</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
@@ -65,7 +67,7 @@ layout: default
     <!-- Selected Publications -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">{% include t.liquid k="selected_publications" %}</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
@@ -74,7 +76,9 @@ layout: default
     {% if page.social %}
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
-        <div class="contact-note">{{ site.contact_note }}</div>
+        <div class="contact-note">
+          <span class="l-es" lang="es">{{ site.contact_note_es | default: site.contact_note }}</span><span class="l-en" lang="en">{{ site.contact_note }}</span>
+        </div>
       </div>
     {% endif %}
 
@@ -96,7 +100,7 @@ layout: default
           var f = btn.getAttribute('data-filter');
           items.forEach(function(item) {
             var cat = item.querySelector('.post-feed-category');
-            var catText = cat ? cat.textContent.trim().toLowerCase() : '';
+            var catText = cat ? (cat.getAttribute('data-category') || cat.textContent).trim().toLowerCase() : '';
             if (f === 'all') {
               item.style.display = '';
             } else if (f === 'wolfram') {

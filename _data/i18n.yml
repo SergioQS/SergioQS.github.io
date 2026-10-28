@@ -1,0 +1,86 @@
+# Interface strings for the Spanish / English versions of the site.
+# Spanish is the default language. Use them in templates with:
+#   {% include t.liquid k="key_name" %}
+# which renders both versions; the ES | EN switch in the navbar decides which one is visible.
+# Post content is not translated.
+
+# Navigation
+nav_home: { es: "Inicio", en: "Home" }
+lang_switch: { es: "Cambiar idioma", en: "Change language" }
+
+# Home page
+recent_activity: { es: "Actividad reciente", en: "Recent Activity" }
+filter_all: { es: "Todo", en: "All" }
+selected_publications: { es: "Publicaciones seleccionadas", en: "Selected Publications" }
+news: { es: "Noticias", en: "News" }
+no_posts: { es: "Aún no hay publicaciones...", en: "No posts so far..." }
+
+# Post categories (keys are the values used in each post's front matter)
+categories:
+  mathematics: { es: "Matemáticas", en: "Mathematics" }
+  computation: { es: "Computación", en: "Computation" }
+  other-areas: { es: "Otras áreas", en: "Other" }
+  other: { es: "Otros", en: "Other" }
+  wolfram: { es: "Wolfram", en: "Wolfram" }
+
+# Post feeds and posts
+min_read: { es: "min de lectura", en: "min read" }
+created_on: { es: "Publicado el", en: "Created on" }
+by: { es: "por", en: "by" }
+last_updated_on: { es: "actualizado el", en: "last updated on" }
+references: { es: "Referencias", en: "References" }
+enjoy_reading: { es: "¿Te gustó este artículo?", en: "Enjoy Reading This Article?" }
+more_articles: { es: "Aquí tienes otros artículos que podrían interesarte:", en: "Here are some more articles you might like to read next:" }
+subscribe: { es: "Suscríbete para recibir los próximos artículos:", en: "Subscribe to be notified of future articles:" }
+no_wolfram_posts: { es: "Aún no hay publicaciones en Wolfram Community.", en: "No Wolfram Community posts yet." }
+
+# Books (Other page)
+books: { es: "Libros", en: "Books" }
+currently_reading: { es: "Leyendo actualmente", en: "Currently Reading" }
+recently_read: { es: "Leídos recientemente", en: "Recently Read" }
+to_read: { es: "Por leer", en: "To Read" }
+
+# Footer
+last_updated: { es: "Última actualización:", en: "Last updated:" }
+
+# Publications (bibliography)
+bib_abs: { es: "Resumen", en: "Abs" }
+bib_code: { es: "Código", en: "Code" }
+bib_slides: { es: "Diapositivas", en: "Slides" }
+bib_website: { es: "Sitio web", en: "Website" }
+bib_supp: { es: "Supl.", en: "Supp" }
+bib_awarded: { es: "Premiado", en: "Awarded" }
+bib_and: { es: "y", en: "and" }
+bib_in: { es: "En", en: "In" }
+bib_more_author: { es: "autor más", en: "more author" }
+bib_more_authors: { es: "autores más", en: "more authors" }
+bib_filter: { es: "Escribe para filtrar", en: "Type to filter" }
+
+# CV
+present: { es: "Actualidad", en: "Present" }
+cv_sections:
+  basics: { es: "Información general", en: "Basics" }
+  work: { es: "Experiencia laboral", en: "Work" }
+  volunteer: { es: "Voluntariado", en: "Volunteer" }
+  education: { es: "Formación", en: "Education" }
+  awards: { es: "Premios", en: "Awards" }
+  certificates: { es: "Certificados", en: "Certificates" }
+  publications: { es: "Publicaciones", en: "Publications" }
+  skills: { es: "Habilidades", en: "Skills" }
+  languages: { es: "Idiomas", en: "Languages" }
+  interests: { es: "Intereses", en: "Interests" }
+  references: { es: "Referencias", en: "References" }
+  projects: { es: "Proyectos", en: "Projects" }
+cv_basics:
+  name: { es: "Nombre", en: "Name" }
+  label: { es: "Perfil", en: "Label" }
+  email: { es: "Correo", en: "Email" }
+  phone: { es: "Teléfono", en: "Phone" }
+  url: { es: "Sitio web", en: "Url" }
+  summary: { es: "Resumen", en: "Summary" }
+
+# Dates
+months_short:
+  es: [ene, feb, mar, abr, may, jun, jul, ago, sept, oct, nov, dic]
+months_long:
+  es: [enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre]

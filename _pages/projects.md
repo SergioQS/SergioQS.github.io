@@ -1,8 +1,10 @@
 ---
 layout: page
 title: Projects
+title_es: Proyectos
 permalink: /projects/
 description: A growing collection of projects.
+description_es: Una colección creciente de proyectos.
 nav: false
 nav_order: 5
 display_categories: [work, fun]

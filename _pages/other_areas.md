@@ -2,6 +2,7 @@
 layout: default
 permalink: /other-areas/
 title: Other
+title_es: Otros
 nav: true
 nav_order: 4
 img: /assets/img/Other.jpeg
@@ -16,12 +17,17 @@ img: /assets/img/Other.jpeg
   {% endif %}
 
   <div class="header-bar">
-    <h2>Philosophy, literature, physics and more.</h2>
+    <h2>{% include t.liquid es="Filosofía, literatura, física y más." en="Philosophy, literature, physics and more." %}</h2>
   </div>
 
-  <blockquote>
-    "Thought is no more than a flash of lightning in the midst of a long night.  
-    But that flash is everything."  
+  <blockquote class="l-es" lang="es">
+    "El pensamiento no es más que un relámpago en medio de una larga noche.
+    Pero ese relámpago lo es todo."
+    — Henri Poincaré
+  </blockquote>
+  <blockquote class="l-en" lang="en">
+    "Thought is no more than a flash of lightning in the midst of a long night.
+    But that flash is everything."
     — Henri Poincaré
   </blockquote>
 
@@ -32,7 +38,7 @@ img: /assets/img/Other.jpeg
       <a href="{{ post.url | relative_url }}" class="post-feed-item {% if post.image %}has-thumb{% endif %}">
         <div class="post-feed-body">
           <div class="post-feed-meta">
-            <span class="post-feed-date">{{ post.date | date: '%b %d, %Y' }} &middot; {{ read_time }} min read</span>
+            <span class="post-feed-date">{% include i18n_date.liquid date=post.date %} &middot; {{ read_time }} {% include t.liquid k="min_read" %}</span>
           </div>
           <h4 class="post-feed-title">{{ post.title }}</h4>
           {% if post.description %}
@@ -50,18 +56,22 @@ img: /assets/img/Other.jpeg
 
   <hr>
 
-  <h2>Books</h2>
-  <blockquote>
+  <h2>{% include t.liquid k="books" %}</h2>
+  <blockquote class="l-es" lang="es">
+    A través de los milenios, un autor te habla con claridad y en silencio dentro de tu cabeza, directamente a ti. La escritura es quizá el mayor de los inventos humanos: une a personas que nunca se conocieron, ciudadanos de épocas lejanas. Los libros rompen las cadenas del tiempo. Un libro es la prueba de que los seres humanos son capaces de hacer magia.
+    <footer class="blockquote-footer">Carl Sagan, Cosmos, capítulo 11: La persistencia de la memoria (1980)</footer>
+  </blockquote>
+  <blockquote class="l-en" lang="en">
     Across the millennia, an author is speaking clearly and silently inside your head, directly to you. Writing is perhaps the greatest of human inventions, binding together people who never knew each other, citizens of distant epochs. Books break the shackles of time. A book is proof that humans are capable of working magic.
     <footer class="blockquote-footer">Carl Sagan, Cosmos, Part 11: The Persistence of Memory (1980)</footer>
   </blockquote>
 
-  <h3>Currently Reading</h3>
+  <h3>{% include t.liquid k="currently_reading" %}</h3>
   <ul>
     <li><em>Actos humanos</em> — Han Kang</li>
   </ul>
 
-  <h3>Recently Read</h3>
+  <h3>{% include t.liquid k="recently_read" %}</h3>
   <ul>
     <li><em>Sobre dios</em> — Byung-Chul Han</li>
     <li><em>A Brief History of Time</em> — Stephen Hawking</li>
@@ -70,7 +80,7 @@ img: /assets/img/Other.jpeg
     <li><em>Ficciones</em> — Jorge Luis Borges</li>
   </ul>
 
-  <h3>To Read</h3>
+  <h3>{% include t.liquid k="to_read" %}</h3>
   <ul>
     <li><em>Simone Weil</em></li>
   </ul>

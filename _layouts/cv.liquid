@@ -5,7 +5,7 @@ layout: default
   <div class="post">
     <header class="post-header">
       <h1 class="post-title">
-        {{ page.title }}
+        {% include t.liquid es=page.title_es en=page.title %}
         {% if page.cv_pdf %}
           <a
             {% if page.cv_pdf contains '://' %}
@@ -22,7 +22,7 @@ layout: default
         {% endif %}
       </h1>
       {% if page.description %}
-        <p class="post-description">{{ page.description }}</p>
+        <p class="post-description">{% include t.liquid es=page.description_es en=page.description %}</p>
       {% endif %}
     </header>
 
@@ -56,7 +56,7 @@ layout: default
   <div class="post">
     <header class="post-header">
       <h1 class="post-title">
-        {{ page.title }}
+        {% include t.liquid es=page.title_es en=page.title %}
         {% if page.cv_pdf %}
           <a
             {% if page.cv_pdf contains '://' %}
@@ -73,52 +73,74 @@ layout: default
         {% endif %}
       </h1>
       {% if page.description %}
-        <p class="post-description">{{ page.description }}</p>
+        <p class="post-description">{% include t.liquid es=page.description_es en=page.description %}</p>
       {% endif %}
     </header>
 
     <article>
       <div class="cv">
-        {% for data in site.data.resume %}
+        {% assign cv_langs = 'es,en' | split: ',' %}
+        {% for section in site.data.resume %}
           {% if site.jsonresume and site.jsonresume.size > 0 %}
-            {% unless site.jsonresume contains data[0] %}
+            {% unless site.jsonresume contains section[0] %}
               {% continue %}
             {% endunless %}
           {% endif %}
-          {% if data[0] == 'meta' or data[1].size == 0 %} {% continue %} {% endif %}
-          <a class="anchor" id="{{ data[0] }}"></a>
+          {% if section[0] == 'meta' or section[1].size == 0 %} {% continue %} {% endif %}
+          {% assign section_key = section[0] %}
+          {% assign section_t = site.data.i18n.cv_sections[section_key] %}
+          <a class="anchor" id="{{ section[0] }}"></a>
           <div class="card mt-3 p-3">
-            <h3 class="card-title font-weight-medium">{{ data[0] | capitalize }}</h3>
-            <div>
-              {% case data[0] %}
-                {% when 'basics' %}
-                  {% include resume/basics.liquid %}
-                {% when 'education' %}
-                  {% include resume/education.liquid %}
-                {% when 'work' %}
-                  {% include resume/work.liquid %}
-                {% when 'volunteer' %}
-                  {% include resume/volunteer.liquid %}
-                {% when 'projects' %}
-                  {% include resume/projects.liquid %}
-                {% when 'awards' %}
-                  {% include resume/awards.liquid %}
-                {% when 'skills' %}
-                  {% include resume/skills.liquid %}
-                {% when 'publications' %}
-                  {% include resume/publications.liquid %}
-                {% when 'languages' %}
-                  {% include resume/languages.liquid %}
-                {% when 'interests' %}
-                  {% include resume/interests.liquid %}
-                {% when 'certificates' %}
-                  {% include resume/certificates.liquid %}
-                {% when 'references' %}
-                  {% include resume/references.liquid %}
-                {% else %}
+            <h3 class="card-title font-weight-medium">
+              {%- if section_t -%}
+                {%- include t.liquid t=section_t -%}
+              {%- else -%}
+                {{- section[0] | capitalize -}}
+              {%- endif -%}
+            </h3>
+            {% comment %} Spanish CV from resume_es.json, English CV from resume.json {% endcomment %}
+            {% for cv_lang in cv_langs %}
+              {% if cv_lang == 'es' %}
+                {% assign cv_resume = site.data.resume_es | default: site.data.resume %}
+              {% else %}
+                {% assign cv_resume = site.data.resume %}
+              {% endif %}
+              {% assign present_label = site.data.i18n.present[cv_lang] %}
+              <div class="l-{{ cv_lang }}" lang="{{ cv_lang }}">
+                {% for data in cv_resume %}
+                  {% if data[0] == section[0] %}
+                    {% case data[0] %}
+                      {% when 'basics' %}
+                        {% include resume/basics.liquid %}
+                      {% when 'education' %}
+                        {% include resume/education.liquid %}
+                      {% when 'work' %}
+                        {% include resume/work.liquid %}
+                      {% when 'volunteer' %}
+                        {% include resume/volunteer.liquid %}
+                      {% when 'projects' %}
+                        {% include resume/projects.liquid %}
+                      {% when 'awards' %}
+                        {% include resume/awards.liquid %}
+                      {% when 'skills' %}
+                        {% include resume/skills.liquid %}
+                      {% when 'publications' %}
+                        {% include resume/publications.liquid %}
+                      {% when 'languages' %}
+                        {% include resume/languages.liquid %}
+                      {% when 'interests' %}
+                        {% include resume/interests.liquid %}
+                      {% when 'certificates' %}
+                        {% include resume/certificates.liquid %}
+                      {% when 'references' %}
+                        {% include resume/references.liquid %}
+                      {% else %}
 
-              {% endcase %}
-            </div>
+                    {% endcase %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endfor %}
           </div>
         {% endfor %}
       </div>

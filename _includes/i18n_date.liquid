@@ -1,0 +1,13 @@
+{%- comment -%}
+  Renders a date in Spanish and English.
+  Usage: {% include i18n_date.liquid date=post.date %}              -> 27 oct 2026 / Oct 27, 2026
+         {% include i18n_date.liquid date=page.date format="long" %} -> 27 de octubre de 2026 / October 27, 2026
+{%- endcomment -%}
+{%- assign d_m = include.date | date: '%-m' | minus: 1 -%}
+{%- assign d_d = include.date | date: '%-d' -%}
+{%- assign d_y = include.date | date: '%Y' -%}
+{%- if include.format == 'long' -%}
+<span class="l-es" lang="es">{{ d_d }} de {{ site.data.i18n.months_long.es[d_m] }} de {{ d_y }}</span><span class="l-en" lang="en">{{ include.date | date: '%B %d, %Y' }}</span>
+{%- else -%}
+<span class="l-es" lang="es">{{ d_d }} {{ site.data.i18n.months_short.es[d_m] }} {{ d_y }}</span><span class="l-en" lang="en">{{ include.date | date: '%b %d, %Y' }}</span>
+{%- endif -%}

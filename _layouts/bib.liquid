@@ -82,7 +82,7 @@
           {% if forloop.first == false -%}
             {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
           {%- endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+          {%- if forloop.last and author_array_limit == author_array_size %}{% include t.liquid k="bib_and" %} {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
           <em>
@@ -103,11 +103,7 @@
       {% endfor %}
       {%- assign more_authors = author_array_size | minus: author_array_limit -%}
 
-      {%- assign more_authors_hide = more_authors | append: ' more author' -%}
       {% if more_authors > 0 %}
-        {%- if more_authors > 1 -%}
-          {% assign more_authors_hide = more_authors_hide | append: 's' %}
-        {%- endif -%}
         {% assign more_authors_show = '' %}
         {%- for author in entry.author_array offset: author_array_limit -%}
           {% assign more_authors_show = more_authors_show | append: author.first | append: ' ' | append: author.last %}
@@ -116,10 +112,18 @@
           {% endunless %}
         {%- endfor -%}
         {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        , and
+        , {% include t.liquid k="bib_and" %}
+        {% assign bib_langs = 'es,en' | split: ',' %}
+        {% for bib_lang in bib_langs %}
+          {%- if more_authors > 1 -%}
+            {%- assign more_authors_hide = more_authors | append: ' ' | append: site.data.i18n.bib_more_authors[bib_lang] -%}
+          {%- else -%}
+            {%- assign more_authors_hide = more_authors | append: ' ' | append: site.data.i18n.bib_more_author[bib_lang] -%}
+          {%- endif -%}
         <span
-          class="more-authors"
-          title="click to view {{ more_authors_hide }}"
+          class="more-authors l-{{ bib_lang }}"
+          lang="{{ bib_lang }}"
+          title="{{ more_authors_hide }}"
           onclick="
               var element = $(this);
               element.attr('title', '');
@@ -135,6 +139,7 @@
         >
           {{- more_authors_hide -}}
         </span>
+        {% endfor %}
       {% endif %}
       {% if entry.annotation %}
         <i
@@ -154,7 +159,7 @@
     {% if entry.type == 'article' %}
       {% capture entrytype %}<em>{{ entry.journal }}</em>{% endcapture %}
     {% elsif proceedings contains entry.type %}
-      {% capture entrytype %}<em>In {{ entry.booktitle }}</em>{% endcapture %}
+      {% capture entrytype %}<em>{% include t.liquid k="bib_in" %} {{ entry.booktitle }}</em>{% endcapture %}
     {% elsif thesis contains entry.type %}
       {% capture entrytype %}<em>{{ entry.school }}</em>{% endcapture %}
     {% else %}
@@ -182,18 +187,22 @@
       {{ periodical | strip }}
     </div>
     <div class="periodical">
-      {{ entry.note | strip }}
+      {% if entry.note_es %}
+        <span class="l-es" lang="es">{{ entry.note_es | strip }}</span><span class="l-en" lang="en">{{ entry.note | strip }}</span>
+      {% else %}
+        {{ entry.note | strip }}
+      {% endif %}
     </div>
 
     <!-- Links/Buttons -->
     <div class="links">
       {% if entry.award %}
         <a class="award btn btn-sm z-depth-0" role="button">
-          {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
+          {%- if entry.award_name %}{{ entry.award_name }}{% else %}{% include t.liquid k="bib_awarded" %}{% endif -%}
         </a>
       {% endif %}
       {% if entry.abstract %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+        <a class="abstract btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_abs" %}</a>
       {% endif %}
       {% if entry.doi %}
         <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
@@ -220,9 +229,9 @@
       {% endif %}
       {% if entry.supp %}
         {% if entry.supp contains '://' %}
-          <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_supp" %}</a>
         {% else %}
-          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_supp" %}</a>
         {% endif %}
       {% endif %}
       {% if entry.video and site.enable_video_embedding %}
@@ -234,7 +243,7 @@
         <a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
       {% endif %}
       {% if entry.code %}
-        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
+        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_code" %}</a>
       {% endif %}
       {% if entry.poster %}
         {% if entry.poster contains '://' %}
@@ -245,13 +254,13 @@
       {% endif %}
       {% if entry.slides %}
         {% if entry.slides contains '://' %}
-          <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+          <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_slides" %}</a>
         {% else %}
-          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_slides" %}</a>
         {% endif %}
       {% endif %}
       {% if entry.website %}
-        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_website" %}</a>
       {% endif %}
     </div>
     {% if site.enable_publication_badges %}

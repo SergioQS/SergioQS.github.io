@@ -1,0 +1,16 @@
+{%- comment -%}
+  Renders a string in Spanish and English; CSS shows only the active language.
+  Usage:
+    {% include t.liquid k="recent_activity" %}            key from _data/i18n.yml
+    {% include t.liquid t=site.data.i18n.categories.x %}  object with es/en
+    {% include t.liquid es="Hola" en="Hello" %}           inline strings
+{%- endcomment -%}
+{%- if include.k -%}
+  {%- assign t_obj = site.data.i18n[include.k] -%}
+{%- else -%}
+  {%- assign t_obj = include.t -%}
+{%- endif -%}
+{%- assign t_es = include.es | default: t_obj.es -%}
+{%- assign t_en = include.en | default: t_obj.en -%}
+{%- assign t_es = t_es | default: t_en -%}
+<span class="l-es" lang="es">{{ t_es }}</span><span class="l-en" lang="en">{{ t_en }}</span>

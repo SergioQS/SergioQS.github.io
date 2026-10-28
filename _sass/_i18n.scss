@@ -1,0 +1,47 @@
+// Spanish / English switch in the navbar
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+
+  .lang-switch-btn {
+    padding: 0.15rem 0.3rem;
+    border: 0;
+    background: none;
+    color: var(--global-text-color-light);
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--global-hover-color);
+    }
+
+    &:focus-visible {
+      outline: 1px solid var(--global-theme-color);
+      outline-offset: 2px;
+    }
+
+    &[aria-pressed="true"] {
+      color: var(--global-theme-color);
+      font-weight: 700;
+    }
+  }
+
+  .lang-switch-sep {
+    color: var(--global-divider-color);
+  }
+}
+
+// On wide screens the switch sits at the far right, after the menu links
+@media (min-width: 992px) {
+  .lang-switch {
+    order: 3;
+    margin-left: 0.75rem;
+    margin-right: 0;
+  }
+}

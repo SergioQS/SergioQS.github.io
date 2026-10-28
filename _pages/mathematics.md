@@ -2,6 +2,7 @@
 layout: default
 permalink: /mathematics/
 title: Mathematics
+title_es: Matemáticas
 nav: true
 nav_order: 2
 img: /assets/img/TormentaMarGalilea.jpg
@@ -16,15 +17,20 @@ img: /assets/img/TormentaMarGalilea.jpg
   {% endif %}
 
   <div class="header-bar">
-    <h2>Essays exploring classical and contemporary works in mathematics.</h2>
+    <h2>{% include t.liquid es="Ensayos que exploran obras clásicas y contemporáneas de las matemáticas." en="Essays exploring classical and contemporary works in mathematics." %}</h2>
   </div>
 
-  <blockquote>
-    "Mathematics is the work of the human mind, which is destined rather to study than to know. To seek the truth rather than to find it."  
+  <blockquote class="l-es" lang="es">
+    "La matemática es obra del espíritu humano, que está destinado más a estudiar que a conocer; a buscar la verdad más que a encontrarla."
+    — Évariste Galois.
+  </blockquote>
+  <blockquote class="l-en" lang="en">
+    "Mathematics is the work of the human mind, which is destined rather to study than to know. To seek the truth rather than to find it."
     — Evariste Galois.
   </blockquote>
 
-  <p>The works of Henri Poincaré, Galois, Riemann, Grothendieck, Artin, Hilbert, Euler, and several other important mathematicians will be explored, with the goal of formulating intriguing questions.</p>
+  <p class="l-es" lang="es">Se explorarán las obras de Henri Poincaré, Galois, Riemann, Grothendieck, Artin, Hilbert, Euler y otros matemáticos importantes, con el objetivo de formular preguntas interesantes.</p>
+  <p class="l-en" lang="en">The works of Henri Poincaré, Galois, Riemann, Grothendieck, Artin, Hilbert, Euler, and several other important mathematicians will be explored, with the goal of formulating intriguing questions.</p>
   
   <div class="post-feed">
     {% assign math_posts = site.posts | where: "categories", "mathematics" %}
@@ -33,7 +39,7 @@ img: /assets/img/TormentaMarGalilea.jpg
       <a href="{{ post.url | relative_url }}" class="post-feed-item {% if post.image %}has-thumb{% endif %}">
         <div class="post-feed-body">
           <div class="post-feed-meta">
-            <span class="post-feed-date">{{ post.date | date: '%b %d, %Y' }} &middot; {{ read_time }} min read</span>
+            <span class="post-feed-date">{% include i18n_date.liquid date=post.date %} &middot; {{ read_time }} {% include t.liquid k="min_read" %}</span>
           </div>
           <h4 class="post-feed-title">{{ post.title }}</h4>
           {% if post.description %}

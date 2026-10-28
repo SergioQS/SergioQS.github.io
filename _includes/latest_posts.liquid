@@ -30,8 +30,8 @@
         <a href="{{ item.url }}" class="post-feed-item" target="_blank" rel="noopener">
           <div class="post-feed-body">
             <div class="post-feed-meta">
-              <span class="post-feed-category" style="color: #d9381e;">Wolfram</span>
-              <span class="post-feed-date">{{ item.date | date: '%b %d, %Y' }}</span>
+              <span class="post-feed-category" data-category="wolfram" style="color: #d9381e;">Wolfram</span>
+              <span class="post-feed-date">{% include i18n_date.liquid date=item.date %}</span>
             </div>
             <h4 class="post-feed-title">{{ item.title }}</h4>
             {% if item.summary %}
@@ -52,9 +52,16 @@
           <div class="post-feed-body">
             <div class="post-feed-meta">
               {% if item.categories %}
-                <span class="post-feed-category">{{ item.categories | first }}</span>
+                {% assign item_category = item.categories | first %}
+                <span class="post-feed-category" data-category="{{ item_category }}">
+                  {%- if site.data.i18n.categories[item_category] -%}
+                    {%- include t.liquid t=site.data.i18n.categories[item_category] -%}
+                  {%- else -%}
+                    {{- item_category -}}
+                  {%- endif -%}
+                </span>
               {% endif %}
-              <span class="post-feed-date">{{ item.date | date: '%b %d, %Y' }}</span>
+              <span class="post-feed-date">{% include i18n_date.liquid date=item.date %}</span>
             </div>
             <h4 class="post-feed-title">{{ item.title }}</h4>
             {% if item.description %}
@@ -70,6 +77,6 @@
       {% endif %}
     {% endfor %}
   {% else %}
-    <p>No posts so far...</p>
+    <p>{% include t.liquid k="no_posts" %}</p>
   {% endif %}
 </div>

@@ -1,0 +1,95 @@
+{%- comment -%}
+  Spanish / English switch. Spanish is the default.
+  - Elements with class "l-es" / "l-en" are shown only in their language.
+  - The chosen language is remembered in localStorage ("site-lang").
+  - ?lang=en or ?lang=es in the URL selects a language directly (handy for sharing links).
+  - Attributes can be translated with data-i18n-attr="placeholder" data-placeholder-es="..." data-placeholder-en="...".
+  This file is included at the end of <head> so the right language is applied before the page is drawn.
+{%- endcomment -%}
+{%- capture i18n_site_title -%}{% if site.title == 'blank' %}{{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}{% else %}{{ site.title }}{% endif %}{%- endcapture -%}
+{%- if page.url == '/blog/index.html' or page.title != 'blank' and page.url != '/' -%}
+  {%- if page.title == null or page.title == '' -%}
+    {%- capture i18n_title_en -%}{{ page.date | date: '%Y' }} | {{ i18n_site_title }}{%- endcapture -%}
+    {%- assign i18n_title_es = i18n_title_en -%}
+  {%- else -%}
+    {%- capture i18n_title_en -%}{{ page.title }} | {{ i18n_site_title }}{%- endcapture -%}
+    {%- capture i18n_title_es -%}{{ page.title_es | default: page.title }} | {{ i18n_site_title }}{%- endcapture -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign i18n_title_en = i18n_site_title -%}
+  {%- assign i18n_title_es = i18n_site_title -%}
+{%- endif -%}
+<style>
+  html[data-lang='en'] .l-es,
+  html:not([data-lang='en']) .l-en {
+    display: none !important;
+  }
+</style>
+<script>
+  (function () {
+    var KEY = 'site-lang';
+    var root = document.documentElement;
+    var titles = { es: {{ i18n_title_es | strip | jsonify }}, en: {{ i18n_title_en | strip | jsonify }} };
+
+    function initialLang() {
+      var lang = null;
+      try {
+        var q = new URLSearchParams(window.location.search).get('lang');
+        if (q === 'es' || q === 'en') {
+          lang = q;
+          try { localStorage.setItem(KEY, q); } catch (e) {}
+        }
+      } catch (e) {}
+      if (!lang) {
+        try { lang = localStorage.getItem(KEY); } catch (e) {}
+      }
+      return lang === 'en' ? 'en' : 'es';
+    }
+
+    function apply(lang) {
+      root.setAttribute('lang', lang);
+      root.setAttribute('data-lang', lang);
+      if (titles[lang]) document.title = titles[lang];
+      var els = document.querySelectorAll('[data-i18n-attr]');
+      for (var i = 0; i < els.length; i++) {
+        var attrs = els[i].getAttribute('data-i18n-attr').split(',');
+        for (var j = 0; j < attrs.length; j++) {
+          var a = attrs[j].trim();
+          var v = els[i].getAttribute('data-' + a + '-' + lang);
+          if (v !== null) els[i].setAttribute(a, v);
+        }
+      }
+      var btns = document.querySelectorAll('[data-set-lang]');
+      for (var k = 0; k < btns.length; k++) {
+        btns[k].setAttribute('aria-pressed', btns[k].getAttribute('data-set-lang') === lang ? 'true' : 'false');
+      }
+    }
+
+    window.setSiteLang = function (lang) {
+      lang = lang === 'en' ? 'en' : 'es';
+      try { localStorage.setItem(KEY, lang); } catch (e) {}
+      try {
+        var url = new URL(window.location.href);
+        if (url.searchParams.has('lang')) {
+          url.searchParams.delete('lang');
+          history.replaceState(null, '', url.toString());
+        }
+      } catch (e) {}
+      apply(lang);
+      try { document.dispatchEvent(new CustomEvent('site-lang-change', { detail: lang })); } catch (e) {}
+    };
+
+    apply(initialLang());
+
+    document.addEventListener('DOMContentLoaded', function () {
+      apply(root.getAttribute('data-lang'));
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('[data-set-lang]') : null;
+        if (btn) {
+          e.preventDefault();
+          window.setSiteLang(btn.getAttribute('data-set-lang'));
+        }
+      });
+    });
+  })();
+</script>

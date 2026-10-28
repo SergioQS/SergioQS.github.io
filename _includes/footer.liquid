@@ -2,12 +2,13 @@
   &copy; Copyright {{ site.time | date: '%Y' }}
   {{ site.first_name }}
   {{ site.middle_name }}
-  {{ site.last_name }}. {{ site.footer_text }}
+  {{ site.last_name }}.
+  <span class="l-es" lang="es">{{ site.footer_text_es | default: site.footer_text }}</span><span class="l-en" lang="en">{{ site.footer_text }}</span>
   {% if site.impressum_path %}
     <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
   {% endif %}
   {% if site.last_updated %}
-    Last updated: {{ 'now' | date: '%B %d, %Y' }}.
+    {% include t.liquid k="last_updated" %} {% include i18n_date.liquid date='now' format="long" %}.
   {% endif %}
 {% endcapture %}
 
