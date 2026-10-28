@@ -14,7 +14,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding-top: 6rem;
+  padding-top: 2.25rem;
   padding-bottom: 3rem;
 }
 
@@ -303,7 +303,7 @@ a.news-title {
 // Responsive adjustments
 @media (max-width: 768px) {
   .hero-fullscreen {
-    padding-top: 4rem;
+    padding-top: 2rem;
     background-attachment: scroll;
   }
 
@@ -352,7 +352,7 @@ a.news-title {
 
 @media (max-width: 576px) {
   .hero-fullscreen {
-    padding-top: 3rem;
+    padding-top: 1.5rem;
   }
 
   .hero-content {

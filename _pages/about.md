@@ -9,9 +9,9 @@ classes: about-wide
 img: /assets/img/KochStar.jpg
 img_light: /assets/img/WhiteKochStar.jpg # cover used in light mode
 subtitle: >
-  Mathematical and computational essays exploring structure across abstract algebra, topology, and thought.
+  Mathematics, computation, and philosophy: articles and essays on the structure of the mathematical universe, the limits of code, and the nature of thought.
 subtitle_es: >
-  Ensayos matemáticos y computacionales que exploran la estructura a través del álgebra abstracta, la topología y el pensamiento.
+  Matemáticas, computación y filosofía: Artículos y ensayos sobre la estructura del universo matemático, los límites del código y la naturaleza del pensamiento.
 latest_posts:
   enabled: true
   scrollable: true

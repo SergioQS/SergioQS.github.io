@@ -9,6 +9,7 @@ related_posts: false
 citation: true
 img_id: 2
 image: assets/img/2.png
+published: false # draft: not built or listed anywhere; set to true (or delete this line) to publish it
 ---
 
 {::nomarkdown}

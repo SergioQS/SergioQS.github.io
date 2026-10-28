@@ -569,11 +569,29 @@ footer.sticky-bottom {
   background-color: transparent;
   border: none;
   color: var(--global-text-color);
+
+  // Labels ("Sitio web", "Correo"...) stay on one line; long values (the email on phones) may break
+  td:first-child {
+    white-space: nowrap;
+  }
+
+  td:last-child {
+    overflow-wrap: anywhere;
+  }
 }
 
 .date-column {
   width: 75px;
   transform: translateX(-15px) translateY(-5px);
+
+  // Dates such as "2025.08 - Actualidad" are wider than this column: use smaller text
+  // and let the date wrap onto a second line instead of running over the title.
+  .badge {
+    max-width: 100%;
+    font-size: 0.6rem;
+    line-height: 1.35;
+    white-space: normal;
+  }
 }
 
 // Repositories
