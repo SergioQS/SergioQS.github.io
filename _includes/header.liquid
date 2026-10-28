@@ -21,8 +21,34 @@
             aria-label="Cambiar a modo claro"
             aria-pressed="false"
           >
-            <i class="ti ti-sun theme-toggle-icon-sun" aria-hidden="true"></i>
-            <i class="ti ti-moon theme-toggle-icon-moon" aria-hidden="true"></i>
+            <!-- Inline SVG icons (Tabler, MIT) so the button never depends on an icon font loading -->
+            <svg
+              class="theme-toggle-icon-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+            </svg>
+            <svg
+              class="theme-toggle-icon-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+            </svg>
           </button>
         {% endif %}
       </div>

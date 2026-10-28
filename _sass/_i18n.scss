@@ -68,6 +68,12 @@
     outline-offset: 2px;
   }
 
+  svg {
+    display: block;
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
   // Dark mode shows the sun (switch to light); light mode shows the moon.
   .theme-toggle-icon-moon {
     display: none;
@@ -80,7 +86,7 @@ html[data-theme="light"] .theme-toggle {
   }
 
   .theme-toggle-icon-moon {
-    display: inline;
+    display: block;
   }
 }
 
