@@ -10,11 +10,11 @@ img: /assets/img/LionResting.jpg
 
 <div class="post">
 
-  {% if page.img %}
+{% if page.img %}
     <div class="section-hero">
       <img src="{{ page.img | relative_url }}" alt="{{ page.title }}" loading="eager" />
     </div>
-  {% endif %}
+{% endif %}
 
   <div class="header-bar">
     <h2>{% include t.liquid es="Ensayos computacionales sobre modelos generativos, computación cuántica y más." en="Computational essays in generative models, quantum computing, and more." %}</h2>
@@ -29,7 +29,7 @@ img: /assets/img/LionResting.jpg
     — Kurt Godel.
   </blockquote>
 
-  {% assign postlist = site.posts | where: "categories", "computation" %}
+{% assign postlist = site.posts | where: "categories", "computation" %}
 
   <div class="post-feed">
     {% for post in postlist %}
@@ -53,8 +53,8 @@ img: /assets/img/LionResting.jpg
     {% endfor %}
   </div>
 
-  {% if page.pagination.enabled %}
+{% if page.pagination.enabled %}
     {% include pagination.liquid %}
-  {% endif %}
+{% endif %}
 
 </div>

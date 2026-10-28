@@ -22,4 +22,3 @@ image: assets/img/4.png
   <p>Sorry, the notebook you are looking for does not exist.</p>
 {% endif %}
 {:/nomarkdown}
-

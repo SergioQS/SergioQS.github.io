@@ -1,12 +1,12 @@
 // Robust TikZJax setup for distill/other layouts
-(function() {
+(function () {
   const MAX_RENDER_RETRIES = 8;
   const RENDER_RETRY_DELAY = 400; // ms
 
   function addStyles() {
-    if (document.getElementById('tikzjax-override-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'tikzjax-override-styles';
+    if (document.getElementById("tikzjax-override-styles")) return;
+    const style = document.createElement("style");
+    style.id = "tikzjax-override-styles";
     style.innerHTML = `
 /* Container for tikz blocks: shrink-to-fit and center */
 .tikzjax-box {
@@ -62,13 +62,13 @@ svg.tikzjax tspan {
 
   function wrapScripts() {
     const scripts = Array.from(document.querySelectorAll('script[type="text/tikz"]'));
-    scripts.forEach(script => {
+    scripts.forEach((script) => {
       // if already wrapped, skip
-      if (script.parentElement && script.parentElement.classList.contains('tikz-center')) return;
-      const box = document.createElement('div');
-      box.className = 'tikzjax-box';
-      const center = document.createElement('div');
-      center.className = 'tikz-center';
+      if (script.parentElement && script.parentElement.classList.contains("tikz-center")) return;
+      const box = document.createElement("div");
+      box.className = "tikzjax-box";
+      const center = document.createElement("div");
+      center.className = "tikz-center";
       script.parentNode.insertBefore(box, script);
       box.appendChild(center);
       center.appendChild(script);
@@ -83,32 +83,32 @@ svg.tikzjax tspan {
     if (window.tikzjax) {
       try {
         // call any commonly-exposed render methods
-        if (typeof window.tikzjax.refresh === 'function') window.tikzjax.refresh();
-        else if (typeof window.tikzjax.render === 'function') window.tikzjax.render();
-        else if (typeof window.tikzjax.parse === 'function') window.tikzjax.parse();
-        else if (typeof window.tikzjax.init === 'function') window.tikzjax.init();
-        else console.info('tikzjax present but no known render method, keys:', Object.keys(window.tikzjax));
+        if (typeof window.tikzjax.refresh === "function") window.tikzjax.refresh();
+        else if (typeof window.tikzjax.render === "function") window.tikzjax.render();
+        else if (typeof window.tikzjax.parse === "function") window.tikzjax.parse();
+        else if (typeof window.tikzjax.init === "function") window.tikzjax.init();
+        else console.info("tikzjax present but no known render method, keys:", Object.keys(window.tikzjax));
       } catch (e) {
-        console.warn('tikzjax render call threw:', e);
+        console.warn("tikzjax render call threw:", e);
       }
     } else {
       // tikzjax not loaded yet
       if (retry < MAX_RENDER_RETRIES) {
-        console.info('tikzjax not available yet, retry', retry + 1);
+        console.info("tikzjax not available yet, retry", retry + 1);
         setTimeout(() => tryRenderAll(retry + 1), RENDER_RETRY_DELAY);
         return;
       } else {
-        console.warn('tikzjax not found after retries — ensure tikzjax.js is loaded before or via this script includes.');
+        console.warn("tikzjax not found after retries — ensure tikzjax.js is loaded before or via this script includes.");
         // Try to load from local vendor as last resort
         if (retry === MAX_RENDER_RETRIES) {
-          console.info('Attempting to load tikzjax from local vendor...');
-          const script = document.createElement('script');
-          script.src = '/assets/vendor/tikzjax/tikzjax.js';
+          console.info("Attempting to load tikzjax from local vendor...");
+          const script = document.createElement("script");
+          script.src = "/assets/vendor/tikzjax/tikzjax.js";
           script.onload = () => {
-            console.info('Local tikzjax loaded, retrying render...');
+            console.info("Local tikzjax loaded, retrying render...");
             setTimeout(() => tryRenderAll(0), 100);
           };
-          script.onerror = () => console.warn('Local tikzjax also failed to load');
+          script.onerror = () => console.warn("Local tikzjax also failed to load");
           document.head.appendChild(script);
         }
       }
@@ -116,14 +116,14 @@ svg.tikzjax tspan {
 
     // Post-process any generated SVGs to ensure visible size and attributes
     setTimeout(() => {
-      const svgs = Array.from(document.querySelectorAll('svg.tikzjax'));
+      const svgs = Array.from(document.querySelectorAll("svg.tikzjax"));
       if (svgs.length === 0) {
         // maybe rendering hasn't happened yet; one more retry if possible
         if (retry < MAX_RENDER_RETRIES) {
-          console.info('No svg.tikzjax found yet, retrying render... attempt', retry + 1);
+          console.info("No svg.tikzjax found yet, retrying render... attempt", retry + 1);
           setTimeout(() => tryRenderAll(retry + 1), RENDER_RETRY_DELAY);
         } else {
-          console.warn('No svg.tikzjax elements found after retries.');
+          console.warn("No svg.tikzjax elements found after retries.");
         }
         return;
       }
@@ -131,70 +131,68 @@ svg.tikzjax tspan {
       svgs.forEach((svg, i) => {
         try {
           // Remove explicit height to respect aspect ratio
-          svg.removeAttribute('height');
+          svg.removeAttribute("height");
           // Do not force 100% width; let it size to its intrinsic bbox
-          svg.removeAttribute('width');
-          svg.style.width = 'auto';
-          svg.setAttribute('preserveAspectRatio', svg.getAttribute('preserveAspectRatio') || 'xMidYMid meet');
+          svg.removeAttribute("width");
+          svg.style.width = "auto";
+          svg.setAttribute("preserveAspectRatio", svg.getAttribute("preserveAspectRatio") || "xMidYMid meet");
 
           // If the svg has a viewBox, we can compute a sensible min-height from it
-          const vb = svg.getAttribute('viewBox');
+          const vb = svg.getAttribute("viewBox");
           if (vb) {
             const parts = vb.split(/\s+/).map(Number);
             if (parts.length === 4 && !isNaN(parts[3]) && parts[3] > 0) {
               const vbHeight = parts[3];
               // approximate min-height: small fraction of vb height in px (fallback)
               const minH = Math.max(40, Math.round(vbHeight * 0.25));
-              svg.style.minHeight = (minH) + 'px';
+              svg.style.minHeight = minH + "px";
             }
           }
 
           // if computed height is tiny, force a bigger min-height
           const clientH = svg.getBoundingClientRect().height;
           if (!clientH || clientH < 12) {
-            svg.style.minHeight = '80px';
-            svg.style.height = 'auto';
+            svg.style.minHeight = "80px";
+            svg.style.height = "auto";
           }
 
           // override any theme filters
-          svg.style.filter = 'none';
-          svg.style.webkitFilter = 'none';
-          svg.style.background = 'white';
+          svg.style.filter = "none";
+          svg.style.webkitFilter = "none";
+          svg.style.background = "white";
 
           // ensure centering wrapper adopts exact intrinsic size
-          const center = svg.closest('.tikz-center');
+          const center = svg.closest(".tikz-center");
           if (center) {
             // If viewBox present, use it to size the wrapper exactly
-            const vb = svg.getAttribute('viewBox');
+            const vb = svg.getAttribute("viewBox");
             if (vb) {
               const p = vb.split(/\s+/).map(Number);
               if (p.length === 4 && p[2] > 0 && p[3] > 0) {
                 // Add 50px to the intrinsic width so the image is a touch roomier
                 var extra = 50; // <- change this if you want more/less
-                center.style.width = (Math.round(p[2]) + extra) + 'px';
-                center.style.height = 'auto';
-            
+                center.style.width = Math.round(p[2]) + extra + "px";
+                center.style.height = "auto";
+
                 // Make sure wrapper never exceeds the available width (responsive)
-                center.style.maxWidth = 'calc(100% - 20px)'; // leave some horizontal breathing room on small screens
-                center.style.boxSizing = 'content-box';
+                center.style.maxWidth = "calc(100% - 20px)"; // leave some horizontal breathing room on small screens
+                center.style.boxSizing = "content-box";
               }
-            }
-             else {
+            } else {
               // Fallback to computed bbox if available soon after render
               const bb = svg.getBoundingClientRect();
               if (bb && bb.width > 0) {
-                center.style.width = Math.round(bb.width) + 'px';
+                center.style.width = Math.round(bb.width) + "px";
               }
             }
-            center.style.background = 'white';
+            center.style.background = "white";
           }
-
         } catch (e) {
-          console.warn('Error post-processing tikz svg', e);
+          console.warn("Error post-processing tikz svg", e);
         }
       });
 
-      console.info('tikzjax: processed', svgs.length, 'svg(s)');
+      console.info("tikzjax: processed", svgs.length, "svg(s)");
     }, 150); // short delay after render
   }
 
@@ -207,18 +205,21 @@ svg.tikzjax tspan {
     setTimeout(() => tryRenderAll(0), 120);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
 
   // Observe dynamic content additions and try to render new tikz blocks
-  if (typeof MutationObserver !== 'undefined') {
+  if (typeof MutationObserver !== "undefined") {
     const observer = new MutationObserver((mutations) => {
       let added = false;
       for (const m of mutations) {
-        if (m.addedNodes && m.addedNodes.length > 0) { added = true; break; }
+        if (m.addedNodes && m.addedNodes.length > 0) {
+          added = true;
+          break;
+        }
       }
       if (added) {
         // schedule a re-render attempt

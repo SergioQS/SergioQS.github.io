@@ -3,11 +3,14 @@
   Usage: {% include interactive_embed.liquid src="/assets/interactive/demo.html" height="500" label="Run Demo" %}
 {% endcomment %}
 {% assign embed_src = include.src %}
-{% assign embed_height = include.height | default: "500" %}
-{% assign embed_label = include.label | default: "Run interactive demo" %}
+{% assign embed_height = include.height | default: '500' %}
+{% assign embed_label = include.label | default: 'Run interactive demo' %}
 
 <div class="interactive-placeholder" data-src="{{ embed_src }}" data-height="{{ embed_height }}">
-  <div style="display:flex; align-items:center; justify-content:center; height:{{ embed_height }}px; border:1px solid var(--global-divider-color); border-radius:8px; background:var(--global-card-bg-color); cursor:pointer;" class="interactive-activate">
+  <div
+    style="display:flex; align-items:center; justify-content:center; height:{{ embed_height }}px; border:1px solid var(--global-divider-color); border-radius:8px; background:var(--global-card-bg-color); cursor:pointer;"
+    class="interactive-activate"
+  >
     <span style="color:var(--global-theme-color); font-size:1rem; font-family:var(--global-text-color);">&#9654; {{ embed_label }}</span>
   </div>
 </div>

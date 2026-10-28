@@ -9,17 +9,17 @@
   color-scheme: dark;
   --global-bg-color: #000000;
   --global-code-bg-color: #111111;
-  --global-text-color: #FFFFFF;
-  --global-text-color-light: #AAAAAA;
+  --global-text-color: #ffffff;
+  --global-text-color-light: #aaaaaa;
   --global-theme-color: #{$ochre-color};
-  --global-hover-color: #D4892E;
+  --global-hover-color: #d4892e;
   --global-hover-text-color: #{$white-color};
   --global-footer-bg-color: #000000;
   --global-footer-text-color: #{$grey-color-light};
   --global-footer-link-color: #{$white-color};
   --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #1A1A1A;
-  --global-card-bg-color: #0A0A0A;
+  --global-divider-color: #1a1a1a;
+  --global-card-bg-color: #0a0a0a;
   --global-highlight-color: #{$red-color-dark};
   --global-back-to-top-bg-color: rgba(
     #{color.channel($white-color, "red", $space: rgb)},
@@ -49,19 +49,19 @@
 // The accent is a deeper ochre than in dark mode so text keeps a 5:1+ contrast.
 @mixin theme-light {
   color-scheme: light;
-  --global-bg-color: #FBFAF7;
-  --global-code-bg-color: #F2EFE9;
-  --global-text-color: #1F1D1A;
-  --global-text-color-light: #5E5A54;
-  --global-theme-color: #9A5617;
+  --global-bg-color: #fbfaf7;
+  --global-code-bg-color: #f2efe9;
+  --global-text-color: #1f1d1a;
+  --global-text-color-light: #5e5a54;
+  --global-theme-color: #9a5617;
   --global-hover-color: #{$ochre-color};
   --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #FBFAF7;
-  --global-footer-text-color: #5E5A54;
-  --global-footer-link-color: #1F1D1A;
-  --global-distill-app-color: #5E5A54;
-  --global-divider-color: #E5E0D7;
-  --global-card-bg-color: #FFFFFF;
+  --global-footer-bg-color: #fbfaf7;
+  --global-footer-text-color: #5e5a54;
+  --global-footer-link-color: #1f1d1a;
+  --global-distill-app-color: #5e5a54;
+  --global-divider-color: #e5e0d7;
+  --global-card-bg-color: #ffffff;
   --global-highlight-color: #{$red-color-dark};
   --global-back-to-top-bg-color: rgba(
     #{color.channel($black-color, "red", $space: rgb)},

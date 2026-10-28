@@ -30,6 +30,7 @@ The formalization of compositions of n-ary relations provides a coherent framewo
       <a href="{{ pdf_path }}" target="_blank" rel="noopener">Open in new tab</a> ·
       <a href="{{ pdf_path }}" download>Download PDF</a>
     </p>
+
   </div>
 {% else %}
   <p>Sorry, the PDF you are looking for does not exist.</p>

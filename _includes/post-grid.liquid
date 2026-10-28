@@ -7,7 +7,7 @@
           {% if post.categories %}
             <span class="post-feed-category">{{ post.categories | first }}</span>
           {% endif %}
-          <span class="post-feed-date">{{ post.date | date: "%b %d, %Y" }}</span>
+          <span class="post-feed-date">{{ post.date | date: '%b %d, %Y' }}</span>
         </div>
         <h4 class="post-feed-title">{{ post.title }}</h4>
         {% if post.description %}

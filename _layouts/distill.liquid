@@ -97,7 +97,7 @@
       </d-appendix>
 
       {% if page.bibliography %}
-      <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
+        <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
       {% endif %}
 
       <d-article>
@@ -120,6 +120,5 @@
 
     <!-- JavaScripts -->
     {% include distill_scripts.liquid %}
-
   </body>
 </html>

@@ -20,14 +20,14 @@ A homeomorphism $\phi:X \rightarrow \phi(X) \subset Y $ is called an **embedding
 
 ## Knots and n-knots
 
-To analyze a knot, we do not need to concentrate on the endpoints of the rope, and we would not want to maneuver the endpoints 
- the crossings; taking this into account every time a knot is created, we could put the endpoints in a distant position, sending them to infinity, or we could connect the endpoints of the rope.  
+To analyze a knot, we do not need to concentrate on the endpoints of the rope, and we would not want to maneuver the endpoints
+the crossings; taking this into account every time a knot is created, we could put the endpoints in a distant position, sending them to infinity, or we could connect the endpoints of the rope.  
 We will in fact connect the endpoints and we will think of knots having no thickness so that their cross-section is a single point. For these reasons every knot will be a way to entangle $\mathbb{S}^{1}$ in euclidean space $\mathbb{R}^{3}$ or the $3$-sphere $\mathbb{S}^{3}$.
 
 **Claim.**  
 An embedding $\phi: \mathbb{S}^{1} \rightarrow \mathbb{S}^{3}$ captures the intuitive notion of a **knot**.
 
-However we will define knots in a higher dimensional setting, not only as an immersion of $\mathbb{S}^{1}$  into $\mathbb{S}^{3}$ but a immersions of arbitrary spheres into arbitrary spheres.
+However we will define knots in a higher dimensional setting, not only as an immersion of $\mathbb{S}^{1}$ into $\mathbb{S}^{3}$ but a immersions of arbitrary spheres into arbitrary spheres.
 
 **Definition.**  
 An embedding $\phi: \mathbb{S}^{n} \rightarrow \mathbb{S}^{m}$ is called a **(n,m) knot**.
@@ -147,7 +147,7 @@ First we need to choose a homeomorphism $\phi:\mathbb{S}^{1} \rightarrow \mathbb
 
 If you tie a knot with a string, you will notice that it can assume various shapes, even when you are tying the same type of knot, it will have a different appearance every time. To mathematically study this phenomenon we will delve into the concepts of knot presentations and Reidemeister moves.
 
-A *Projection* is a two-dimensional representation of a knot in which we do not lose information about its structure.
+A _Projection_ is a two-dimensional representation of a knot in which we do not lose information about its structure.
 
 **Definition.**  
 $P:\mathbb{R}^{3}\rightarrow\mathbb{R}^{2}$ is a **projection** whenever $p(x,y,z)=(x,y)$.
@@ -170,7 +170,7 @@ As we observed in the previous section, you can have projections with an arbitra
 
 For this reason, one of the primary questions in knot theory revolves around devising methods for classifying knots. In particular, consider the following task:
 
-> *Devise a method to establish if a given knot projection represents the unknot.*
+> _Devise a method to establish if a given knot projection represents the unknot._
 
 This task is quite challenging, but there is a method, conceived by Wolfgang Haken in 1961, that can establish whether a given knot is, in fact, the unknot. For further information see (Haken, 1961).
 
@@ -220,9 +220,10 @@ The granny knot is composite.
 **Definition.**  
 $K$ is a Prime knot if it is not composite.
 
-**Examples.**  
-- The figure eight knot is prime.  
-- The Cinquefoil knot is prime.  
+**Examples.**
+
+- The figure eight knot is prime.
+- The Cinquefoil knot is prime.
 - The three-twist knot is prime.
 
 ## Level preserving and Ambient isotopies
@@ -240,9 +241,13 @@ Planar isotopies are continuous transformations of the projection of a knot.
 There exists a variety of knot invariants; in this chapter we will study some of them.
 
 ### Tricoloration of knots
+
 ### Crossing number
+
 ### Fundamental group of a knot
+
 ### Jones Polynomial
+
 ### Alexander polynomial
 
 Thumbnail image: Tait tabulated scores of knots and wrote about their properties. This page is from an 1885 paper.

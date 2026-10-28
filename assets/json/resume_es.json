@@ -42,9 +42,7 @@
       "startDate": "2024-10-01",
       "endDate": "2025-06-01",
       "summary": "Desarrollo y evaluación de problemas matemáticos para el entrenamiento de IA.",
-      "highlights": [
-        "Desarrollé y evalué datos de problemas matemáticos para el entrenamiento de IA."
-      ]
+      "highlights": ["Desarrollé y evalué datos de problemas matemáticos para el entrenamiento de IA."]
     }
   ],
   "volunteer": [
@@ -66,9 +64,7 @@
       "startDate": "2024-07-01",
       "endDate": "",
       "summary": "Desarrollé el proyecto 'Compositional Paths on Hypergraphs' (caminos composicionales en hipergrafos) bajo la mentoría de investigadores de Wolfram.",
-      "highlights": [
-        "Proyecto de la Wolfram Summer School 2024 sobre caminos composicionales en hipergrafos."
-      ]
+      "highlights": ["Proyecto de la Wolfram Summer School 2024 sobre caminos composicionales en hipergrafos."]
     }
   ],
   "education": [
@@ -234,21 +230,12 @@
     {
       "name": "Matemáticas",
       "icon": "",
-      "keywords": [
-        "Topología",
-        "Álgebra abstracta",
-        "Hipergrafos"
-      ]
+      "keywords": ["Topología", "Álgebra abstracta", "Hipergrafos"]
     },
     {
       "name": "Ciencias de la Computación",
       "icon": "",
-      "keywords": [
-        "Computación cuántica",
-        "Aprendizaje automático",
-        "Aprendizaje automático cuántico",
-        "Modelos generativos cuánticos"
-      ]
+      "keywords": ["Computación cuántica", "Aprendizaje automático", "Aprendizaje automático cuántico", "Modelos generativos cuánticos"]
     }
   ],
   "references": [],
@@ -256,9 +243,7 @@
     {
       "name": "Compositional Paths on Hypergraphs",
       "summary": "Proyecto desarrollado en la Wolfram Summer School 2024 que investiga álgebras de caminos composicionales en hipergrafos.",
-      "highlights": [
-        "Proyecto de la Wolfram Summer School 2024, con mentoría de investigadores de Wolfram."
-      ],
+      "highlights": ["Proyecto de la Wolfram Summer School 2024, con mentoría de investigadores de Wolfram."],
       "startDate": "2024-07-01",
       "endDate": "2024-09-01",
       "url": ""

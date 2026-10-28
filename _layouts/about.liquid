@@ -77,7 +77,8 @@ layout: default
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
         <div class="contact-note">
-          <span class="l-es" lang="es">{{ site.contact_note_es | default: site.contact_note }}</span><span class="l-en" lang="en">{{ site.contact_note }}</span>
+          <span class="l-es" lang="es">{{ site.contact_note_es | default: site.contact_note }}</span
+          ><span class="l-en" lang="en">{{ site.contact_note }}</span>
         </div>
       </div>
     {% endif %}
@@ -90,15 +91,17 @@ layout: default
 
 {% if page.latest_posts and page.latest_posts.enabled %}
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var btns = document.querySelectorAll('.activity-filter');
       var items = document.querySelectorAll('#activity-feed .post-feed-item');
-      btns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          btns.forEach(function(b) { b.classList.remove('active'); });
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btns.forEach(function (b) {
+            b.classList.remove('active');
+          });
           btn.classList.add('active');
           var f = btn.getAttribute('data-filter');
-          items.forEach(function(item) {
+          items.forEach(function (item) {
             var cat = item.querySelector('.post-feed-category');
             var catText = cat ? (cat.getAttribute('data-category') || cat.textContent).trim().toLowerCase() : '';
             if (f === 'all') {
@@ -106,9 +109,12 @@ layout: default
             } else if (f === 'wolfram') {
               item.style.display = catText.indexOf('wolfram') !== -1 ? '' : 'none';
             } else if (f === 'other') {
-              item.style.display = (catText !== 'mathematics' && catText !== 'computation' && catText !== 'computations' && catText.indexOf('wolfram') === -1) ? '' : 'none';
+              item.style.display =
+                catText !== 'mathematics' && catText !== 'computation' && catText !== 'computations' && catText.indexOf('wolfram') === -1
+                  ? ''
+                  : 'none';
             } else {
-              item.style.display = (catText === f || catText === f + 's') ? '' : 'none';
+              item.style.display = catText === f || catText === f + 's' ? '' : 'none';
             }
           });
         });

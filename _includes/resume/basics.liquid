@@ -12,7 +12,9 @@
       <td class="p-1 pr-2 font-weight-bold">
         {% assign basics_key = content[0] %}
         {% assign basics_label = site.data.i18n.cv_basics[basics_key][cv_lang] %}
-        <b>{% if basics_label %}{{ basics_label }}{% else %}{{ content[0] | capitalize }}{% endif %}</b>
+        <b>
+          {%- if basics_label %}{{ basics_label }}{% else %}{{ content[0] | capitalize }}{% endif -%}
+        </b>
       </td>
       <td class="p-1 pl-2 font-weight-light text">
         {% if content[0] == 'url' %}

@@ -5,7 +5,7 @@ $(document).ready(function () {
     horizontalOrder: true,
     itemSelector: ".grid-item",
     columnWidth: ".col-lg-4",
-    percentPosition: true
+    percentPosition: true,
   });
   // Layout Masonry after each image loads
   $grid.imagesLoaded().progress(function () {

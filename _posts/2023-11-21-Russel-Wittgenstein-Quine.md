@@ -29,6 +29,7 @@ Tercera bitácora para la materia "Epistemología e historia de las matemáticas
       <a href="{{ pdf_path }}" target="_blank" rel="noopener">Abrir en nueva pestaña</a> ·
       <a href="{{ pdf_path }}" download>Descargar PDF</a>
     </p>
+
   </div>
 {% else %}
   <p>Sorry, the PDF you are looking for does not exist.</p>

@@ -23,7 +23,7 @@ $light-purple-color: color.adjust($purple-color, $lightness: 25%);
 $pink-color: #f92080 !default;
 $pink-color-light: #ffdddd !default;
 $yellow-color: #efcc00 !default;
-$ochre-color: #B3681E !default;
+$ochre-color: #b3681e !default;
 
 $grey-color: #828282 !default;
 $grey-color-light: color.adjust($grey-color, $lightness: 40%);
@@ -60,4 +60,4 @@ $base-font-size: 14px !default;
 $h1-font-size: 1.8rem !default;
 $h2-font-size: 1.4rem !default;
 $h3-font-size: 1.15rem !default;
-$h4-font-size: 1.0rem !default;
+$h4-font-size: 1rem !default;

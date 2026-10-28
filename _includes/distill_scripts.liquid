@@ -219,8 +219,11 @@
   <script async defer src="https://openpanel.dev/op1.js"></script>
 {% endif %}
 {% if site.enable_goatcounter_analytics and site.goatcounter %}
-  <script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+  <script
+    data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count"
+    async
+    src="//gc.zgo.at/count.js"
+  ></script>
 {% endif %}
 
 {% if site.enable_progressbar %}
@@ -298,8 +301,10 @@
 {% endif %}
 
 {% if page.tikzjax %}
-  <!-- Use local vendor tikzjax (preferred). If you don't have the vendor file,
-       change this to your CDN of choice but keep only one source. -->
+  <!--
+    Use local vendor tikzjax (preferred). If you don't have the vendor file,
+    change this to your CDN of choice but keep only one source.
+  -->
   <script
     defer
     src="{{ '/assets/vendor/tikzjax/tikzjax.js' | relative_url }}"

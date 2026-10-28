@@ -106,7 +106,7 @@ $(document).ready(function () {
         "data-jp-theme-light": "true",
         "data-jp-theme-name": "JupyterLab Light",
       });
-      
+
       // Re-apply the light theme CSS after load
       $(this).contents().find("head").append(lightThemeCSS);
     });

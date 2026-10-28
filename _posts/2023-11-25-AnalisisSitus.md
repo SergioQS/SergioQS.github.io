@@ -10,6 +10,7 @@ citation: true
 img_id: 6
 image: assets/img/6.png
 ---
+
 Proyecto final para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
 
 En 1895, Henri poincaré publica publica su "Analysis Situs", un trabajo pionero que sentó las bases de la topología algebraica.
@@ -18,7 +19,6 @@ En este artículo, Poincaré introdujo herramientas conceptuales y técnicas inn
 Poincaré complementó su obra original con cinco suplementos, publicados entre 1899 y 1904, en los que refinó y amplió sus ideas iniciales. La obra de Poincaré, con su marcada visión y rigor, se convirtió en un punto de partida imprescindible para el desarrollo de numerosas teorías en matemáticas modernas.
 
 El siguiente ensayo es una primera lectura y aproximación a ideas subyacentes a creaciones de Henri Poincaré, conectando y usando ideas de algunos filósofos de las matemáticas como Lautman, Desanti, Chatelet etc.
-
 
 {% assign pdf_path = 'assets/pdf/Poincaré_y_la_caracterización_de_esferas.pdf' | relative_url %}
 {% capture pdf_exists %}{% file_exists assets/pdf/Poincaré_y_la_caracterización_de_esferas.pdf %}{% endcapture %}
@@ -37,9 +37,8 @@ El siguiente ensayo es una primera lectura y aproximación a ideas subyacentes a
       <a href="{{ pdf_path }}" target="_blank" rel="noopener">Abrir en nueva pestaña</a> ·
       <a href="{{ pdf_path }}" download>Descargar PDF</a>
     </p>
+
   </div>
 {% else %}
   <p>Sorry, the PDF you are looking for does not exist.</p>
 {% endif %}
-
-

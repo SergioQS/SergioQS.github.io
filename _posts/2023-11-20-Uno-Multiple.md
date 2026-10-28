@@ -10,6 +10,7 @@ citation: true
 img_id: 12
 image: assets/img/12.webp
 ---
+
 Primera bitácora para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
 
 {% assign pdf_path = 'assets/pdf/Bit4.pdf' | relative_url %}
@@ -29,6 +30,7 @@ Primera bitácora para la materia "Epistemología e historia de las matemáticas
       <a href="{{ pdf_path }}" target="_blank" rel="noopener">Abrir en nueva pestaña</a> ·
       <a href="{{ pdf_path }}" download>Descargar PDF</a>
     </p>
+
   </div>
 {% else %}
   <p>Sorry, the PDF you are looking for does not exist.</p>

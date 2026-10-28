@@ -10,11 +10,11 @@ img: /assets/img/TormentaMarGalilea.jpg
 
 <div class="post">
 
-  {% if page.img %}
+{% if page.img %}
     <div class="section-hero">
       <img src="{{ page.img | relative_url }}" alt="{{ page.title }}" loading="eager" />
     </div>
-  {% endif %}
+{% endif %}
 
   <div class="header-bar">
     <h2>{% include t.liquid es="Ensayos que exploran obras clásicas y contemporáneas de las matemáticas." en="Essays exploring classical and contemporary works in mathematics." %}</h2>
@@ -31,7 +31,7 @@ img: /assets/img/TormentaMarGalilea.jpg
 
   <p class="l-es" lang="es">Se explorarán las obras de Henri Poincaré, Galois, Riemann, Grothendieck, Artin, Hilbert, Euler y otros matemáticos importantes, con el objetivo de formular preguntas interesantes.</p>
   <p class="l-en" lang="en">The works of Henri Poincaré, Galois, Riemann, Grothendieck, Artin, Hilbert, Euler, and several other important mathematicians will be explored, with the goal of formulating intriguing questions.</p>
-  
+
   <div class="post-feed">
     {% assign math_posts = site.posts | where: "categories", "mathematics" %}
     {% for post in math_posts %}

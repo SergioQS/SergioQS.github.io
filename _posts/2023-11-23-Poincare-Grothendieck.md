@@ -10,6 +10,7 @@ citation: true
 img_id: 8
 image: assets/img/8.png
 ---
+
 Cuarta bitácora para la materia "Epistemología e historia de las matemáticas" con el profesor Fernando Zalamea Traba.
 
 {::nomarkdown}
@@ -30,6 +31,7 @@ Cuarta bitácora para la materia "Epistemología e historia de las matemáticas"
       <a href="{{ pdf_path }}" target="_blank" rel="noopener">Abrir en nueva pestaña</a> ·
       <a href="{{ pdf_path }}" download>Descargar PDF</a>
     </p>
+
   </div>
 {% else %}
   <p>Sorry, the PDF you are looking for does not exist.</p>

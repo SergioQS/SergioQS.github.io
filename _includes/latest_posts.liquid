@@ -7,26 +7,26 @@
     {% endif %}
 
     {% comment %} Build a unified list: blog posts + wolfram entries {% endcomment %}
-    {% assign all_items = "" | split: "" %}
+    {% assign all_items = '' | split: '' %}
 
     {% for item in site.posts limit: latest_posts_limit %}
-      {% assign entry = "" | split: "" %}
+      {% assign entry = '' | split: '' %}
       {% assign entry = entry | push: item %}
       {% assign all_items = all_items | concat: entry %}
     {% endfor %}
 
     {% if site.data.wolfram.size > 0 %}
       {% for item in site.data.wolfram %}
-        {% assign entry = "" | split: "" %}
+        {% assign entry = '' | split: '' %}
         {% assign entry = entry | push: item %}
         {% assign all_items = all_items | concat: entry %}
       {% endfor %}
     {% endif %}
 
-    {% assign all_items = all_items | sort: "date" | reverse %}
+    {% assign all_items = all_items | sort: 'date' | reverse %}
 
     {% for item in all_items %}
-      {% if item.source == "wolfram" %}
+      {% if item.source == 'wolfram' %}
         <a href="{{ item.url }}" class="post-feed-item" target="_blank" rel="noopener">
           <div class="post-feed-body">
             <div class="post-feed-meta">
@@ -48,7 +48,13 @@
             {% assign post_url = item.redirect | relative_url %}
           {% endif %}
         {% endif %}
-        <a href="{{ post_url }}" class="post-feed-item {% if item.image %}has-thumb{% endif %}" {% if item.redirect contains '://' %}target="_blank" rel="noopener"{% endif %}>
+        <a
+          href="{{ post_url }}"
+          class="post-feed-item {% if item.image %}has-thumb{% endif %}"
+          {% if item.redirect contains '://' %}
+            target="_blank" rel="noopener"
+          {% endif %}
+        >
           <div class="post-feed-body">
             <div class="post-feed-meta">
               {% if item.categories %}

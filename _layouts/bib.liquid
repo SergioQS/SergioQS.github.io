@@ -120,25 +120,25 @@
           {%- else -%}
             {%- assign more_authors_hide = more_authors | append: ' ' | append: site.data.i18n.bib_more_author[bib_lang] -%}
           {%- endif -%}
-        <span
-          class="more-authors l-{{ bib_lang }}"
-          lang="{{ bib_lang }}"
-          title="{{ more_authors_hide }}"
-          onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
-              var cursorPosition = 0;
-              var textAdder = setInterval(function(){
-                element.html(more_authors_text.substring(0, cursorPosition + 1));
-                if (++cursorPosition == more_authors_text.length){
-                  clearInterval(textAdder);
-                }
-            }, '{{ site.more_authors_animation_delay }}');
-          "
-        >
-          {{- more_authors_hide -}}
-        </span>
+          <span
+            class="more-authors l-{{ bib_lang }}"
+            lang="{{ bib_lang }}"
+            title="{{ more_authors_hide }}"
+            onclick="
+                var element = $(this);
+                element.attr('title', '');
+                var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
+                var cursorPosition = 0;
+                var textAdder = setInterval(function(){
+                  element.html(more_authors_text.substring(0, cursorPosition + 1));
+                  if (++cursorPosition == more_authors_text.length){
+                    clearInterval(textAdder);
+                  }
+              }, '{{ site.more_authors_animation_delay }}');
+            "
+          >
+            {{- more_authors_hide -}}
+          </span>
         {% endfor %}
       {% endif %}
       {% if entry.annotation %}
@@ -231,7 +231,9 @@
         {% if entry.supp contains '://' %}
           <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_supp" %}</a>
         {% else %}
-          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_supp" %}</a>
+          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">
+            {%- include t.liquid k="bib_supp" -%}
+          </a>
         {% endif %}
       {% endif %}
       {% if entry.video and site.enable_video_embedding %}
@@ -256,7 +258,9 @@
         {% if entry.slides contains '://' %}
           <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_slides" %}</a>
         {% else %}
-          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">{% include t.liquid k="bib_slides" %}</a>
+          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">
+            {%- include t.liquid k="bib_slides" -%}
+          </a>
         {% endif %}
       {% endif %}
       {% if entry.website %}
@@ -367,7 +371,7 @@
       <div class="bibtex hidden">
         {% highlight bibtex %}
         {{- entry.bibtex | hideCustomBibtex -}}
-        {% endhighlight %}
+      {% endhighlight %}
       </div>
     {% endif %}
 

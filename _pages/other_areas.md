@@ -10,11 +10,11 @@ img: /assets/img/Other.jpeg
 
 <div class="post">
 
-  {% if page.img %}
+{% if page.img %}
     <div class="section-hero">
       <img src="{{ page.img | relative_url }}" alt="{{ page.title }}" loading="eager" />
     </div>
-  {% endif %}
+{% endif %}
 
   <div class="header-bar">
     <h2>{% include t.liquid es="Filosofía, literatura, física y más." en="Philosophy, literature, physics and more." %}</h2>
