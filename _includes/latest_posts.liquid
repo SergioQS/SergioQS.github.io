@@ -53,9 +53,10 @@
             <div class="post-feed-meta">
               {% if item.categories %}
                 {% assign item_category = item.categories | first %}
+                {% assign item_category_t = site.data.i18n.categories[item_category] %}
                 <span class="post-feed-category" data-category="{{ item_category }}">
-                  {%- if site.data.i18n.categories[item_category] -%}
-                    {%- include t.liquid t=site.data.i18n.categories[item_category] -%}
+                  {%- if item_category_t -%}
+                    {%- include t.liquid t=item_category_t -%}
                   {%- else -%}
                     {{- item_category -}}
                   {%- endif -%}
