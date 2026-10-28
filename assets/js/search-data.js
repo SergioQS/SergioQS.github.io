@@ -241,13 +241,6 @@ ninja.data = [{
           window.open("mailto:%73%65%72%67%69%6F%71%75%69%72%6F%67%61%73%61%6E%64%6F%76%61%6C@%77%6F%6C%66%72%61%6D%69%6E%73%74%69%74%75%74%65.%63%6F%6D", "_blank");
         },
       },{
-        id: 'social-inspire',
-        title: 'Inspire HEP',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://inspirehep.net/authors/1010907", "_blank");
-        },
-      },{
         id: 'social-linkedin',
         title: 'LinkedIn',
         section: 'Socials',
@@ -261,4 +254,30 @@ ninja.data = [{
         handler: () => {
           window.open("https://scholar.google.com/citations?user=Rd5YvZ4AAAAJ", "_blank");
         },
-      },];
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
