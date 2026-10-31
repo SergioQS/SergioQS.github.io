@@ -1,0 +1,47 @@
+{%- comment -%}
+  A Jupyter notebook shown in a post. In the post's front matter:
+    notebook: assets/jupyter/MyNotebook.ipynb
+  Buttons: open in Colab, view on GitHub, download the .ipynb, show/hide all code.
+  The cells come from _plugins/notebooks.rb; styles in _sass/_notebook.scss; behaviour in assets/js/notebook.js.
+{%- endcomment -%}
+{%- assign nb_path = include.path | prepend: '/' | replace: '//', '/' | remove_first: '/' -%}
+{%- assign nb_repo = site.notebooks.repository -%}
+{%- assign nb_branch = site.notebooks.branch | default: 'main' -%}
+<div class="notebook">
+  <div class="notebook-toolbar">
+    <span class="notebook-label">
+      <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+      Notebook{% if page.notebook_language %} &middot; {{ page.notebook_language }}{% endif %}
+    </span>
+    <div class="notebook-actions">
+      {% if nb_repo %}
+        <a
+          class="notebook-btn notebook-btn-primary"
+          href="https://colab.research.google.com/github/{{ nb_repo }}/blob/{{ nb_branch }}/{{ nb_path }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
+          {% include t.liquid k="nb_open_colab" %}
+        </a>
+        <a class="notebook-btn" href="https://github.com/{{ nb_repo }}/blob/{{ nb_branch }}/{{ nb_path }}" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          {% include t.liquid k="nb_view_github" %}
+        </a>
+      {% endif %}
+      <a class="notebook-btn" href="{{ nb_path | relative_url }}" download>
+        <i class="fa-solid fa-download" aria-hidden="true"></i>
+        {% include t.liquid k="nb_download" %}
+      </a>
+      <button type="button" class="notebook-btn notebook-toggle-code" aria-pressed="false">
+        <i class="fa-solid fa-code" aria-hidden="true"></i>
+        <span class="nb-when-shown">{% include t.liquid k="nb_hide_code" %}</span>
+        <span class="nb-when-hidden">{% include t.liquid k="nb_show_code" %}</span>
+      </button>
+    </div>
+  </div>
+  <div class="notebook-body">
+    {% notebook_cells nb_path %}
+  </div>
+</div>
+<script defer src="{{ '/assets/js/notebook.js' | relative_url | bust_file_cache }}"></script>

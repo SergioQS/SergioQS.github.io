@@ -25,14 +25,17 @@ $(document).ready(function () {
     });
     var navSelector = "#toc-sidebar";
     var $myNav = $(navSelector);
-    Toc.init($myNav);
-    // keep both languages in TOC entries whose heading has Spanish/English versions
-    $myNav.find("a.nav-link").each(function () {
-      var heading = document.getElementById(($(this).attr("href") || "").slice(1));
-      if (heading && heading.querySelector(".l-es")) {
-        $(this).html(heading.innerHTML);
-      }
-    });
+    // posts with a notebook: list the notebook's headings (assets/js/notebook.js)
+    if (!(window.buildNotebookToc && window.buildNotebookToc($myNav[0]))) {
+      Toc.init($myNav);
+      // keep both languages in TOC entries whose heading has Spanish/English versions
+      $myNav.find("a.nav-link").each(function () {
+        var heading = document.getElementById(($(this).attr("href") || "").slice(1));
+        if (heading && heading.querySelector(".l-es")) {
+          $(this).html(heading.innerHTML);
+        }
+      });
+    }
     $("body").scrollspy({
       target: navSelector,
     });

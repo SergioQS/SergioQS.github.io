@@ -34,6 +34,13 @@ more_articles: { es: "Aquí tienes otros artículos que podrían interesarte:", 
 subscribe: { es: "Suscríbete para recibir los próximos artículos:", en: "Subscribe to be notified of future articles:" }
 no_wolfram_posts: { es: "Aún no hay publicaciones en Wolfram Community.", en: "No Wolfram Community posts yet." }
 
+# Jupyter notebooks in posts (_includes/notebook.liquid)
+nb_open_colab: { es: "Abrir en Colab", en: "Open in Colab" }
+nb_view_github: { es: "Ver en GitHub", en: "View on GitHub" }
+nb_download: { es: "Descargar .ipynb", en: "Download .ipynb" }
+nb_hide_code: { es: "Ocultar código", en: "Hide code" }
+nb_show_code: { es: "Mostrar código", en: "Show code" }
+
 # Books (Other page)
 books: { es: "Libros", en: "Books" }
 currently_reading: { es: "Leyendo actualmente", en: "Currently Reading" }

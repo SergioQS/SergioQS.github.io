@@ -80,6 +80,9 @@ layout: default
     {% endif %}
     <div id="markdown-content">
       {{ content }}
+      {% if page.notebook %}
+        {% include notebook.liquid path=page.notebook %}
+      {% endif %}
     </div>
   </article>
 

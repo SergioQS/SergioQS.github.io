@@ -1,0 +1,18 @@
+{#-
+  Notebook cells for posts (used by _plugins/notebooks.rb).
+  Based on nbconvert's "basic" template: no page around the cells, no In/Out prompts,
+  and each code input sits in a <details> so readers can fold it.
+  A code cell tagged "hide-input" in Jupyter starts folded.
+-#}
+{%- extends 'basic/index.html.j2' -%}
+
+{% block input_group -%}
+{%- set lang = (nb.metadata.get('language_info') or {}).get('name', '') -%}
+<details class="nb-input"{% if 'hide-input' not in (cell.metadata.get('tags') or []) %} open{% endif %}>
+<summary class="nb-input-header"><span class="nb-lang">{{ lang | capitalize }}</span></summary>
+{{ super() }}
+</details>
+{%- endblock input_group %}
+
+{#- Widgets need a running kernel: leave them out instead of showing an empty box -#}
+{%- block data_widget_view scoped %}{%- endblock data_widget_view -%}

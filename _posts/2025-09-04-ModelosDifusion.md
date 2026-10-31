@@ -9,16 +9,7 @@ related_posts: false
 citation: true
 img_id: 3
 image: assets/img/3.gif
+notebook: assets/jupyter/Modelos_difusion_Julia.ipynb # shown below the post (see _includes/notebook.liquid)
+toc:
+  sidebar: left
 ---
-
-{::nomarkdown}
-{% assign jupyter_path = 'assets/jupyter/Modelos_difusion_Julia.ipynb' | relative_url %}
-{% capture notebook_exists %}{% file_exists assets/jupyter/Modelos_difusion_Julia.ipynb %}{% endcapture %}
-{% if notebook_exists == 'true' %}
-  <div class="embedded-notebook">
-    {% jupyter_notebook jupyter_path %}
-  </div>
-{% else %}
-  <p>Sorry, the notebook you are looking for does not exist.</p>
-{% endif %}
-{:/nomarkdown}

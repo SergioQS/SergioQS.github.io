@@ -208,6 +208,12 @@ keep_files:
   - CNAME
   - .nojekyll
 
+# Jupyter notebooks shown in posts (front matter `notebook: assets/jupyter/X.ipynb`).
+# The "Abrir en Colab" and "Ver en GitHub" buttons open the .ipynb from this repository.
+notebooks:
+  repository: SergioQS/SergioQS.github.io
+  branch: main
+
 # Plug-ins
 plugins:
   - jekyll-archives-v2

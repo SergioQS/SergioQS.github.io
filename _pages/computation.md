@@ -33,7 +33,7 @@ img: /assets/img/LionResting.jpg
 
   <div class="post-feed">
     {% for post in postlist %}
-      {% comment %} notebook_words: text and code of embedded notebooks (_plugins/notebook-reading-time.rb) {% endcomment %}
+      {% comment %} notebook_words: text and code of embedded notebooks (_plugins/notebooks.rb) {% endcomment %}
       {% assign words = post.content | number_of_words | plus: post.notebook_words %}
       {% assign read_time = words | divided_by: 180 | plus: 1 %}
       <a href="{{ post.url | relative_url }}" class="post-feed-item {% if post.image %}has-thumb{% endif %}">

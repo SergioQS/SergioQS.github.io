@@ -10,16 +10,7 @@ citation: true
 img_id: 2
 image: assets/img/2.png
 published: false # draft: not built or listed anywhere; set to true (or delete this line) to publish it
+notebook: assets/jupyter/QRBM_Implementation_and_Theory.ipynb # shown below the post (see _includes/notebook.liquid)
+toc:
+  sidebar: left
 ---
-
-{::nomarkdown}
-{% assign jupyter_path = 'assets/jupyter/QRBM_Implementation_and_Theory.ipynb' | relative_url %}
-{% capture notebook_exists %}{% file_exists assets/jupyter/QRBM_Implementation_and_Theory.ipynb %}{% endcapture %}
-{% if notebook_exists == 'true' %}
-  <div class="embedded-notebook">
-    {% jupyter_notebook jupyter_path %}
-  </div>
-{% else %}
-  <p>Sorry, the notebook you are looking for does not exist.</p>
-{% endif %}
-{:/nomarkdown}
