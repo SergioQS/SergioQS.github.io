@@ -1,0 +1,30 @@
+{%- comment -%}
+  A PDF shown inside a post, with links to open or download it.
+    {% include pdf.liquid path="assets/pdf/MyFile.pdf" %}
+    {% include pdf.liquid path="assets/pdf/Poster.pdf" pages="single" %}   one-page document (poster)
+  Styles: .embedded-pdf in _sass/_custom-home.scss.
+{%- endcomment -%}
+{%- assign pdf_path = include.path | relative_url -%}
+{%- capture pdf_exists -%}{% file_exists {{ include.path }} %}{%- endcapture -%}
+{%- if pdf_exists == 'true' -%}
+  <div class="embedded-pdf">
+    <object
+      class="{% if include.pages == 'single' %}pdf-single-page{% else %}pdf-multi-page{% endif %}"
+      data="{{ pdf_path }}"
+      type="application/pdf"
+      width="100%"
+    >
+      <p>
+        {% include t.liquid k="pdf_no_embed" %}
+        <a href="{{ pdf_path }}" target="_blank" rel="noopener">{% include t.liquid k="pdf_open" %}</a> &middot;
+        <a href="{{ pdf_path }}" download>{% include t.liquid k="pdf_download" %}</a>
+      </p>
+    </object>
+    <p class="pdf-links">
+      <a href="{{ pdf_path }}" target="_blank" rel="noopener">{% include t.liquid k="pdf_open" %}</a> &middot;
+      <a href="{{ pdf_path }}" download>{% include t.liquid k="pdf_download" %}</a>
+    </p>
+  </div>
+{%- else -%}
+  <p>{% include t.liquid k="pdf_missing" %} ({{ include.path }})</p>
+{%- endif -%}

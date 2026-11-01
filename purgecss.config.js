@@ -3,4 +3,28 @@ module.exports = {
   css: ["_site/assets/css/*.css"],
   output: "_site/assets/css/",
   skippedContentGlobs: ["_site/assets/**/*.html"],
+  // Styles of post "cells" and notebooks: keep them even before a published page uses them,
+  // because the writing panel's preview (/admin) loads this same main.css
+  safelist: {
+    standard: [
+      /^language-/,
+      /^highlighter-rouge$/,
+      /^ansi-/,
+      /^nb-/,
+      /^notebook/,
+      /^output/,
+      /^text_cell/,
+      /^code_cell$/,
+      /^cell$/,
+      /^inner_cell$/,
+      /^input/,
+      /^rendered/,
+      /^embedded-pdf$/,
+      /^pdf-/,
+      /^caption$/,
+      /^post-hero$/,
+      /^code-hidden$/,
+    ],
+    greedy: [/mjx-container/],
+  },
 };

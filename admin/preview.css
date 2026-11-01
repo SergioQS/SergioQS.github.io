@@ -1,0 +1,134 @@
+/* Preview pane of the writing panel (loaded after the site's main.css).
+   The preview colours code with highlight.js; these colours copy the site's Pygments themes
+   (native in dark mode, github in light mode) so code looks the same as on the published page. */
+
+body {
+  padding: 1.5rem 1rem 4rem;
+}
+
+.preview-note {
+  margin: 0 0 1.5rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--global-theme-color);
+  background: var(--global-code-bg-color);
+  color: var(--global-text-color-light);
+  font-size: 0.8rem;
+}
+
+.preview-note.preview-error {
+  border-left-color: var(--global-danger-block);
+}
+
+/* dark (native) */
+.hljs-keyword,
+.hljs-literal,
+.hljs-selector-tag,
+.hljs-meta .hljs-keyword {
+  color: #6ab825;
+  font-weight: bold;
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-char.escape_ {
+  color: #ed9d13;
+}
+.hljs-number {
+  color: #3677a9;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #999999;
+  font-style: italic;
+}
+.hljs-built_in,
+.hljs-type {
+  color: #24909d;
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-section {
+  color: #447fcf;
+}
+.hljs-title.class_ {
+  color: #447fcf;
+  text-decoration: underline;
+}
+.hljs-meta,
+.hljs-symbol {
+  color: #ffa500;
+}
+.hljs-variable,
+.hljs-template-variable {
+  color: #40ffff;
+}
+.hljs-attr,
+.hljs-params {
+  color: #d0d0d0;
+}
+
+/* light (github) */
+html[data-theme="light"] .hljs-keyword,
+html[data-theme="light"] .hljs-literal,
+html[data-theme="light"] .hljs-selector-tag,
+html[data-theme="light"] .hljs-meta .hljs-keyword {
+  color: #000000;
+  font-weight: bold;
+}
+html[data-theme="light"] .hljs-string,
+html[data-theme="light"] .hljs-regexp,
+html[data-theme="light"] .hljs-char.escape_ {
+  color: #d01040;
+}
+html[data-theme="light"] .hljs-number {
+  color: #009999;
+}
+html[data-theme="light"] .hljs-comment,
+html[data-theme="light"] .hljs-quote {
+  color: #999988;
+  font-style: italic;
+}
+html[data-theme="light"] .hljs-built_in {
+  color: #0086b3;
+}
+html[data-theme="light"] .hljs-type,
+html[data-theme="light"] .hljs-title.class_ {
+  color: #445588;
+  font-weight: bold;
+  text-decoration: none;
+}
+html[data-theme="light"] .hljs-title,
+html[data-theme="light"] .hljs-title.function_,
+html[data-theme="light"] .hljs-section {
+  color: #990000;
+  font-weight: bold;
+}
+html[data-theme="light"] .hljs-meta,
+html[data-theme="light"] .hljs-symbol {
+  color: #3c5d5d;
+}
+html[data-theme="light"] .hljs-variable,
+html[data-theme="light"] .hljs-template-variable {
+  color: #008080;
+}
+html[data-theme="light"] .hljs-attr,
+html[data-theme="light"] .hljs-params {
+  color: inherit;
+}
+
+/* MathJax SVG output (the hidden copy for screen readers needs MathJax's own CSS, so leave it out) */
+mjx-assistive-mml {
+  display: none !important;
+}
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+}

@@ -20,25 +20,4 @@ Poincaré complementó su obra original con cinco suplementos, publicados entre 
 
 El siguiente ensayo es una primera lectura y aproximación a ideas subyacentes a creaciones de Henri Poincaré, conectando y usando ideas de algunos filósofos de las matemáticas como Lautman, Desanti, Chatelet etc.
 
-{% assign pdf_path = 'assets/pdf/Poincaré_y_la_caracterización_de_esferas.pdf' | relative_url %}
-{% capture pdf_exists %}{% file_exists assets/pdf/Poincaré_y_la_caracterización_de_esferas.pdf %}{% endcapture %}
-{% if pdf_exists == 'true' %}
-  <div class="embedded-pdf">
-    <object class="pdf-multi-page" data="{{ pdf_path }}" type="application/pdf" width="100%">
-      <p>
-        Tu navegador no muestra PDFs embebidos.
-        Puedes <a href="{{ pdf_path }}" target="_blank" rel="noopener">abrirlo en una nueva pestaña</a>
-        o <a href="{{ pdf_path }}" download>descargar el PDF</a>.
-      </p>
-    </object>
-
-    <!-- Enlaces visibles (útil para móviles o navegadores sin soporte) -->
-    <p class="pdf-links">
-      <a href="{{ pdf_path }}" target="_blank" rel="noopener">Abrir en nueva pestaña</a> ·
-      <a href="{{ pdf_path }}" download>Descargar PDF</a>
-    </p>
-
-  </div>
-{% else %}
-  <p>Sorry, the PDF you are looking for does not exist.</p>
-{% endif %}
+{% include pdf.liquid path="assets/pdf/Poincaré_y_la_caracterización_de_esferas.pdf" %}

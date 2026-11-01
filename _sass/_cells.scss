@@ -1,0 +1,126 @@
+// "Cells" in posts written in markdown (by hand or in the writing panel, /admin):
+//   ```julia ... ```    code: a box with the language on top (copy button from copy_code.js)
+//   ```output ... ```   text printed by the code above (_plugins/rouge-output.rb)
+// Same look as the code cells of notebooks (_sass/_notebook.scss).
+
+$cell-languages: (
+  "python": "Python",
+  "py": "Python",
+  "julia": "Julia",
+  "jl": "Julia",
+  "wolfram": "Wolfram",
+  "mathematica": "Wolfram",
+  "wl": "Wolfram",
+  "r": "R",
+  "c": "C",
+  "cpp": "C++",
+  "java": "Java",
+  "javascript": "JavaScript",
+  "js": "JavaScript",
+  "typescript": "TypeScript",
+  "bash": "Bash",
+  "shell": "Shell",
+  "sh": "Shell",
+  "latex": "LaTeX",
+  "tex": "LaTeX",
+  "sql": "SQL",
+  "haskell": "Haskell",
+  "rust": "Rust",
+  "go": "Go",
+  "matlab": "MATLAB",
+  "json": "JSON",
+  "yaml": "YAML",
+  "html": "HTML",
+  "css": "CSS",
+  "markdown": "Markdown",
+);
+
+#markdown-content {
+  div.highlighter-rouge {
+    margin: 0 0 1.25rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 6px;
+    background: var(--global-code-bg-color);
+    overflow: hidden;
+
+    // language label (set per language below)
+    &::before {
+      display: block;
+      padding: 0.2rem 0.75rem;
+      border-bottom: 1px solid var(--global-divider-color);
+      color: var(--global-text-color-light);
+      font-family: $font-family-sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+    }
+
+    .highlight,
+    pre.highlight {
+      margin: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    pre.highlight {
+      padding: 0.75rem 1rem;
+      color: var(--global-text-color);
+      font-size: 0.74rem;
+      line-height: 1.55;
+      overflow-x: auto;
+    }
+
+    pre,
+    pre * {
+      font-family: $font-family-monospace;
+    }
+  }
+
+  @each $lang, $label in $cell-languages {
+    div.language-#{$lang}::before {
+      content: $label;
+    }
+  }
+
+  // ```output: printed text, tucked under the code cell above
+  div.language-output {
+    margin-top: -0.85rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+
+    &::before {
+      content: none;
+    }
+
+    pre.highlight {
+      padding: 0.45rem 0.9rem;
+      border-left: 2px solid var(--global-divider-color);
+      font-size: 0.72rem;
+      line-height: 1.5;
+      white-space: pre;
+    }
+  }
+
+  // Figures (figure.liquid) and their captions
+  figure {
+    margin: 1.5rem 0;
+
+    img {
+      border-radius: 4px;
+    }
+
+    figcaption.caption {
+      margin-top: 0.5rem;
+      color: var(--global-text-color-light);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  }
+
+  // Wide equations scroll sideways instead of widening the page
+  mjx-container[display="true"] {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}

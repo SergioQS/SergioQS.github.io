@@ -34,6 +34,12 @@ more_articles: { es: "Aquí tienes otros artículos que podrían interesarte:", 
 subscribe: { es: "Suscríbete para recibir los próximos artículos:", en: "Subscribe to be notified of future articles:" }
 no_wolfram_posts: { es: "Aún no hay publicaciones en Wolfram Community.", en: "No Wolfram Community posts yet." }
 
+# PDFs in posts (_includes/pdf.liquid)
+pdf_no_embed: { es: "Tu navegador no muestra PDFs incrustados.", en: "Your browser does not show embedded PDFs." }
+pdf_open: { es: "Abrir en una pestaña nueva", en: "Open in a new tab" }
+pdf_download: { es: "Descargar PDF", en: "Download PDF" }
+pdf_missing: { es: "No se encontró el PDF.", en: "The PDF was not found." }
+
 # Jupyter notebooks in posts (_includes/notebook.liquid)
 nb_open_colab: { es: "Abrir en Colab", en: "Open in Colab" }
 nb_view_github: { es: "Ver en GitHub", en: "View on GitHub" }
