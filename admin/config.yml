@@ -121,15 +121,13 @@ collections:
         required: false
         hint: "Apágalo para ocultar la entrada sin borrarla."
       - name: toc
-        label: Índice lateral
+        label: Índice
         widget: object
-        collapsed: true
         required: false
-        summary: "{{fields.sidebar}}"
-        hint: "Las entradas con notebook lo tienen siempre."
+        hint: "Botón «Índice» que abre la lista de secciones. Las entradas con notebook lo tienen siempre."
         fields:
           - name: sidebar
-            label: Posición
+            label: Lado del botón
             widget: select
             required: false
             options:
