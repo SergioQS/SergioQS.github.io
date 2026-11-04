@@ -120,8 +120,7 @@ html[data-theme] [class*="AuthenticationPage"]::after {
 }
 
 /* ---------- top bar ---------- */
-html[data-theme] [class*="-AppHeader"],
-html[data-theme] header[class*="AppHeader"] {
+html[data-theme] header[class*="-AppHeader"] {
   background: var(--p-surface);
   border-bottom: 1px solid var(--p-border);
   box-shadow: none;
@@ -175,7 +174,8 @@ html[data-theme] [class*="-CollectionTopContainer-card"] {
   box-shadow: var(--p-shadow);
 }
 
-html[data-theme] [class*="-ListCard-card"]:hover {
+html[data-theme] [class*="-ListCard-card"]:hover,
+html[data-theme] [class*="-ListCardLink"]:hover {
   background: var(--p-hover);
 }
 
@@ -275,18 +275,83 @@ html[data-theme] [class*="-ControlPaneContainer"] {
   color: var(--p-text);
 }
 
+/* field names: small plain labels above each field (no tabs) */
 html[data-theme] [class*="-ControlContainer"] > label,
 html[data-theme] [class*="-FieldLabel"] {
-  background: var(--p-surface-2);
+  padding: 0 0 0.4rem 0.05rem;
+  background: transparent;
   color: var(--p-text-light);
   border: 0;
-  border-radius: 4px 4px 0 0;
+  border-radius: 0;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.07em;
 }
 
+/* "(opcional)" */
+html[data-theme] [class*="-FieldLabel"] > span {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  opacity: 0.75;
+}
+
+html[data-theme] [class*="-FieldLabel"]::before,
 html[data-theme] [class*="-FieldLabel"]::after {
   display: none;
+}
+
+/* the fields themselves: thin border, rounded, less padding */
+html[data-theme] [class*="-ControlContainer"] > :not([class*="-ControlTopbar"]):not([class*="-ControlHint"]):not([class*="-ControlErrors"]) {
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+html[data-theme] [class*="-ControlContainer"] > input,
+html[data-theme] [class*="-ControlContainer"] > textarea,
+html[data-theme] [class*="-ControlContainer"] > [class*="-DateTimeControl"],
+html[data-theme] [class*="-ControlContainer"] > div:has([class*="-FileWidgetButton"]),
+html[data-theme] [class*="-ControlContainer"] > div:has(> [class*="-ToggleContainer"]) {
+  padding: 0.6rem 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+html[data-theme] [class*="-ControlContainer"] [class*="-control"] {
+  min-height: 2.6rem;
+  padding: 0.1rem 0 0.1rem 0.3rem;
+  font-size: 0.92rem;
+}
+
+/* grouped fields (Índice): no fold bar, the field inside is shown directly */
+html[data-theme] [class*="-ControlContainer"] > div:has(> [class*="-TopBarContainer"]) {
+  padding: 0.75rem 0.85rem 0.85rem;
+}
+
+html[data-theme] [class*="-ControlContainer"] > div > [class*="-TopBarContainer"] {
+  display: none;
+}
+
+html[data-theme] [class*="-ControlContainer"] > div:has(> [class*="-TopBarContainer"]) [class*="-ControlContainer"] {
+  margin-top: 0;
+}
+
+html[data-theme] [class*="-ControlHint"] {
+  font-size: 0.72rem;
+}
+
+/* "Ahora" / "Limpiar" next to the date */
+html[data-theme] [class*="-ControlContainer"] [class*="-DateTimeControl"] button[class*="-button"] {
+  padding: 0.1rem 0.5rem;
+  background: transparent;
+  color: var(--p-accent);
+  font-size: 0.72rem;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+html[data-theme] [class*="-ControlContainer"] [class*="-DateTimeControl"] button[class*="-button"]:hover {
+  background: var(--p-accent-soft);
 }
 
 html[data-theme] [class*="-ControlContainer"] > div:not([class*="ControlTopbar"]):not([class*="ControlHint"]):not([class*="Error"]) {
@@ -296,9 +361,10 @@ html[data-theme] [class*="-ControlContainer"] > div:not([class*="ControlTopbar"]
 }
 
 html[data-theme] [class*="-ControlContainer"]:focus-within > label,
+html[data-theme] [class*="-ControlContainer"]:focus-within [class*="-FieldLabel"],
 html[data-theme] [class*="-FieldLabel"][class*="Active"] {
-  background: var(--p-accent);
-  color: var(--p-on-accent);
+  background: transparent;
+  color: var(--p-accent);
 }
 
 html[data-theme] input,
@@ -371,18 +437,51 @@ html[data-theme] [class*="-ControlContainer"] button[class*="-button"] {
   box-shadow: none;
 }
 
-/* Guardar / Publicar / Eliminar */
+html[data-theme] [class*="-FileWidgetButton"] {
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+html[data-theme] [class*="-ControlContainer"] button[class*="-FileWidgetButtonRemove"] {
+  background: transparent;
+  color: var(--p-danger);
+}
+
+/* top bar of the editor: Guardar / Estado / Publicar / Eliminar — small and quiet */
 html[data-theme] [class*="-ToolbarButton"],
-html[data-theme] [class*="-PublishedToolbarButton"],
+html[data-theme] [class*="-ToolbarContainer"] [class*="-StyledDropdownButton"],
 html[data-theme] [class*="-PublishButton"] {
-  border-radius: 4px;
+  height: 32px;
+  margin: 0 0.3rem;
+  padding: 0 0.85rem;
+  border-radius: 6px;
   box-shadow: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 32px;
+  white-space: nowrap;
+}
+
+html[data-theme] [class*="-ToolbarContainer"] [class*="-StyledDropdownButton"] {
+  padding-right: 1.9rem;
+}
+
+html[data-theme] [class*="-ToolbarContainer"] [class*="-StyledDropdownButton"]::after {
+  top: calc(50% - 2px);
+  right: 0.7rem;
+  border-width: 4px;
 }
 
 html[data-theme] [class*="-ToolbarButton"][class*="SaveButton"],
 html[data-theme] [class*="-SaveButton"] {
   background: var(--p-accent);
   color: var(--p-on-accent);
+}
+
+html[data-theme] [class*="-ToolbarButton"][class*="SaveButton"]:hover:not(:disabled) {
+  background: var(--p-accent-hover);
 }
 
 html[data-theme] [class*="-ToolbarButton"]:disabled {
@@ -392,8 +491,13 @@ html[data-theme] [class*="-ToolbarButton"]:disabled {
 
 html[data-theme] [class*="-DeleteButton"],
 html[data-theme] [class*="-ToolbarButton"][class*="Delete"] {
-  background: var(--p-danger-soft);
+  background: transparent;
   color: var(--p-danger);
+}
+
+html[data-theme] [class*="-DeleteButton"]:hover,
+html[data-theme] [class*="-ToolbarButton"][class*="Delete"]:hover {
+  background: var(--p-danger-soft);
 }
 
 html[data-theme] [class*="-PublishedToolbarButton"],
@@ -401,13 +505,59 @@ html[data-theme] [class*="-ToolbarDropdown"] [class*="-StyledDropdownButton"],
 html[data-theme] [class*="-StatusDropdownButton"],
 html[data-theme] [class*="-PublishDropDownButton"],
 html[data-theme] [class*="-PublishedButton"] {
-  background: var(--p-accent-soft);
+  background: transparent;
+  color: var(--p-text);
+  border: 1px solid var(--p-border);
+}
+
+html[data-theme] [class*="-ToolbarDropdown"] [class*="-StyledDropdownButton"]:hover {
+  border-color: var(--p-accent);
   color: var(--p-accent);
 }
 
 html[data-theme] [class*="-SavedButton"],
 html[data-theme] [class*="-BackStatusUnchanged"] {
   color: var(--p-success);
+}
+
+/* back link: "← Entradas" with the save state under it */
+html[data-theme] [class*="-BackCollection"] {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+html[data-theme] [class*="-BackStatus"] {
+  margin-top: 0.15rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+html[data-theme] [class*="-BackArrow"] {
+  font-size: 1.1rem;
+}
+
+/* "Ver publicación" / "Comprobar Vista Previa": the site has no preview builds and the link
+   only opened the home page */
+html[data-theme] [class*="-ToolbarContainer"] [class*="-PreviewButtonContainer"] {
+  display: none;
+}
+
+/* top bar of the lists: Contenido / Flujo editorial / Medios */
+html[data-theme] [class*="-AppHeaderNavLink"],
+html[data-theme] [class*="-AppHeaderButton"] {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+html[data-theme] [class*="-AppHeaderNavLink"] [class*="IconWrapper"],
+html[data-theme] [class*="-AppHeaderButton"] [class*="IconWrapper"] {
+  width: 18px;
+  height: 18px;
+}
+
+html[data-theme] [class*="-AppHeaderSiteLink"] {
+  font-size: 0.8rem;
 }
 
 /* preview pane */
@@ -425,12 +575,24 @@ html[data-theme] .Resizer {
   background: var(--p-border);
 }
 
-html[data-theme] [class*="-PreviewButtonContainer"] button,
+/* round buttons over the preview (show/hide preview, scroll together) */
 html[data-theme] [class*="-ButtonRound"] {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.5rem;
   background: var(--p-surface);
-  color: var(--p-accent);
+  color: var(--p-text-light);
   border: 1px solid var(--p-border);
   box-shadow: none;
+}
+
+html[data-theme] [class*="-ButtonRound"]:hover {
+  color: var(--p-accent);
+}
+
+html[data-theme] [class*="-ButtonRound"] [class*="IconWrapper"] {
+  width: 20px;
+  height: 20px;
 }
 
 /* editorial workflow board */
@@ -586,6 +748,22 @@ html[data-theme] [class*="-Toast"] {
   color: var(--p-accent);
 }
 
+/* inside the top bar, next to the site link (lists and editor); floating only on the sign-in page */
+.panel-theme-toggle.in-bar {
+  position: static;
+  flex: none;
+  align-self: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 0.35rem;
+  box-shadow: none;
+}
+
+.panel-theme-toggle.in-bar svg {
+  width: 17px;
+  height: 17px;
+}
+
 .panel-theme-toggle svg {
   width: 20px;
   height: 20px;
@@ -615,11 +793,12 @@ html[data-theme] [class*="-Toast"] {
 }
 
 .cells-mode button {
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.7rem;
   border: 0;
   background: transparent;
   color: var(--p-text-light);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -819,24 +998,35 @@ html[data-theme] [class*="-Toast"] {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
+  gap: 0.3rem;
+  font-size: 0.72rem;
   color: var(--p-text-light);
 }
 
+.cells-add > span,
+.cells-insert > span {
+  margin-right: 0.15rem;
+  letter-spacing: 0.04em;
+}
+
 .cells-insert {
-  padding: 0.5rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   border-top: 1px dashed var(--p-border);
 }
 
 .cells-add-btn {
-  padding: 0.3rem 0.7rem;
+  padding: 0.18rem 0.6rem;
   border: 1px solid var(--p-border);
-  border-radius: 4px;
+  border-radius: 999px;
   background: transparent;
-  color: var(--p-text);
-  font-size: 0.8rem;
+  color: var(--p-text-light);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.5;
   cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .cells-add-btn:hover {

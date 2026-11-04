@@ -47,6 +47,9 @@ nb_download: { es: "Descargar .ipynb", en: "Download .ipynb" }
 nb_hide_code: { es: "Ocultar código", en: "Hide code" }
 nb_show_code: { es: "Mostrar código", en: "Show code" }
 
+# Table of contents button (_layouts/default.liquid)
+toc_title: { es: "Índice", en: "Contents" }
+
 # Books (Other page)
 books: { es: "Libros", en: "Books" }
 currently_reading: { es: "Leyendo actualmente", en: "Currently Reading" }

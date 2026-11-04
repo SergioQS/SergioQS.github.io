@@ -6,7 +6,9 @@
  *   4. notebook (.ipynb) -> HTML, as _plugins/notebooks.rb shows it on the site
  *   5. the preview: the post as it will look on the site
  *   6. the "cells" editor for the post body: text, code, output, figure and PDF cells
- *   7. before saving: notebook posts get the side table of contents
+ *   7. before saving: the text is formatted with Prettier (the repository's check); notebook
+ *      posts get the table of contents
+ *   8. Spanish labels for the parts of Decap that have none, and shorter toolbar labels
  */
 (function () {
   "use strict";
@@ -73,7 +75,28 @@
       Theme.toggle();
       paint();
     });
-    document.body.appendChild(button);
+    // in the top bar, before the site link, when there is one (lists, editor); floating on the
+    // sign-in page. Decap redraws its bars, so the button is put back whenever one appears.
+    var place = function () {
+      var bar = document.querySelector('[class*="-SettingsWrapper"]');
+      if (bar && button.parentNode !== bar) {
+        button.classList.add("in-bar");
+        bar.insertBefore(button, bar.firstChild);
+      } else if (!bar && button.parentNode !== document.body) {
+        button.classList.remove("in-bar");
+        document.body.appendChild(button);
+      }
+    };
+    place();
+    var queued = false;
+    new MutationObserver(function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(function () {
+        queued = false;
+        place();
+      });
+    }).observe(document.body, { childList: true, subtree: true });
   }
 
   /* ------------------------------------------------------------------------------------------
@@ -869,9 +892,56 @@
     return parts.length ? parts.join("\n\n") + "\n" : "";
   }
 
+  // Grow or shrink a text box to fit its text. The height is measured on a hidden copy: shrinking
+  // the real box to measure it shortened the page for a moment, the browser lost the scroll
+  // position and the line being written jumped to the bottom of the screen.
+  var measurer = null;
+  var MEASURED = [
+    "fontFamily",
+    "fontSize",
+    "fontWeight",
+    "fontStyle",
+    "letterSpacing",
+    "wordSpacing",
+    "lineHeight",
+    "textTransform",
+    "textIndent",
+    "paddingTop",
+    "paddingRight",
+    "paddingBottom",
+    "paddingLeft",
+    "borderTopWidth",
+    "borderRightWidth",
+    "borderBottomWidth",
+    "borderLeftWidth",
+    "borderStyle",
+    "whiteSpace",
+    "wordBreak",
+    "overflowWrap",
+    "tabSize",
+  ];
   function autosize(textarea) {
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + 2 + "px";
+    if (!textarea || !textarea.isConnected || !textarea.offsetWidth) return;
+    if (!measurer) {
+      measurer = document.createElement("textarea");
+      measurer.setAttribute("aria-hidden", "true");
+      measurer.tabIndex = -1;
+      measurer.style.cssText =
+        "position:absolute;top:0;left:-10000px;visibility:hidden;pointer-events:none;overflow:hidden;resize:none;box-sizing:border-box;height:0;min-height:0;max-height:none;";
+      document.body.appendChild(measurer);
+    }
+    var style = window.getComputedStyle(textarea);
+    MEASURED.forEach(function (name) {
+      measurer.style[name] = style[name];
+    });
+    measurer.style.width = textarea.offsetWidth + "px";
+    measurer.value = textarea.value;
+    var height =
+      style.boxSizing === "border-box"
+        ? measurer.scrollHeight + parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth)
+        : measurer.scrollHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+    height = Math.ceil(height) + 1;
+    if (textarea.style.height !== height + "px") textarea.style.height = height + "px";
   }
 
   var TEXT_TOOLS = [
@@ -1314,20 +1384,247 @@
   });
 
   /* ------------------------------------------------------------------------------------------
-   * 7. Before saving
+   * 7. Before saving: the repository checks every change with Prettier (.github/workflows/prettier.yml).
+   *    The text is formatted here with the same Prettier version and settings (package.json,
+   *    .prettierrc), so drafts and posts saved from the panel pass that check. Prettier is only
+   *    downloaded when saving, with the plugins for the code languages the post uses (Prettier
+   *    also reformats code blocks in JavaScript, JSON, CSS, HTML, YAML, Liquid...).
    * ---------------------------------------------------------------------------------------- */
+  var PRETTIER_OPTIONS = { parser: "markdown", printWidth: 150, trailingComma: "es5" };
+  var PRETTIER_URL = "https://cdn.jsdelivr.net/npm/prettier@3.9.10/";
+  var PRETTIER_FILES = {
+    prettier: ["standalone.js", "sha384-3RquqZwSgZBTvvxL/DhOXolpM5QZBfS/D0WjyfeEYqchqBa8svDtZrEmCY72PNv0"],
+    markdown: ["plugins/markdown.js", "sha384-090OUf9gUFSyr1RrAk3Nl/PzyFwg8NxygxXzSLn44IUd82GorCqjqzYT4PQ3uR69"],
+    babel: ["plugins/babel.js", "sha384-SxATGs9sOghpBVvGTdv0cjtuh2NGQt7Gl8j/brbAEFEGzQBv/3ZePgv2B7tjI1iT"],
+    estree: ["plugins/estree.js", "sha384-EoLFRSvmYPjyTnIz52+GOC70k6gcbEwXhoR9PuEO5kuTJt3EEy39Rmg7qCNlTB9d"],
+    flow: ["plugins/flow.js", "sha384-s1kvK1BVo1sqarqyvKFeiJKg0hIufm0zaiLQ7jBkht8uVpsrhprY0E+J5Fsohxae"],
+    typescript: ["plugins/typescript.js", "sha384-OBdpnx3hsUhWCR5UPfdDGk1mtRXFhTSx7nzDhYXEAANSRqoX4gHFX1PRg+i0DXPq"],
+    glimmer: ["plugins/glimmer.js", "sha384-Kh/wM73RrmiaH9WbqUunYEDcGFoFmo7dKS2SCOj6HqNEtrFeGgPjEE0IGEbDxP3A"],
+    graphql: ["plugins/graphql.js", "sha384-dpInuSoe2MYx+SizkxEUR9yCidgUZ1hzfg5oJGqpo0f8UiAey4++Bt9nba8S0OX4"],
+    angular: ["plugins/angular.js", "sha384-tWnvXs3cLVQ8N1tiMRPs9RKYeR84LMyyUj5U+KrSPF14GUq9jZSvNmlXNw8qjRxh"],
+    html: ["plugins/html.js", "sha384-atWb5QrTX4RawiPU85PDUsji/lUox8YOBbuzLFEPXbIWKEzxlxhkaTOCUAqdepiz"],
+    postcss: ["plugins/postcss.js", "sha384-626YhKfQIg6TCNtOuV9aAvdP1/py4xvGV6w7TRmiRD3YjH6Lr5x/9Zc+G5esccGj"],
+    yaml: ["plugins/yaml.js", "sha384-Mky5IU6xUriXLpZ3iYEEcRlOiABq4t1jwVyLkcRx2nnxu0dwtIMcS2BLw7lM7vZy"],
+    liquid: [
+      "https://cdn.jsdelivr.net/npm/@shopify/prettier-plugin-liquid@1.11.3/standalone.js",
+      "sha384-3mbHVTsLm8NlQc1KXUUjmhHCb6wIeARwvS0hT/XsuzQUbxDqIqHTUFPMDsvObDXf",
+    ],
+  };
+  // Language of a code block (```js) -> the Prettier parser that formats it, as Prettier 3.9.10
+  // with the Liquid plugin decides (case matters: ```JS is left alone)
+  var PRETTIER_LANGUAGES = {
+    "json-stringify": "json.stringify geojson jsonl sarif topojson importmap",
+    json: "json 4DForm 4DProject avsc gltf har ice JSON-tmLanguage json.example mcmeta slnlaunch tact tfstate tfstate.backup webapp webmanifest yy yyp",
+    jsonc:
+      "jsonc code-snippets code-workspace sublime-build sublime-color-scheme sublime-commands sublime-completions sublime-keymap sublime-macro " +
+      "sublime-menu sublime-mousemap sublime-project sublime-settings sublime-theme sublime-workspace sublime_metrics sublime_session",
+    json5: "json5",
+    babel:
+      "javascript js node _js bones cjs es es6 gs jake jsb jscad jsfl jslib jsm jspre jss mjs njs pac sjs ssjs xsjs xsjslib start.frag end.frag wxs jsx",
+    flow: "flow js.flow",
+    typescript: "typescript ts cts mts tsx typescriptreact",
+    glimmer: "handlebars hbs htmlbars",
+    graphql: "graphql gql graphqls",
+    angular: "angular xhtml component.html",
+    html: "html hta htm html.hl inc xht",
+    lwc: "LWC lwc",
+    mjml: "mjml MJML",
+    vue: "vue",
+    markdown: "markdown md pandoc livemd mdown mdwn mkd mkdn mkdown ronn scd workbook mdx",
+    css: "css wxss postcss pcss less less-css scss",
+    yaml: "yaml yml mir reek rviz sublime-syntax syntax yaml-tmlanguage yaml.sed yml.mysql",
+    "liquid-html": "liquidhtml liquid",
+  };
+  var WEB = ["html", "babel", "estree", "postcss"];
+  var PRETTIER_PLUGINS = {
+    "json-stringify": ["babel", "estree"],
+    json: ["babel", "estree"],
+    jsonc: ["babel", "estree"],
+    json5: ["babel", "estree"],
+    babel: ["babel", "estree"],
+    flow: ["flow", "estree"],
+    typescript: ["typescript", "estree"],
+    glimmer: ["glimmer"],
+    graphql: ["graphql"],
+    angular: WEB.concat("angular"),
+    html: WEB,
+    lwc: WEB,
+    mjml: WEB,
+    vue: WEB,
+    markdown: [],
+    css: ["postcss"],
+    yaml: ["yaml"],
+    "liquid-html": ["liquid", "babel", "estree", "postcss"],
+  };
+  var languageParser = {};
+  Object.keys(PRETTIER_LANGUAGES).forEach(function (parser) {
+    PRETTIER_LANGUAGES[parser].split(" ").forEach(function (lang) {
+      languageParser[lang] = parser;
+    });
+  });
+
+  var loadedScripts = {};
+  function loadScript(name) {
+    if (!loadedScripts[name]) {
+      loadedScripts[name] = new Promise(function (resolve, reject) {
+        var file = PRETTIER_FILES[name];
+        var script = document.createElement("script");
+        script.src = /^https:/.test(file[0]) ? file[0] : PRETTIER_URL + file[0];
+        script.integrity = file[1];
+        script.crossOrigin = "anonymous";
+        script.onload = resolve;
+        script.onerror = function () {
+          delete loadedScripts[name];
+          reject(new Error("could not load " + script.src));
+        };
+        document.head.appendChild(script);
+      });
+    }
+    return loadedScripts[name];
+  }
+
+  function prettierPlugin(name) {
+    return name === "liquid" ? window.prettierPluginLiquid : (window.prettierPlugins || {})[name];
+  }
+
+  // The text is formatted under a stand-in front matter, so Prettier reads it exactly as it reads the
+  // whole file in the repository (e.g. a "---" line at the start stays a horizontal rule)
+  var STAND_IN = "---\nx: 1\n---\n\n";
+  function formatBody(body) {
+    var names = ["markdown"];
+    var fence = /(?:`{3,}|~{3,})[ \t]*([^\s`~]+)/g;
+    var match;
+    while ((match = fence.exec(body))) {
+      (PRETTIER_PLUGINS[languageParser[match[1]]] || []).forEach(function (name) {
+        if (names.indexOf(name) === -1) names.push(name);
+      });
+    }
+    return loadScript("prettier")
+      .then(function () {
+        return Promise.all(names.map(loadScript));
+      })
+      .then(function () {
+        var plugins = names.map(prettierPlugin);
+        return window.prettier.format(STAND_IN + body, Object.assign({ plugins: plugins }, PRETTIER_OPTIONS));
+      })
+      .then(function (formatted) {
+        if (formatted.indexOf(STAND_IN) !== 0) throw new Error("unexpected Prettier output");
+        return formatted.slice(STAND_IN.length);
+      });
+  }
+
+  // without Prettier (no connection): at least the most common differences
+  function tidyBody(body) {
+    return (
+      body
+        .replace(/[ \t]+$/gm, function (spaces, offset, text) {
+          return text[offset - 1] === "\n" || offset === 0 ? "" : spaces;
+        })
+        .replace(/\n{3,}/g, "\n\n")
+        .replace(/\s*$/, "") + "\n"
+    );
+  }
+
+  // Title, description and tags on one line. Decap writes the front matter itself, and Prettier would
+  // rewrite two kinds of value: text with line breaks, and text with both " and ' (then the straight
+  // double quotes become “ ”)
+  function oneLine(value) {
+    value = String(value).replace(/\s+/g, " ").trim();
+    if (value.indexOf('"') !== -1 && value.indexOf("'") !== -1) {
+      value = value.replace(/"([^"]*)"/g, "“$1”").replace(/"/g, "”");
+    }
+    return value;
+  }
+
   function beforeSave(event) {
     var data = event.entry.get("data");
     var sidebar = data.getIn(["toc", "sidebar"]);
     if (data.get("notebook") && !sidebar) data = data.setIn(["toc", "sidebar"], "left");
     else if (!sidebar && data.has("toc")) data = data.delete("toc");
     var tags = data.get("tags");
-    if (typeof tags === "string") data = data.set("tags", tags.replace(/,/g, " ").replace(/\s+/g, " ").trim());
-    // a blank line between the front matter and the text (the repository's Prettier check wants it)
+    if (typeof tags === "string") data = data.set("tags", tags.replace(/,/g, " "));
+    ["title", "description", "tags"].forEach(function (key) {
+      if (typeof data.get(key) === "string") data = data.set(key, oneLine(data.get(key)));
+    });
     var body = data.get("body");
-    if (typeof body === "string" && body.trim()) data = data.set("body", "\n" + body.replace(/^(\s*\n)+/, ""));
-    return data;
+    if (typeof body !== "string" || !body.trim()) return data;
+    body = body.replace(/^(\s*\n)+/, "");
+    // a blank line between the front matter and the text, as Prettier leaves it
+    return formatBody(body)
+      .catch(function (error) {
+        console.warn("Panel: Prettier is not available, saving with basic tidying.", error);
+        return tidyBody(body);
+      })
+      .then(function (formatted) {
+        return data.set("body", "\n" + formatted);
+      });
   }
+
+  /* ------------------------------------------------------------------------------------------
+   * 8. Labels: Spanish for the parts of Decap that only have English, and shorter toolbar labels
+   * ---------------------------------------------------------------------------------------- */
+  var LABELS = {
+    collection: {
+      sidebar: { allCollections: "Todas las colecciones", searchIn: "Buscar en" },
+      collectionTop: {
+        viewAsList: "Ver como lista",
+        viewAsGrid: "Ver como cuadrícula",
+        searchResults: "Resultados de «%{searchTerm}»",
+        searchResultsInCollection: "Resultados de «%{searchTerm}» en %{collection}",
+        filterBy: "Filtrar por",
+        groupBy: "Agrupar por",
+      },
+      entries: { unpublishedHeader: "Entradas no publicadas" },
+      groups: { other: "Otras", negateLabel: "No %{label}" },
+    },
+    editor: {
+      editorControl: { field: { widgetLabel: "Campo %{widgetLabel}" } },
+      editorInterface: { togglePreview: "Mostrar u ocultar la vista previa", toggleScrollSync: "Desplazar el texto y la vista previa a la vez" },
+      editorToolbar: {
+        backCollection: "%{collectionLabel}",
+        deleteUnpublishedEntry: "Eliminar borrador",
+        deleteUnpublishedChanges: "Descartar cambios",
+        deletePublishedEntry: "Eliminar entrada",
+        statusInfoTooltipDraft: "La entrada es un borrador. Cuando esté lista, cambia el estado a «En revisión» o «Listo».",
+        statusInfoTooltipInReview: "La entrada está en revisión; puedes seguir haciendo cambios.",
+      },
+      editorWidgets: {
+        image: {
+          chooseMultiple: "Elegir imágenes",
+          chooseUrl: "Insertar desde una URL",
+          replaceUrl: "Reemplazar por una URL",
+          promptUrl: "URL de la imagen",
+          addMore: "Añadir más imágenes",
+          removeAll: "Quitar todas las imágenes",
+        },
+        file: {
+          chooseUrl: "Insertar desde una URL",
+          chooseMultiple: "Elegir archivos",
+          replaceUrl: "Reemplazar por una URL",
+          promptUrl: "URL del archivo",
+          addMore: "Añadir más archivos",
+          removeAll: "Quitar todos los archivos",
+        },
+        datetime: { setToNow: "Poner la fecha y hora actuales" },
+        list: { add: "Añadir %{item}", addType: "Añadir %{item}" },
+        object: { expand: "Desplegar", collapse: "Plegar" },
+      },
+    },
+    mediaLibrary: {
+      mediaLibraryCard: { copy: "Copiar", copyUrl: "Copiar URL", copyPath: "Copiar ruta", copyName: "Copiar nombre", copied: "Copiado" },
+      mediaLibraryModal: { close: "Cerrar" },
+    },
+    ui: { settingsDropdown: { account: "Opciones de la cuenta" } },
+  };
+
+  function mergeLabels(base, extra) {
+    var out = Object.assign({}, base);
+    Object.keys(extra).forEach(function (key) {
+      out[key] = typeof extra[key] === "object" && base && typeof base[key] === "object" ? mergeLabels(base[key], extra[key]) : extra[key];
+    });
+    return out;
+  }
+  if (CMS.getLocale && CMS.getLocale("es")) CMS.registerLocale("es", mergeLabels(CMS.getLocale("es"), LABELS));
 
   /* ------------------------------------------------------------------------------------------ */
   addThemeButton();

@@ -39,6 +39,33 @@ $(document).ready(function () {
     $("body").scrollspy({
       target: navSelector,
     });
+
+    // the list opens from the "Índice" button (_layouts/default.liquid, _sass/_toc.scss)
+    var $tocFloat = $myNav.closest(".toc-float");
+    var $tocToggle = $tocFloat.find(".toc-toggle");
+    if (!$myNav.find("a").length) {
+      $tocFloat.hide();
+    }
+    var setTocOpen = function (open) {
+      $tocFloat.toggleClass("open", open);
+      $tocToggle.attr("aria-expanded", open ? "true" : "false");
+    };
+    $tocToggle.on("click", function (event) {
+      event.stopPropagation();
+      setTocOpen(!$tocFloat.hasClass("open"));
+    });
+    $myNav.on("click", "a", function () {
+      setTocOpen(false);
+    });
+    $(document).on("click", function (event) {
+      if (!$(event.target).closest(".toc-box").length) setTocOpen(false);
+    });
+    $(document).on("keydown", function (event) {
+      if (event.key === "Escape" && $tocFloat.hasClass("open")) {
+        setTocOpen(false);
+        $tocToggle.trigger("focus");
+      }
+    });
   }
 
   // add css to jupyter notebooks
