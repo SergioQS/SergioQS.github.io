@@ -6,7 +6,7 @@ backend:
   repo: SergioQS/SergioQS.github.io
   branch: main
   # Login helper (Cloudflare Worker). Set up once, see _tools/decap-oauth/README.md
-  base_url: https://sergioqs-cms-auth.CAMBIAR.workers.dev
+  base_url: https://sergioqs-cms-auth.y6d32pe53.workers.dev/
   auth_scope: public_repo
   squash_merges: true
   commit_messages:
