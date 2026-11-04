@@ -1,13 +1,16 @@
 ---
 layout: post
-title: "Poster: Compositional Paths on Hypergraphs"
 date: 2025-10-01 12:00:00-0400
-description: "Formalizing compositions of n-ary relations to generate algebras from hypergraphs, recovering classical path algebras and producing new associative and non-associative structures."
-tags: mathematics, algebra, graphs
-categories: mathematics
+description: Formalizing compositions of n-ary relations to generate algebras
+  from hypergraphs, recovering classical path algebras and producing new
+  associative and non-associative structures.
+published: true
 related_posts: false
 citation: true
 img_id: 13
+title: "Poster: Compositional Paths on Hypergraphs"
+categories: mathematics
+tags: mathematics algebra graphs
 ---
 
 Poster for my undergraduate thesis on compositional path algebras, presented at Universidad Nacional de Colombia in 2025.
