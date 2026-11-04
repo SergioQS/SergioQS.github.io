@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+  Writing panel: https://sergioqs.github.io/admin/
+  Decap CMS (https://decapcms.org) with the site's look, a LaTeX-aware preview and a notebook converter.
+  Configuration: admin/config.yml. Custom code: admin/admin.js (editor, preview) and admin/admin.css (look).
+  Sign-in is with GitHub; only accounts that can write to the repository can save anything.
+-->
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Panel de escritura · Sergio Quiroga-Sandoval</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>"
+    />
+    <script>
+      // Same light/dark choice as the rest of the site (dark unless the visitor picked light)
+      (function () {
+        var theme = "dark";
+        try {
+          if (localStorage.getItem("theme") === "light") theme = "light";
+        } catch (e) {}
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+      // admin.js registers the editor and preview before starting the CMS
+      window.CMS_MANUAL_INIT = true;
+      // MathJax renders formulas in the preview as SVG (same TeX setup as the site)
+      window.MathJax = {
+        tex: {
+          tags: "ams",
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        svg: { fontCache: "local" },
+        startup: { typeset: false },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="admin.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"
+      integrity="sha384-KKWa9jJ1MZvssLeOoXG6FiOAZfAgmzsIIfw8BXwI9+kYm0lPCbC6yTQPBC00F1/L"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/markdown-it@14.3.2/dist/markdown-it.min.js"
+      integrity="sha384-hxAvKEbHozQqowCqu4B3mOihRnvATKzN8DX89pnQPo00/TFaxvQpmBgbE77Zjv61"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/highlight.min.js"
+      integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/languages/julia.min.js"
+      integrity="sha384-cURSDNSYOEpA3JyB+Soin0iDfPlxgcO9kjA4sn9L3p9xMvFNFy414G6cx8MtkQ6K"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/languages/mathematica.min.js"
+      integrity="sha384-y1+UZ2Tj8YGxk8pltI2Xo0e17nA9sBMyynUZGHY1ZUDaVMBQCB91/ci3nYxZbJ4u"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/languages/latex.min.js"
+      integrity="sha384-A8E38+eenPg19mMk5Ikv1fetaPL/yA2OsGR3hFs9TeeBX+zQ8u5bZNsPKmlFHwN4"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script
+      src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"
+      integrity="sha384-A/Gdn928CNLufmnGWGs9RM4Q9o8bSNLeJERqBFrBjwzL7FRpoLT3MPF8Tl0+Wd2p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

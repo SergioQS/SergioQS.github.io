@@ -1,0 +1,139 @@
+# Writing panel (Decap CMS) — https://sergioqs.github.io/admin/
+# Options: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  repo: SergioQS/SergioQS.github.io
+  branch: main
+  # Login helper (Cloudflare Worker). Set up once, see _tools/decap-oauth/README.md
+  base_url: https://sergioqs-cms-auth.CAMBIAR.workers.dev
+  auth_scope: public_repo
+  squash_merges: true
+  commit_messages:
+    create: "Nueva entrada: {{slug}}"
+    update: "Editar entrada: {{slug}}"
+    delete: "Borrar entrada: {{slug}}"
+    uploadMedia: "Subir {{path}}"
+    deleteMedia: "Borrar {{path}}"
+
+# When the site runs on your computer (localhost), the panel saves to the local files instead
+# of GitHub; start the helper with `npx decap-server` in the repository folder.
+local_backend: true
+
+# Drafts: "Guardar" keeps a draft (a branch, invisible on the site); "Publicar" puts it on the site.
+publish_mode: editorial_workflow
+
+locale: es
+site_url: https://sergioqs.github.io
+display_url: https://sergioqs.github.io
+
+# Images added in the editor
+media_folder: assets/img/posts
+public_folder: assets/img/posts
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: posts
+    label: Entradas
+    label_singular: Entrada
+    description: "Artículos y ensayos del sitio. Para una entrada con notebook, sube el .ipynb en «Notebook»."
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} · {{day}}/{{month}}/{{year}}"
+    sortable_fields:
+      - field: date
+        label: Fecha
+        default_sort: desc
+      - field: title
+        label: Título
+    view_filters:
+      - label: Matemáticas
+        field: categories
+        pattern: mathematics
+      - label: Computación
+        field: categories
+        pattern: computation
+      - label: Otras áreas
+        field: categories
+        pattern: other-areas
+    editor:
+      preview: true
+    fields:
+      - { name: layout, label: Plantilla, widget: hidden, default: post }
+      - { name: title, label: Título, widget: string }
+      - name: date
+        label: Fecha
+        widget: datetime
+        format: "YYYY-MM-DD HH:mm:ssZZ"
+        default: "{{now}}"
+        date_format: "DD/MM/YYYY"
+        time_format: "HH:mm"
+      - name: description
+        label: Descripción
+        widget: text
+        required: false
+        hint: "Una o dos frases; aparece en las listas de entradas."
+      - name: categories
+        label: Sección
+        widget: select
+        options:
+          - { label: Matemáticas, value: mathematics }
+          - { label: Computación, value: computation }
+          - { label: Otras áreas, value: other-areas }
+      - name: tags
+        label: Etiquetas
+        widget: string
+        required: false
+        hint: "Separadas por espacios, por ejemplo: topology algebra julia"
+      - name: image
+        label: Imagen de portada
+        widget: image
+        required: false
+        media_folder: /assets/img
+        public_folder: assets/img
+      - name: notebook
+        label: Notebook (.ipynb)
+        widget: file
+        required: false
+        media_folder: /assets/jupyter
+        public_folder: assets/jupyter
+        hint: "Descarga el notebook desde Colab (Archivo → Descargar → .ipynb) y súbelo aquí. Se mostrará como en las demás entradas con notebook, con botones de Colab, GitHub y descarga."
+        media_library:
+          allow_multiple: false
+      - name: body
+        label: Contenido
+        widget: cells
+        required: false
+        media_folder: /assets/img/posts
+        public_folder: assets/img/posts
+        hint: "Celdas de texto (Markdown y LaTeX: $…$, $$…$$), código, salidas, figuras y PDFs."
+        # where PDFs added in the editor are stored (used by admin/admin.js, not shown)
+        fields:
+          - { name: pdf, label: PDF, widget: hidden, media_folder: /assets/pdf, public_folder: assets/pdf }
+      - name: published
+        label: Visible en el sitio
+        widget: boolean
+        default: true
+        required: false
+        hint: "Apágalo para ocultar la entrada sin borrarla."
+      - name: toc
+        label: Índice lateral
+        widget: object
+        collapsed: true
+        required: false
+        summary: "{{fields.sidebar}}"
+        hint: "Las entradas con notebook lo tienen siempre."
+        fields:
+          - name: sidebar
+            label: Posición
+            widget: select
+            required: false
+            options:
+              - { label: Izquierda, value: left }
+              - { label: Derecha, value: right }
+      - { name: related_posts, label: Entradas relacionadas, widget: hidden, default: false }
+      - { name: citation, label: Cita, widget: hidden, default: true }
