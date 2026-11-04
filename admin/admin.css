@@ -76,15 +76,21 @@ html[data-theme] [class*="AuthenticationPage"] [class*="DecapLogoIcon"] {
   display: none;
 }
 
-html[data-theme] [class*="AuthenticationPage"] [class*="LoginButton"] {
+/* only the button itself: the GitHub icon inside it is a "LoginButtonIcon" */
+html[data-theme] [class*="AuthenticationPage"] button[class*="LoginButton"] {
   margin-top: 1.5rem;
   background: var(--p-accent);
   color: var(--p-on-accent);
   box-shadow: none;
 }
 
-html[data-theme] [class*="AuthenticationPage"] [class*="LoginButton"]:hover {
+html[data-theme] [class*="AuthenticationPage"] button[class*="LoginButton"]:hover {
   background: var(--p-accent-hover);
+}
+
+html[data-theme] [class*="AuthenticationPage"] [class*="LoginButtonIcon"] {
+  margin-right: 0.75rem;
+  color: inherit;
 }
 
 html[data-theme] [class*="AuthenticationPage"] [class*="GoBackButton"] {
