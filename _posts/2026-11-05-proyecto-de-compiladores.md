@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Proyecto de compiladores
+title: Proyecto de compiladores (en proceso)
 date: 2026-11-05 07:31:00-0500
 description: Se documenta todo el proceso y el trabajo realizado para el
   proyecto de compiladores.
