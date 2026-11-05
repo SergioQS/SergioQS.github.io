@@ -51,7 +51,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-poster-compositional-paths-on-hypergraphs",
+        },{id: "post-proyecto-de-compiladores-en-proceso",
+        
+          title: "Proyecto de compiladores (en proceso)",
+        
+        description: "Se documenta todo el proceso y el trabajo realizado para el proyecto de compiladores.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/proyecto-de-compiladores/";
+          
+        },
+      },{id: "post-poster-compositional-paths-on-hypergraphs",
         
           title: "Poster: Compositional Paths on Hypergraphs",
         
