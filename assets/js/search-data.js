@@ -55,7 +55,7 @@ ninja.data = [{
         
           title: "Proyecto de compiladores (en proceso)",
         
-        description: "Se documenta todo el proceso y el trabajo realizado para el proyecto de compiladores.",
+        description: "Se documenta todo el proceso de trabajo realizado para el proyecto de compiladores.",
         section: "Posts",
         handler: () => {
           
